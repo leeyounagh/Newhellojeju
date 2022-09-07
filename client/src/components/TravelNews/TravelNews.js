@@ -72,7 +72,7 @@ const TravelNews = () => {
            <h2 style={{position:"relative" , left:"80px"}}>에디터가 추천하는 여행지</h2>
            <div> 
 
-        <div  style={{width:'600px',position:'absolute',left:'760px',top:'50px',height:'300px'}}>
+        <div  style={{width:'600px',position:'absolute',left:'800px',top:'50px',height:'300px'}}>
            <div style={{marginBottom:"10px"}}>
             <h2>video clip</h2>
            </div>

@@ -67,36 +67,41 @@ console.log(uuid); // 3270411116609537
            }
 
     return (
-      <div className='schedule travelDetail1' style={{height:'550px'}}>
+      <div className='schedule travelDetail1' style={{height:"600px"}}>
          <form onSubmit={onsubmitHandler}>
-      <div style={{position:'absolute',top:"100px",left:'250px',
-        width:'60%',height:'460px',border:'1px solid lightgray',borderRadius:'30px',background:"#DAEAF1",
+      <div style={{position:'relative',top:"100px",left:'250px',
+        width:'70%',height:'600px',border:'1px solid lightgray',borderRadius:'30px',background:"#DAEAF1",
       }}>
         
             <div  >
            
-             <h4 style={{position:'absolute', left:"355px",top:'60px'}}>제목:</h4> 
-            <input style={{width:'300px',height:'30px',borderRadius:'30px',cursor:'block',
-          border:'none',paddingLeft:"3px",position:'absolute', left:"390px",top:'55px'}} type="text" onChange={titleHandler} value={title} autofocus />
+             <h4 style={{position:'relative', left:"50%",top:'65px'}}>제목:</h4> 
+            <input style={{width:'40%',height:'30px',borderRadius:'30px',cursor:'block',
+          border:'none',paddingLeft:"3px",position:'relative', left:"54%",top:'30px',zIndex:"100"}} type="text" onChange={titleHandler} value={title} autofocus />
              
          
             <div style={{marginTop:'20px',display:'flex',
-           borderRadius:'30px',fontSize:"12px",width:'250px',height:'360px',position:"absolute",
-           left:"50px",top:"25px"}}>
+           borderRadius:'30px',fontSize:"12px",position:"relative",
+           left:"50px",top:"-30px"}}>
          
             <DateRange
                 editableDateInputs={true}
                 onChange={item => setState([item.selection])}
                 moveRangeOnFirstSelection={false}
                 ranges={state}
-            style={{width:'250px',height:'250px',borderRadius:"50px",paddingBottom:"10px"}}
+            style={{width:'400px',height:'350px',borderRadius:"50px",paddingBottom:"10px"}}
                 />
                            
             </div>
             <br/>
-           
-             
-                <select  className='select'name="여행스타일"  style={{position:"absolute", left:"600px", top:'420px',padding:'0px',border:"none", background:' white'}}
+            
+            <textarea placeholder=" 여행일정을 적어주세요.."   value={desc} onChange={descdHandler}
+               style={{position:"relative", left:"50%", top:'-450px',
+              width:"45%",height:"400px",borderRadius:'20px',border:'none',padding:'10px'}} autofocus>
+
+               </textarea>
+               <div style={{position:"relative", left:"85%", top:"-450px",}}>
+               <select  className='select'name="여행스타일"  style={{zIndex:"50",padding:'0px',border:"none", background:' white'}}
                 onChange={selectedHandler} value={style}>
                 {/* <option  selected disabled value="호캉스 러버" style={{color:'gray'}}>여행스타일</option> */}
                 <option value="스타일">여행스타일</option>
@@ -106,16 +111,14 @@ console.log(uuid); // 3270411116609537
                 <option value="맛집 bias">맛집 bias</option>
                
                 </select>
-               
-               <textarea placeholder=" 여행일정을 적어주세요.."   value={desc} onChange={descdHandler}
-               style={{position:"absolute", left:"350px", top:'100px',
-              width:"350px",height:"310px",borderRadius:'20px',border:'none',padding:'10px'}} autofocus>
-
-               </textarea>
+               </div>
+             
+             
               
-             <button className='sc_btn'style={{position:"absolute", left:"340px", top:'420px',color:'black',borderRadius:"50px",
-             background:' white',border:"none",width:"60px"
-           }} type="submit">등록</button>
+              
+             <button className='sc_btn'style={{position:"relative", left:"43%", top:'-450px',color:'black',borderRadius:"50px",
+             background:' white',border:"none",width:"60px",width:"100px",height:"40px"
+           }} type="submit"><h2>등록</h2></button>
 
          
           
@@ -128,13 +131,7 @@ console.log(uuid); // 3270411116609537
            
         </div>
       </form>
-      {/* <div style={{position:"absolute", left:"950px", top:'520px',
-           }} >
-        <button onClick={(e) =>{
-          e.preventDefault()
-          NaviGate('/mytravel')
-        } }>mytravel</button>
-      </div> */}
+
      
       </div>
      

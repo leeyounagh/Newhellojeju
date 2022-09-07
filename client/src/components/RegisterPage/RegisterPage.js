@@ -31,6 +31,8 @@ const RegisterPage = (props) => {
 
         if (Password !== confirmPassword) {
             return alert('비밀번호와 비밀번호 확인은 같아야 합니다.')
+        }else if(Password.length<6){
+            alert('비밀번호는 5자리이상이어야됩니다.')
         }
 
         let body = {

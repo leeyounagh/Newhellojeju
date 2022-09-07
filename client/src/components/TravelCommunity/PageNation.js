@@ -46,6 +46,7 @@ const Button = styled.button`
   background: black;
   color: white;
   font-size: 1rem;
+  width:40px;
 
   &:hover {
     background: tomato;

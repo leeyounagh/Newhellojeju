@@ -22,30 +22,41 @@ const MyscheduleDetail = (props) => {
        let newDetail =  props.user.userData.schedule[newId]
        return(
         <div>
-           <div style={{position:'absolute',top:"120px",left:"300px",height:'400px',border:'1px solid lightgray', width:"700px",
-         borderRadius:'30px',background:"#DAEAF1"}}>
-            <div style={{fontSize:'20px',display:'flex',justifyContent:'center',marginTop:'20px'}}>
+            <div style={{fontSize:'20px',marginTop:'20px',position:"relative",top:"230px",left:"45%",zIndex:"50"}}>
             제목: {newDetail.title}
             </div>
          
-          <br/>
-          <div style={{position:'absolute',top:"65px",left:"40px"}}>
-          여행스타일:{newDetail.style}
-          <br/>
+           <div style={{position:"relative",top:"170px",left:"20%",height:'400px',border:'1px solid lightgray', width:"60%",
+         borderRadius:'30px',background:"#DAEAF1",}}>
+          
+          <div style={{display:"flex",justifyContent:"space-around",position:"relative",top:"100px"}}>
+          <div style={{}}>
+          <h3>여행스타일:{newDetail.style}</h3>
+         
           </div>
-         <div style={{position:'absolute',top:"90px",left:"40px"}}>
+      
             <div>
-            제주도 도착하는날:{newDetail.startDate.substr(0,10)}
-            </div>
-    <div>
-    집으로 가는날:{newDetail.endDate.substr(0,10)}
-    </div>
+              <h3>
+              제주도 도착하는날:{newDetail.startDate.substr(0,10)}
+              </h3>
+         
+   
         
          </div>
-        
-          <br/>
-          <div style={{position:'absolute',top:"140px",left:"40px",width:'600px'}}> 
+         <div>
+      <h3>
+      집으로 가는날:{newDetail.endDate.substr(0,10)}
+      </h3>
+   
+    </div>
+          </div>
+     
+          
+          <div style={{width:'90%',position:"relative",left:"5%",top:"120px"}}> 
+          <h3>
           여행일정:{newDetail.desc}
+          </h3>
+         
           </div>
 
          
@@ -60,8 +71,8 @@ const MyscheduleDetail = (props) => {
     }
     return (
         <div className='travelDetail1'  style={{height:"750px",}}>
-           <div  style={{position:'absolute',
-         top:'80px',left:'600px'}}> <h2 >나의 스케쥴</h2></div>
+           <div  style={{position:'relative',
+         top:'150px',left:'45%'}}> <h1 >나의 스케쥴</h1></div>
         {scheduleDetail()}
   
         </div>

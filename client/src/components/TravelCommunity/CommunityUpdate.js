@@ -82,7 +82,7 @@ const ImageRendering = () =>{
               
                 <img key={index} style={{minWidth:'100px', width: '200px', height:'200px'}} 
  
- src = {`http://hellojeju.herokuapp.com//${image}`} />
+ src = {`http://localhost:5000/${image}`} />
                 
               
  
@@ -101,7 +101,7 @@ const ImageRendering = () =>{
 
   
     return (
-        <div className='  commununity_font' style={{position:'absolute',top:'100px',left:'300px',width:'700px',
+        <div className='  commununity_font' style={{position:'relative',top:'100px',left:'300px',width:'80%',
       }}>
         
           <div className='container' >
@@ -113,8 +113,9 @@ const ImageRendering = () =>{
             
             <div >
         <form onSubmit={onsubmitHandler}>
-            <h2 style={{position:'relative',top:"-10px"}}>Upload</h2>
-            <div style={{display:"flex",justifyContent:"flex-start",marginTop:"10px"}}>
+            <h2 style={{position:'relative',top:"20px"}}>Upload</h2>
+            <div style={{display:"flex",justifyContent:"flex-start",marginTop:"10px",position:'relative',
+        top:"30px"}}>
             <h3 >제목:</h3>
             <input style={{width:"355px",marginLeft:"10px",height:"25px",
         border:"none",borderRadius:"30px"}} value={title} onChange={titleHandler}></input>
@@ -122,20 +123,20 @@ const ImageRendering = () =>{
          
        
             
-           <textarea style={{width:'400px',height:"300px",
+           <textarea style={{width:'100%',height:"400px",
             border:"none",borderRadius:"10px",paddingLeft:"10px",
-         paddingTop:"10px" } } placeholder='내용을 적어주세요..'onChange={textareaHandler}
+         paddingTop:"10px",position:"relative",top:"50px" } } placeholder='내용을 적어주세요..'onChange={textareaHandler}
             ></textarea>
-           <div style={{position:"relative",left:"120px",top:"10px"
+           <div style={{position:"relative",left:"120px",top:"60px"
           }}><button  class="custom-btn btn-16 update_btn" style={{ 
            }}type='submit'>등록</button></div>
-                <div style={{position:"absolute", top:"60px", left:"600px",}}>
+                <div style={{position:"relative", top:"-360px", left:"600px",}}>
                 <Dropzone onDrop={onDropHandler}>
                 {({getRootProps, getInputProps}) => (
                     <div {...getRootProps()}>
                     <input {...getInputProps()} />
-                    <h3 style={{width:"50px",height:"50px",whiteSpace:"nowrap",position:"absolute",
-                top:'40px',pointer:"cursor",left:"7px"}}>사진 업로드시 클릭!</h3>
+                    <h2 style={{width:"50px",height:"50px",whiteSpace:"nowrap",position:"relative",
+               pointer:"cursor"}}>사진 업로드시 클릭!</h2>
                     </div>
                 )}
                 </Dropzone>

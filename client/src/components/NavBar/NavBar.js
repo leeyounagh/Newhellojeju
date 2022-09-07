@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { BsHeartFill } from 'react-icons/bs';
 import {Badge} from 'antd';
 
+
 const NavBar = (props) => {
 
     const user = useSelector(state=>state.user)
@@ -70,7 +71,7 @@ const NavBar = (props) => {
             fontSize:"1.5rem",fontWeight:'900'}}>community</a>
                   
                   <a href='/userstyle'  className="nav_text"  style={{marginRight:'30px',marginTop:"50px",color:'#f3efe6',weight:'70',
-            fontSize:"1.5rem",fontWeight:'900',color:'#f58d9c'}}><BsHeartFill></BsHeartFill></a>
+            fontSize:"1.5rem",fontWeight:'900',color:'#f58d9c',position:"relative",top:'5px'}}><BsHeartFill></BsHeartFill></a>
               
 
                 

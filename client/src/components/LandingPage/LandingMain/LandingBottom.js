@@ -20,7 +20,7 @@ const LandingBottom = () => {
 
 
 <section class="container">
-      <div  style={{position:"absolute",left:"-70%",top:"130px",}}class="card_outer">
+      <div  style={{position:"relative",left:"-40%",top:"130px",}}class="card_outer">
         <div class="card">
           <div class="content">
             <h2 class="title" style={{whiteSpace:"nowrap"}}>Travel Spot</h2>

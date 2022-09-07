@@ -16,7 +16,7 @@ mongoose.connect('mongodb+srv://admin:qwer1234@cluster0.l9bb7.mongodb.net/travel
 ).then(()=>console.log('mongoDb connected'))
 .catch(err=>console.log(err))
 
-app.get('/',(req,res)=>res.send('helloworld'))
+app.get('/',(req,res)=>res.send('Hello world!'))
 app.use(express.static('uploads'));
 app.post('/api/users/register',(req,res)=>{
     //회원가입할때 필요한 정보들을 client에서 가져오면 

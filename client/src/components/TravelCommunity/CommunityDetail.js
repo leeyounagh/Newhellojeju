@@ -66,11 +66,12 @@ const CommunityDetail = (props) => {
                 allComment.map((item,index)=>{
                    return(
                     <div key={index} style={{display:"flex",justifyContent:"space-around",
-                     borderBottom:"1px solid lightgray",height:'40px',width:"650px",padding:'10px'}}>
-                        <div style={{position:'absolute',left:"0px"}}>
+                     borderBottom:"1px solid lightgray",height:'40px',width:"900px",padding:'10px'}}>
+                        <div style={{position:"absolute",left:"0px"}}>
+                        
                         {item.comment}
                         </div>
-                        <div style={{position:'absolute',left:"500px",}}>
+                        <div style={{position:"absolute",left:"50%"}}>
                        작성자:{item.writer}
                         </div>
                     </div>
@@ -89,7 +90,7 @@ const CommunityDetail = (props) => {
                     {Img.map((item,index)=>{
                         return(
                             <div>
-                                <img alt={index} src={`http://hellojeju.herokuapp.com//${item}`
+                                <img alt={index} src={`http://localhost:5000/${item}`
                  } style={{maxWidth:'500px',maxWidth:'500px'}}></img>
                             </div>
                         )
@@ -102,14 +103,14 @@ const CommunityDetail = (props) => {
     }
    
     return (
-        <div className='commununity_font' style={{position:"absolute",top:'100px',left:'350px',height:"30000px"}}>
+        <div className='commununity_font' style={{position:"relative",top:'100px',left:'20%',height:"10000px"}}>
             {
                community.map((item,index)=>{
                 return(
                     <div key ={index}>
-                 <div style={{borderBottom:'1px solid lightgray'}}>
-                 <h3>제목: {item.Communutytitle}</h3> </div> 
-                 <div><h5>작성자:{item.writer.name}</h5></div>
+                 <div style={{borderBottom:'1px solid lightgray',width:"60%"}}>
+                 <h2>제목: {item.Communutytitle}</h2> </div> 
+                 <div><h3>작성자:{item.writer.name}</h3></div>
                  <br/>
                  <br/>
           
@@ -123,20 +124,20 @@ const CommunityDetail = (props) => {
                             }
                                    
                 {ImgRendering()}
-                            <div style={{marginTop:"100px" , borderBottom:"1px solid lightgray"}}>
+                            <div style={{marginTop:"100px" , borderBottom:"1px solid lightgray",width:"60%"}}>
                                 <div>
                                 <h3>Comment</h3>  </div>
                           
                             </div>
 
-                            <div style={{marginTop:'30px' , display:"flex", width:'680px'}} >
+                            <div style={{marginTop:'30px' , display:"flex", }} >
                                 <form onSubmit={getComment}>
-                                <input style={{width:"600px",
+                                <input style={{width:"800px",
                              borderBottom:'1px solid lightgray',
-                             borderTop:"none",borderLeft:"none",borderRight:"none",marginRight:'10px'}} placeholder="댓글을 입력하세요"
+                             borderTop:"none",borderLeft:"none",borderRight:"none",marginRight:'10px',}} placeholder="댓글을 입력하세요"
                               onChange={inputHandler} value={comment}></input>
                              <button class="custom-btn2 btn-162 update_btn2"style={{cursor:"pointer", fontSize:"12px",
-                            fontWeight:"400",position:"relative",left:'610px',top:"-30px"
+                            fontWeight:"400",position:"relative",left:'',top:"0px"
                             }} type='submit'>등록</button>
                                 </form>
                               

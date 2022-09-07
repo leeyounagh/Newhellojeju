@@ -59,7 +59,7 @@ const TravelCommunity = () => {
             return(
                 <div  key={index} style={letterMove}>
                         <a href={`/community/${item._id}`}>
-                   <img width='170px' height='100px' alt={item.Communutytitle}
+                   <img width='170px' height='200px' alt={item.Communutytitle}
                 src={`http://localhost:5000/${item.images[0]}`}></img></a>
                 <div style={{border:"1px solid black",width:"170px",height:'40px',
                     background:"black", position:'relative',top:'-40px',opacity:"0.3"}}>
@@ -97,18 +97,18 @@ const TravelCommunity = () => {
     }).slice(offset, offset + limit).map((item,index)=>{
         return(
            <div key={index} style={{display:'flex',justifyContent:'space-around',margin:'60px', borderBottom:'1px solid lightgray',
-           width:"700px",height:"50px",position:'relative',left:"250px",top:"50px",margin:"5px"}}> 
+           width:"100%",height:"80px",position:'relative',left:"50px",top:"100px",margin:"5px"}}> 
                <div style={{position:'absolute',left:"0px"}}>
                <a href={`/community/${item._id}`}>
-                   <img width='80px' height='50px' alt={item.Communutytitle}
+                   <img width='100px' height='80px' alt={item.Communutytitle}
                 src={`http://localhost:5000/${item.images[0]}`}></img></a>
                </div>
-                    <div style={{position:'absolute',left:'100px',textOverflow:'ellipsis',
+                    <div style={{position:'absolute',left:'120px',top:"25px",textOverflow:'ellipsis',
                     width:'450px',whiteSpace:'nowrap',overflow:'hidden',display:'block'}}>
-                    <a href={`/community/${item._id}`}> <h4>{item.Communutytitle}</h4></a>
+                    <a href={`/community/${item._id}`}> <h3>{item.Communutytitle}</h3></a>
                     </div>
-                    {item.writer.name?  <div style={{position:'absolute',left:"550px"}}> <h4>작성자:{item.writer.name}</h4></div>:
-                    <div style={{position:'absolute',left:"550px"}}><h4>닉네임없음</h4></div>}
+                    {item.writer.name?  <div style={{position:'relative',left:"40%",top:"25px"}}> <h3>작성자:{item.writer.name}</h3></div>:
+                    <div style={{position:'relative',left:"550px"}}><h4>닉네임없음</h4></div>}
            
                
            </div>
@@ -148,15 +148,15 @@ const TravelCommunity = () => {
     return (
         <div className='commununity_font'>
             
-                <div style={{position:'absolute',top:'100px',left:'480px'}}>
+                <div style={{position:'relative',top:'150px',left:'40%'}}>
                    <h1> Hello Jeju Community</h1>
                 </div>
-                <h3 style={{position:'absolute',top:'170px',left:'280px',}}>최신업데이트</h3>
-                <div style={{position:'absolute',top:'200px',left:'280px',
+                <h2 style={{position:'relative',top:'150px',left:'15%',}}>최신업데이트</h2>
+                <div style={{position:'absolute',top:'250px',left:'200px',
          clip:'shape' }}>
           
-                    <div className ='clip'style={{width:'700px',height:'100px',
-                display:'flex',  }}>
+                    <div className ='clip'style={{width:'1180px',height:'200px',
+                display:'flex'}}>
                     
                      {LatestUpdate()}
                     
@@ -164,13 +164,13 @@ const TravelCommunity = () => {
                      </div>
                    
                     </div>
-                    <div style={{position:'absolute',left:"240px",top:'240px'}}>
+                    <div style={{position:'absolute',left:"11%",top:'350px'}}>
                         {imgPage===1?null:<GrPrevious size="20px"
                         style={{fontSize:"12px",border:"none",
                        }} onClick={ImgLeftMove}>이전</GrPrevious>}
                
                </div>
-                    <div style={{position:'absolute',left:"995px",top:'243px'}}> 
+                    <div style={{position:'absolute',left:"92%",top:'350px'}}> 
                     {totalImglength<Math.abs(position)?null:<GrNext 
  size="20px"
                      style={{fontSize:"12px",border:"none"}} onClick={ImgRightMove} >다음</GrNext>}
@@ -178,20 +178,20 @@ const TravelCommunity = () => {
          
               <div  style={{position:'absolute',top:'400px',left:'30px'}}>
                 <div style={{ width:'700px',height:"100px",
-            position:'relative',left:"250px"}}>
-                <h2 style={{position:'relative',left:"5px",top:'50px'}}>
+           }}>
+                <h1 style={{position:'relative',left:"25%",top:'150px'}}>
                     Community
-                </h2>
+                </h1>
                 <div style={{  color:'black'}}>
-                  <a style={{color:'black',position:'relative',left:"600px",top:'20px'}} href='/communityupdate'>게시물작성</a>
+                  <a style={{color:'black',position:'relative',left:"172%",top:'120px',fontSize:"1.3rem",zIndex:"100"}} href='/communityupdate'>게시물작성</a>
                 </div>
                 </div>
              
-                <div style={{width:'700px',height:'500px',
-            position:'absolute',top:'50px',margin:'0px'}}>
+                <div style={{height:'500px',width:"1200px",position:"relative",left:"10%",top:"30px",
+            margin:'0px'}}>
                {RenderList()}
                 </div>
-                <div style={{position:'absolute', left:'500px',top:"700px"}}>
+                <div style={{position:'absolute', left:'600px',top:"175%",width:"30%"}}>
                 <Pagination
                     total={letter.length}
                     limit={limit}
@@ -199,7 +199,7 @@ const TravelCommunity = () => {
                     setPage={setPage}
                     />
                 </div>
-                <div style={{position:"relative", top:"560px",left:"720px"}}>
+                <div style={{position:"relative", top:"500px",left:"95%"}}>
                     <select onChange={selectedHandler} style={{marginRight:"10px"}}value={style} name="게시판분류">
                         <option value='분류'>
                         분류
