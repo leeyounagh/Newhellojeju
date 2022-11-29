@@ -18,12 +18,6 @@ const NavBar = (props) => {
       }
     });
   };
-  // function navbarstyle(){
-  //     if (window.location.pathname === '/landing') return ;
-  //     return (
-  //       <NavBar></NavBar>
-  //     );
-  // }
 
   if (user.userData && !user.userData.isAuth) {
     return (
