@@ -1,0 +1,38 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Blaka&family=Dokdo&family=East+Sea+Dokdo&family=Indie+Flower&family=Nanum+Pen+Script&family=Water+Brush&display=swap');
+
+@import url("https://rsms.me/inter/inter.css");
+html {
+  font-family: "Inter", sans-serif;
+}
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", sans-serif;
+  }
+} */
+
+
+.nav_text2{
+    font-family: "Inter", sans-serif;
+    font-family: "Inter var", sans-serif;
+}
+
+input:focus {outline: none;}
+textarea:focus {outline: none;}
+select:focus {outline: none;}
+option:focus {outline: none;}
+
+@media screen and (max-width: 600px) {
+  #m_q {
+      display: none;
+  }
+}
+
+.container_nav{
+  display : flex;
+
+  justify-content: center;
+
+  align-items:center;
+
+  flow-wrap: wrap;
+}

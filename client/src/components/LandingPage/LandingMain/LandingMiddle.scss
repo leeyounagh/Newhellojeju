@@ -1,0 +1,81 @@
+$bg-color: #052a4c;
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+
+.Right_font  {
+ font-family: 'Hanna', fantasy;
+}
+.middle_font{
+        font-family: 'Share Tech Mono', monospace;
+        font-weight: 800;
+}
+
+.body{
+        background: radial-gradient(lighten($bg-color, 5), darken($bg-color, 8));
+}
+
+    #clock {
+   
+        color: #ffffff;
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: #daf6ff;
+        text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+        .time {
+            letter-spacing: 0.05em;
+            font-size: 80px;
+            padding: 5px 0;
+        }
+        .date {
+            letter-spacing: 0.1em;
+            font-size: 24px;
+        }
+        .text {
+            letter-spacing: 0.1em;
+            font-size: 12px;
+            padding: 20px 0 0;
+        }
+    }
+    @media screen and (max-width: 500px) {
+        #clock {
+           font-size:10px;
+           left: 0%;
+           top: 30%;
+        }
+        .LandingMain_Translate1{
+            position: absolute;
+            top:40%;
+            left:0%;
+        }
+      }
+
+    @keyframes fadeIn {
+        from {
+            opacity:0;
+        }
+        to {
+            opacity:1;
+        }
+    }
+
+    @keyframes box-ani { from { transform: translate(0, 200); } to { transform: translate(0px, 0px); } }
+    // @keyframes box-ani1 { from { transform: translate(0, 50); } to { transform: translate(0px, 0px); } }
+
+
+    .fade-in{
+        animation-name: fadeIn;
+        animation-duration: 7s;
+    }    
+
+    .LandingMain_Translate1{
+        animation-name: box-ani;
+        animation-duration: 7s;
+    
+    }
+    .LandingMain_Translate2{
+        // animation-name: box-ani1;
+        animation-duration: 7s;
+    
+    }

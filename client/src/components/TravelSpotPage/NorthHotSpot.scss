@@ -1,0 +1,127 @@
+
+
+@font-face {
+  font-family: 'SF_IceMango';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_IceMango.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+  @font-face {
+    font-family: 'PyeongChangPeace-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+.travel_font{
+	font-family: '양진체';
+    src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.card_name{
+	font-family: '양진체';
+    src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+  
+  .heart {
+    min-height: 100vh;
+    display: grid;
+    margin: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+   
+  }
+  
+
+  .heart {
+    position: absolute;
+    &:nth-child(1) svg {
+      opacity: 0;
+      -webkit-animation: heartUp 1.4s infinite ease-in;
+      animation: heartUp 1.4s infinite ease-in;
+    }
+    &:nth-child(2) svg {
+      position: absolute;
+      left: 1rem;
+      opacity: 0;
+      -webkit-animation: heartUp 1.4s 0.3s infinite ease-in;
+      animation: heartUp 1.4s 0.3s infinite ease-in;
+    }
+    &:nth-child(3) svg {
+      position: absolute;
+      left: 0.5rem;
+      opacity: 0;
+      -webkit-animation: heartUp 1.4s 0.6s infinite ease-in;
+      animation: heartUp 1.4s 0.6s infinite ease-in;
+    }
+  }
+  
+  .heart_all svg {
+    fill: #f58d9c;
+  }
+  
+  @-webkit-keyframes heartUp {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0) rotate(10deg);
+      transform: translate3d(0, 0, 0) rotate(10deg);
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    65% {
+      opacity: 1;
+    }
+  
+    90% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -35vh, 0) scale(1.2) rotate(-10deg);
+      transform: translate3d(0, -35vh, 0) scale(1.2) rotate(-10deg);
+    }
+  
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  
+  @keyframes heartUp {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0) rotate(10deg);
+      transform: translate3d(0, 0, 0) rotate(10deg);
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    65% {
+      opacity: 1;
+    }
+  
+    90% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -35vh, 0) scale(1.2) rotate(-10deg);
+      transform: translate3d(0, -35vh, 0) scale(1.2) rotate(-10deg);
+    }
+  
+    100% {
+      opacity: 0;
+    }
+  }

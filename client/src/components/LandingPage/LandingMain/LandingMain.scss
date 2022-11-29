@@ -1,0 +1,358 @@
+@import url("https://rsms.me/inter/inter.css");
+html {
+  font-family: "Inter", sans-serif;
+}
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", sans-serif;
+  }
+}
+$bg-color: #052a4c;
+$sea-color: #174671;
+$light-color: #f7ebb2;
+$lighthouse-color: #d03b3f;
+
+.lighthouse_style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #eee;
+  
+}
+
+@media screen and (max-width: 500px) {
+  .background {
+   left:20%;
+   top:50%;
+  }
+  .vale{
+    left:20%;
+  }
+  .top{
+    left:20%;
+  }
+ } 
+ 
+.background {
+  width: 400px;
+  height: 400px;
+  flex: none;
+  border-radius: 50%;
+  box-shadow: 0 0px 35px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  background: radial-gradient(lighten($bg-color, 5), darken($bg-color, 8));
+  position: absolute;
+  &:before,
+  &:after {
+    content: "";
+    animation: circle linear 15s infinite normal;
+    border-radius: 255px;
+    bottom: auto;
+    box-shadow: 0 0 0 1000px transparent;
+    display: block;
+    height: 600px;
+    width: 650px;
+    position: absolute;
+    right: auto;
+    left: 50%;
+    transform: translate3d(-50%, 65%, 0);
+    
+  }
+  &:before {
+    background: lighten($sea-color, 1);
+    bottom: -45px;
+  }
+  &:after {
+    animation: circle linear 10s infinite reverse;
+    background: darken($sea-color, 1);
+    bottom: -135px;
+    
+  }
+}
+
+
+.vale {
+  width: 290px;
+  height: 96px;
+  background: lightgray;
+  border-radius: 120px 120px 0 0;
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+}
+
+.lighthouse {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  .body {
+    width: 80px;
+    height: 130px;
+    background:  repeating-linear-gradient(
+      45deg,
+      #eee,
+      #eee 20px,
+      $lighthouse-color 20px,
+      $lighthouse-color 40px);
+    transform: translate(-50%, -50%);
+    clip-path: polygon(30% 0, 70% 0, 100% 100%, 0% 100%);
+    box-shadow: inset -40px 0 0px 0px rgba(0,0,0,.04);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+  }
+  .top {
+    width: 36px;
+    height: 20px;
+    background: #eee;
+    top: calc(51% - 85px);
+    left: 50%;
+    border-left: 5px solid $bg-color;
+    border-right: 5px solid $bg-color;
+    border-bottom: 6px solid #9E9E9E;
+    border-top: 6px solid #9E9E9E;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    
+    &:before {
+      content: "";
+      height: 20px;
+      width: 35px;
+      background: $lighthouse-color;
+      display: block;
+      position: relative;
+      border-radius: 50% 50% 0 0;
+      top: -132%;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: inset -20px 0 0px 0px rgba(0,0,0,.04);
+      
+    }
+  }
+  
+  .light {
+    position: absolute;
+    width: 85px;
+    height: 208px;
+    clip-path: polygon(38% 0, 62% 0, 100% 100%, 0% 100%);
+    background: linear-gradient(rgba($light-color, .8) 0%, rgba($light-color, .2) 100%);
+    transform: rotate(-90deg);
+    top: 15px;
+    right: 36px;
+    
+    &:nth-child(2) {
+      transform: rotate(90deg);
+      left: 36px;
+      
+    }
+  
+  }
+
+
+}
+
+
+
+
+
+@keyframes circle {
+  from {
+    transform: translate3d(-50%, 65%, 0) rotate(0deg);
+  }
+
+  to {
+    transform: translate3d(-50%, 65%, 0) rotate(-360deg);
+  }
+}
+
+.Landing_title{
+  margin: 0;
+  background: #89a6ae;
+  color: #fae8e0;
+  font-weight: 900;
+  font-size: 80px;
+  overflow-x:none;
+
+}
+
+.Landing_title section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  top:-190px;
+//   top:-200px;
+//   left:220px;
+  justify-content: center;
+  align-items: center;
+  animation: floating 5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}
+
+.tilt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: tilting 10s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}
+
+@media screen and (max-width: 500px) {
+ .tilt{
+    font-size:50px ;
+    position: relative;
+    top:-150px;
+ }
+} 
+
+
+.Landing_title section span {
+  transition: font-weight 0.4s ease-in;
+  animation: floating-secondary 2.5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}
+
+.Landing_title section span:nth-child(1) {
+  animation-delay: 1s;
+}
+.Landing_title section span:nth-child(2) {
+  animation-delay: 2s;
+}
+.Landing_title section span:nth-child(3) {
+  animation-delay: 3s;
+}
+.Landing_title section span:nth-child(4) {
+  animation-delay: 4s;
+}
+.Landing_title section span:nth-child(5) {
+  animation-delay: 5s;
+}
+.Landing_title section span:nth-child(6) {
+  animation-delay: 6s;
+}
+.Landing_title section span:nth-child(7) {
+  animation-delay: 7s;
+}
+
+.Landing_title section span:hover {
+  font-weight: 100;
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 5vh);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes floating-secondary {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 1vh);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes tilting {
+  0% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(1deg);
+  }
+}
+
+.fontstyle{
+  cursor: pointer;
+  -webkit-text-stroke:1px black;
+  background-image: linear-gradient(0deg,black,black);
+  -webkit-background-clip: text;
+  color: transparent;
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  background-size: 0% 100%; 
+  transition: background-size 0.2s ease-in; 
+}
+
+
+
+.fontstyle:hover{
+  background-size: 100% 100%; 
+}
+.Parallax {
+  display: flex;
+  justify-content: center;
+
+  &__background,
+  &__background-triangles {
+    width: 1080px;
+    height: 1280px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+  }
+
+  // &__background {
+  //   background-image: url("background.png");
+  // }
+
+  // &__background-triangles {
+  //   background-image: url("background-triangles.png");
+  // }
+
+  &__content {
+    width: 1080px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    margin-top: 100px;
+
+    &__heading,
+    &__cta {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__heading {
+      background-color: #fff;
+      width: 40%;
+      padding: 40px;
+
+      &__text {
+        margin: 10px 0;
+        font-size: 60px;
+      }
+
+      &__caption {
+        margin: 0;
+        font-size: 20px;
+      }
+    }
+
+    &__cta {
+      background-color: #ff737e;
+      width: 60%;
+      padding: 40px;
+
+      font-size: 20px;
+      color: #fff;
+
+      margin-top: 120px;
+    }
+  }
+}

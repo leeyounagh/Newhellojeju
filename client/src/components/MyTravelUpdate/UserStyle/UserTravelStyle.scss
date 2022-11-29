@@ -1,0 +1,30 @@
+.usertravelStyle_font {
+    font-family: '양진체';
+    src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-style: normal;
+}
+
+.res_hover:hover{
+    transform:scale(1.1);
+    transition: transform .5s;
+
+}
+.spot_hover:hover{
+    transform:scale(1.1);
+    transition: transform .5s;
+
+}
+.shopping_hover:hover{
+    transform:scale(1.1);
+    transition: transform .5s;
+}
+.hotel_hover:hover{
+    transform:scale(1.1);
+    transition: transform .5s;
+}
+.btn_hover:hover{
+    transform:scale(1.1);
+    transition: transform .5s;
+}
