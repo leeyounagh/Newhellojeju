@@ -47,7 +47,6 @@ const MiddleRight = () => {
   }, []);
 
   const event = () => {
-    console.log(window.scrollY);
     fade();
   };
 
