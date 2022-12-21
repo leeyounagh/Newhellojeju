@@ -19,7 +19,7 @@ import MyscheduleDetail from "./components/MyTravelUpdate/MyscheduleDetail";
 import CommunityUpdate from "./components/TravelCommunity/CommunityUpdate";
 import CommunityDetail from "./components/TravelCommunity/CommunityDetail";
 import UserTravelStyle from "./components/MyTravelUpdate/UserStyle/UserTravelStyle";
-import LandingFooter from "./components/LandingPage/LandingMain/LandingFooter";
+
 function App() {
   const Header = () => {
     if (window.location.pathname === "/") return null;

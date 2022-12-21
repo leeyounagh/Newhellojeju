@@ -17,7 +17,6 @@ const NorthHotSpotPage = () => {
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [contents, setContents] = useState("c5");
-  const [fetching, setFetching] = useState(false);
 
   const [navbarposition, setnavbarposition] = useState(0);
 
@@ -40,7 +39,6 @@ const NorthHotSpotPage = () => {
           filtertest(response.data.items);
         });
       setLoading(false);
-      setFetching(false);
     } catch (error) {
       console.error(error);
     }
@@ -51,8 +49,6 @@ const NorthHotSpotPage = () => {
     let newdata = [];
     let copy = [];
     newdata = Array.from(arr);
-
-    console.log(page, newdata);
 
     while (i < newdata.length) {
       if (newdata[i].region1cd.label === "제주시") {
@@ -67,7 +63,6 @@ const NorthHotSpotPage = () => {
     });
   }
 
-  console.log("page", page);
   useEffect(() => {
     window.addEventListener("scroll", event);
     setnavbarposition(window.scrollTop);
@@ -100,31 +95,24 @@ const NorthHotSpotPage = () => {
       setContents("c1");
       setTest([...copy]);
       setPage(1);
-
-      console.log("안녕", contents);
     } else if (Number(filters[0]) === 2) {
       setContents("");
       let copy = [];
       setContents("c2");
       setTest([...copy]);
       setPage(1);
-      console.log("안녕", contents);
     } else if (Number(filters[0]) === 3) {
       let copy = [];
       setContents("");
       setTest([...copy]);
       setContents("c3");
       setPage(1);
-
-      console.log("안녕", contents);
     } else if (Number(filters[0]) === 4) {
       let copy = [];
       setContents("");
       setTest([...copy]);
       setContents("c4");
       setPage(1);
-
-      console.log("안녕", contents);
     }
   };
 
