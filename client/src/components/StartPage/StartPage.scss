@@ -1,18 +1,11 @@
-@import url("https://rsms.me/inter/inter.css");
-html {
-  font-family: "Inter", sans-serif;
-}
-@supports (font-variation-settings: normal) {
-  html {
-    font-family: "Inter var", sans-serif;
-  }
-}
-
-
-
+.container{
+	position: absolute;
+	left: 0px;
+} 
+// 스타트 페이지 구름 포지션
 .Start_Style {
 	height: 100vh;
-	width: 1300px;
+	width: 100%;
 	margin: 0;
 	display: grid;
 	place-items: center;
@@ -28,10 +21,48 @@ html {
 	 overflow: hidden;
 
 }
-.container{
+// 전체 요소들 위치 설정을 위한 클래스 
+.start_title {
+	font-size: 30px;
+	min-width:11px;
+	white-space: nowrap;
+	position: fixed;
+	color: transparent;
+	transform: translate(-50%, -50%);
+	font-family: Inter var;
+	font-weight: 900;
 	position: absolute;
-	left: 0px;
-}
+	z-index: 50;
+	left: 51%;
+	top: 45%;
+	width: 250px;
+	height: 50px;
+  }
+  
+  .start_title::before {
+	content: "Let's Go Jeju..!";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	color: #fae8e0;
+	font-weight: 900;
+	overflow: hidden;
+	border-right: 1px solid #fae8e0;
+	animation: typing 5s steps(31) ;
+	font-family: Inter var;
+
+  }
+  
+  @keyframes typing{
+	0% {
+	  width: 0%;
+	}
+	50% {
+	  width: 100%;
+	}
+
+  }
+//   타이핑효과 구현 부분
 .fly {
 	font-size: 10rem;
 	margin: auto;
@@ -145,45 +176,3 @@ html {
 }
 
 
-.start_title {
-	font-size: 30px;
-	min-width:11px;
-	white-space: nowrap;
-
-	position: fixed;
-	color: transparent;
-	left:0px;
-    top:-30px;
-	transform: translate(-50%, -50%);
-	font-family: Inter;
-	font-family: Inter var;
-	font-weight: 900;
-  }
-  
-  .start_title::before {
-	content: "Let's Go Jeju..!";
-	position: absolute;
-	left:0px;
-    top:-30px;
-	width: 100%;
-	height: 100%;
-	color: #fae8e0;
-	font-weight: 900;
-	overflow: hidden;
-	border-right: 1px solid #fae8e0;
-	animation: typing 5s steps(31) ;
-	font-family: Inter;
-	font-family: Inter var;
-  }
-  
-  @keyframes typing{
-	0% {
-	  width: 0%;
-	}
-	50% {
-	  width: 100%;
-	}
-	// 100% {
-	//   width: 0%;
-	// }
-  }

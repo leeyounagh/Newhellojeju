@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./StartPage.scss";
 
 const StartPage = () => {
@@ -15,20 +16,9 @@ const StartPage = () => {
   };
 
   return (
-    <div className="Start_Style" style={{ positon: "absolute", left: "0px" }}>
+    <div className="Start_Style">
       <div>
-        <a
-          className="start_title"
-          href="/landing"
-          style={{
-            position: "absolute",
-            zIndex: "50",
-            left: "51%",
-            top: "45%",
-            width: "250px",
-            height: "50px",
-          }}
-        ></a>
+        <Link to="/landing" className="start_title"></Link>
       </div>
       <div class="sky">
         <div className="container ">{cloudRenderer()}</div>
