@@ -26,7 +26,6 @@ const LandingFooter = (props) => {
     axios
       .get(`${mainUrl}${contentsPage}`)
       .then((response) => {
-        console.log(response.data.items);
         setData(response.data.items);
       })
       .catch((error) => console.log(error));
@@ -193,7 +192,7 @@ const LandingFooter = (props) => {
       }}
     >
       <div style={{ position: "relative", top: "15%", left: "6%" }}>
-        {userRender()}
+        {/* {userRender()} */}
       </div>
       <div style={{ position: "absolute", top: "240px", left: "60px" }}>
         {imgPage === 1 ? null : (

@@ -8,10 +8,6 @@ import LandingBottom from "./LandingMain/LandingBottom";
 import LandingFooter from "./LandingMain/LandingFooter";
 
 const LandingPage = (props) => {
-  useEffect(() => {
-    axios.get("/api/hello").then((response) => console.log(response.data));
-  }, []);
-
   const LandingFooterHandler = () => {
     if (props.user.userData) {
       return (

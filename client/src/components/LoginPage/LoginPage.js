@@ -31,6 +31,8 @@ const LoginPage = (props) => {
         alert("Error˝");
       }
     });
+
+    dispatch(loginUser(body));
   };
 
   return (

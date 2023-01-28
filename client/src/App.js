@@ -32,10 +32,12 @@ function App() {
         <Header></Header>
 
         <Routes>
+          {/* <Route exact path="/" element={auth(StartPage, null)} /> */}
           <Route exact path="/" element={auth(StartPage, null)} />
           <Route exact path="/southspot" element={auth(SouthHotSpot, null)} />
           <Route exact path="/northspot" element={auth(NorthHotSPot, null)} />
           <Route exact path="/landing" element={auth(LandingPage, null)} />
+          {/* <Route exact path="/landing" element={<LandingPage></LandingPage>} /> */}
           <Route exact path="/travelnews" element={auth(TravelNews, null)} />
           <Route exact path="/mytravel" element={auth(MyTravelUpdate, true)} />
           <Route

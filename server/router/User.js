@@ -3,6 +3,23 @@ const router = express.Router();
 const { auth } = require("../middleware/auth");
 const { User } = require("../models/User");
 
+router.get("/auth", auth, (req, res) => {
+  res.status(200).json({
+    _id: req.user._id,
+    isAdmin: req.user.role === 0 ? false : true,
+    isAuth: true,
+    email: req.user.email,
+    name: req.user.name,
+    lastname: req.user.lastname,
+    role: req.user.role,
+    image: req.user.image,
+    good: req.user.good,
+    history: req.user.history,
+    schedule: req.user.schedule,
+    UserStyle: req.user.userStyle,
+  });
+});
+
 router.post("/register", async (req, res) => {
   const user = await new User(req.body);
 
@@ -14,33 +31,37 @@ router.post("/register", async (req, res) => {
   });
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
-
-  await User.findOne({ email: email }, (err, user) => {
-    if (!user) {
-      return res.json({
-        loginSuccess: false,
-        message: "제공된 이메일에 해당하는 유저가 없습니다.",
-      });
-    }
-
-    user.comparePassword(password, (err, isMatch) => {
-      if (!isMatch)
-        return res.json({
+  try {
+    await User.findOne({ email: email }, (err, user) => {
+      if (!user) {
+        res.json({
           loginSuccess: false,
-          message: "비밀번호가 틀렸습니다.",
+          message: "제공된 이메일에 해당하는 유저가 없습니다.",
         });
-      user.generateToken((err, user) => {
-        if (err) return res.status(400).send(err);
+        next();
+      }
 
-        res
-          .cookie("x_auth", user.token)
-          .status(200)
-          .json({ loginSuccess: true, userId: user._id });
+      user.comparePassword(password, (err, isMatch) => {
+        if (!isMatch)
+          return res.json({
+            loginSuccess: false,
+            message: "비밀번호가 틀렸습니다.",
+          });
+        user.generateToken((err, user) => {
+          if (err) return res.status(400).send(err);
+
+          res
+            .cookie("x_auth", user.token)
+            .status(200)
+            .json({ loginSuccess: true, userId: user._id });
+        });
       });
     });
-  });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.post("/addToGood", auth, async (req, res) => {
