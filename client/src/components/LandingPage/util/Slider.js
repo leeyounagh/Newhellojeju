@@ -1,12 +1,10 @@
 import axios from "axios";
 import { GrNext, GrPrevious } from "react-icons/gr";
 import React, { useEffect, useRef, useState } from "react";
-import "./LandingFooter.scss";
-import UserStyle from "../../MyTravelUpdate/UserStyle/UserTravelStyle";
 
 const mainUrl = `http://api.visitjeju.net/vsjApi/contents/searchList?apiKey=sbrr93ynwcggx6br&locale=kr`;
 
-const LandingFooter = (props) => {
+const Slider = (props) => {
   const contents = useRef("c5");
 
   let contentsPage = `&category=${contents.current}`;
@@ -191,9 +189,7 @@ const LandingFooter = (props) => {
         background: "#89a6ae",
       }}
     >
-      <div style={{ position: "relative", top: "15%", left: "6%" }}>
-        {/* {userRender()} */}
-      </div>
+      <div style={{ position: "relative", top: "15%", left: "6%" }}></div>
       <div style={{ position: "absolute", top: "240px", left: "60px" }}>
         {imgPage === 1 ? null : (
           <GrPrevious
@@ -241,4 +237,4 @@ const LandingFooter = (props) => {
   );
 };
 
-export default LandingFooter;
+export default Slider;

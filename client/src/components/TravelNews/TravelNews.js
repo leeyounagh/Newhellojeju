@@ -1,8 +1,7 @@
-import axios from "axios";
 import React from "react";
-import Gallery from "./Gallery";
+import Gallery from "./utils/Gallery";
 import "./TravelNews.scss";
-import Recomendation from "./Section/Recomendation";
+import Recomendation from "./utils/Recomendation";
 const TravelNews = () => {
   var vid = document.getElementById("vid");
 

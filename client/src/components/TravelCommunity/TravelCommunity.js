@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./TravelCommunity.scss";
 import axios from "axios";
-import Pagination from "./PageNation";
+import Pagination from "./util/PageNation";
 import { GrNext, GrPrevious } from "react-icons/gr";
 
 const TravelCommunity = () => {

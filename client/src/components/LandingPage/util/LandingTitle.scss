@@ -185,8 +185,7 @@ $lighthouse-color: #d03b3f;
   display: flex;
   position: relative;
   top:-190px;
-//   top:-200px;
-//   left:220px;
+
   justify-content: center;
   align-items: center;
   animation: floating 5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
@@ -305,13 +304,7 @@ $lighthouse-color: #d03b3f;
     position: absolute;
   }
 
-  // &__background {
-  //   background-image: url("background.png");
-  // }
 
-  // &__background-triangles {
-  //   background-image: url("background-triangles.png");
-  // }
 
   &__content {
     width: 1080px;

@@ -1,24 +1,25 @@
 import "./App.css";
-import { Routes, Route, Router, BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage/LandingPage";
 import RegisterPage from "./components/RegisterPage/RegisterPage";
 import LoginPage from "./components/LoginPage/LoginPage";
 import auth from "./hoc/auth";
 import StartPage from "./components/StartPage/StartPage";
 import NavBar from "./components/NavBar/NavBar";
-import MyTravelUpdate from "./components/MyTravelUpdate/MyTravelUpdate";
+import MyTravel from "./components/MyTravel/MyTravel";
 import TravelCommunity from "./components/TravelCommunity/TravelCommunity";
 import TravelSpotPage from "./components/TravelSpotPage/TravelSpotpage";
 import TravelNews from "./components/TravelNews/TravelNews";
-import UserStyle from "./components/UserStyle/UserStyle";
+import Good from "./components/Good/Good";
 import NorthHotSPot from "./components/TravelSpotPage/NorthHotSpotPage";
 import SouthHotSpot from "./components/TravelSpotPage/SouthHotSpot";
-import TravelDetail from "./components/TravelDetail/TravelDetail";
-import Myschedule from "./components/MyTravelUpdate/Myschedule";
-import MyscheduleDetail from "./components/MyTravelUpdate/MyscheduleDetail";
+import TravelDetail from "./components/TravelNews/TravelDetail/TravelDetail";
+import Myschedule from "./components/MyTravel/MySchedule/Myschedule";
+import MyscheduleDetail from "./components/MyTravel/MySchedule/MyscheduleDetail";
 import CommunityUpdate from "./components/TravelCommunity/CommunityUpdate";
 import CommunityDetail from "./components/TravelCommunity/CommunityDetail";
-import UserTravelStyle from "./components/MyTravelUpdate/UserStyle/UserTravelStyle";
+import UserTravelStyle from "./components/MyTravel/MyStyle/MylStyle";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const Header = () => {
@@ -32,14 +33,13 @@ function App() {
         <Header></Header>
 
         <Routes>
-          {/* <Route exact path="/" element={auth(StartPage, null)} /> */}
           <Route exact path="/" element={auth(StartPage, null)} />
           <Route exact path="/southspot" element={auth(SouthHotSpot, null)} />
           <Route exact path="/northspot" element={auth(NorthHotSPot, null)} />
           <Route exact path="/landing" element={auth(LandingPage, null)} />
-          {/* <Route exact path="/landing" element={<LandingPage></LandingPage>} /> */}
+
           <Route exact path="/travelnews" element={auth(TravelNews, null)} />
-          <Route exact path="/mytravel" element={auth(MyTravelUpdate, true)} />
+          <Route exact path="/mytravel" element={auth(MyTravel, true)} />
           <Route
             exact
             path="/community"
@@ -56,7 +56,7 @@ function App() {
             element={auth(TravelSpotPage, true)}
           />
           <Route exact path="/myschedule" element={auth(Myschedule, true)} />
-          <Route exact path="/userstyle" element={auth(UserStyle, true)} />
+          <Route exact path="/userstyle" element={auth(Good, true)} />
 
           <Route
             exact
@@ -87,6 +87,7 @@ function App() {
           <Route exact path="/login/" element={auth(LoginPage, false)}></Route>
         </Routes>
       </div>
+      <Footer></Footer>
     </div>
   );
 }

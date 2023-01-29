@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { BsCalendarPlusFill } from "react-icons/bs";
-import axios from "axios";
-import MyscheduleDetail from "./MyscheduleDetail";
-import ".//MytravelUpdate.scss";
+
+import MyscheduleDetail from "./MySchedule/MyscheduleDetail";
+import "./Mytravel.scss";
 import { BsFillTrashFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { removeforschedule } from "../../_actions/User_action";

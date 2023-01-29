@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import "./UserStyle.scss";
+import "./Good.scss";
 import { removeFromgood } from "../../_actions/User_action";
 
 import { HiTrash } from "react-icons/hi";
@@ -19,7 +19,6 @@ const UserStyle = (props) => {
   const test = () => {
     if (props.user.userData && props.user.userData.good) {
       return props.user.userData.good.map((item, index) => {
-        console.log(item);
         return (
           <div
             key={index}

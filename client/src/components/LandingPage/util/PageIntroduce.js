@@ -1,4 +1,4 @@
-import "./LandingBottom.scss";
+import "./PageIntroduce.scss";
 
 const LandingBottom = () => {
   return (

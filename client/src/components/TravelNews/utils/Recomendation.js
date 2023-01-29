@@ -1,10 +1,10 @@
 import React, { createContext, useEffect, useRef, useState } from "react";
 import Modal from "react-modal";
-// import GMap from './GMap';
-import { rastaurantdata } from "./rastaurantdata";
-import { hotel } from "./hotel";
-import { shopping } from "./shopping";
-import { spot } from "./spot";
+
+import { rastaurantdata } from "./Data/rastaurantdata";
+import { hotel } from "./Data/hotel";
+import { shopping } from "./Data/shopping";
+import { spot } from "./Data/spot";
 import {
   GoogleMap,
   useJsApiLoader,
@@ -77,12 +77,6 @@ const Recomendation = (props) => {
   function closeModal() {
     setIsOpen(false);
   }
-
-  const placeHandler = (index) => {
-    setChecked(true);
-    //  console.log('레프값',imgRef.current,check)
-    //클릭을하면 gmap에 있는 함수에 contentsid를 전송 그함수에서 전송받은 컨텐츠아이디와 마커들의 아이디를 비교해서 센터위치 변경
-  };
 
   useEffect(() => {
     dataHandler();
@@ -421,8 +415,6 @@ const Recomendation = (props) => {
             }}
           >
             {<Map data={hotel}></Map>}
-
-            {/* <GMap data ={hotel}  check={check}></GMap> */}
           </div>
         </div>
       );

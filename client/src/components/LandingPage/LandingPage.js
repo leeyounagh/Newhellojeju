@@ -1,18 +1,16 @@
-import React, { useEffect } from "react";
-import axios from "axios";
+import React from "react";
 
-import LandingMain from "./LandingMain/LandingMain";
+import LandingTitle from "./util/LandingTitle";
 
-import LandingMiddle from "./LandingMain/LandingMiddle";
-import LandingBottom from "./LandingMain/LandingBottom";
-import LandingFooter from "./LandingMain/LandingFooter";
+import PageIntroduce from "./util/PageIntroduce";
+import Slider from "./util/Slider";
 
 const LandingPage = (props) => {
   const LandingFooterHandler = () => {
     if (props.user.userData) {
       return (
         <div>
-          <LandingFooter userdata={props.user.userData}></LandingFooter>
+          <Slider userdata={props.user.userData}></Slider>
         </div>
       );
     }
@@ -20,11 +18,10 @@ const LandingPage = (props) => {
 
   return (
     <div style={{ overflowX: "none" }}>
-      <LandingMain></LandingMain>
+      <LandingTitle />
 
-      <LandingMiddle></LandingMiddle>
-      <LandingBottom></LandingBottom>
-      {LandingFooterHandler()}
+      <PageIntroduce></PageIntroduce>
+      <LandingFooterHandler />
     </div>
   );
 };
