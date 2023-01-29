@@ -6,10 +6,10 @@ const StartPage = () => {
   const cloudRenderer = () => {
     return Array.from({ length: 30 })
       .fill("☁️")
-      .map((item) => {
+      .map((item: any) => {
         return (
           <>
-            <i class="cloud">{item}</i>
+            <i className="cloud">{item}</i>
           </>
         );
       });
@@ -20,15 +20,15 @@ const StartPage = () => {
       <div>
         <Link to="/landing" className="start_title"></Link>
       </div>
-      <div class="sky">
+      <div className="sky">
         <div className="container ">{cloudRenderer()}</div>
       </div>
-      <p class="fly">
-        <span class="plane">✈️</span>
+      <p className="fly">
+        <span className="plane">✈️</span>
       </p>
 
-      <div class="sky high">
-        <div class="container">{cloudRenderer()}</div>
+      <div className="sky high">
+        <div className="container">{cloudRenderer()}</div>
       </div>
     </div>
   );

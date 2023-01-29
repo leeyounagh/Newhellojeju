@@ -28,49 +28,7 @@ const Slider = (props) => {
       })
       .catch((error) => console.log(error));
   };
-  const userRender = () => {
-    if (props.userdata && props.userdata.name) {
-      return (
-        <div>
-          {
-            <h2 style={{ position: "absolute", top: "40px" }}>
-              {props.userdata.name}님을 위한 추천
-            </h2>
-          }
-          {props.userdata.UserStyle.length === 0 ? (
-            <a
-              style={{
-                position: "absolute",
-                top: "50px",
-                left: "840px",
-                border: "none",
-                background: "#89a6ae",
-                pointer: "cursor",
-                color: "black",
-              }}
-              href="/usertravelstyle"
-            >
-              <h3>UserStyle설정하러가기</h3>
-            </a>
-          ) : (
-            <button
-              style={{
-                position: "absolute",
-                top: "50px",
-                left: "770px",
-                border: "none",
-                background: "#89a6ae",
-                pointer: "cursor",
-              }}
-              onClick={typeRendering}
-            >
-              나의 여행스타일에맞게추천을원할시 Click!
-            </button>
-          )}
-        </div>
-      );
-    }
-  };
+
   const ImgMove = {
     position: "relative",
     top: "20px",

@@ -33,58 +33,41 @@ function App() {
         <Header></Header>
 
         <Routes>
-          <Route exact path="/" element={auth(StartPage, null)} />
-          <Route exact path="/southspot" element={auth(SouthHotSpot, null)} />
-          <Route exact path="/northspot" element={auth(NorthHotSPot, null)} />
-          <Route exact path="/landing" element={auth(LandingPage, null)} />
+          <Route path="/" element={auth(StartPage, null)} />
+          <Route path="/southspot" element={auth(SouthHotSpot, null)} />
+          <Route path="/northspot" element={auth(NorthHotSPot, null)} />
+          <Route path="/landing" element={auth(LandingPage, null)} />
 
-          <Route exact path="/travelnews" element={auth(TravelNews, null)} />
-          <Route exact path="/mytravel" element={auth(MyTravel, true)} />
+          <Route path="/travelnews" element={auth(TravelNews, null)} />
+          <Route path="/mytravel" element={auth(MyTravel, true)} />
+          <Route path="/community" element={auth(TravelCommunity, true)} />
           <Route
-            exact
-            path="/community"
-            element={auth(TravelCommunity, true)}
-          />
-          <Route
-            exact
             path="/community/:productId"
             element={auth(CommunityDetail, null)}
           ></Route>
-          <Route
-            exact
-            path="/travelspot"
-            element={auth(TravelSpotPage, true)}
-          />
-          <Route exact path="/myschedule" element={auth(Myschedule, true)} />
-          <Route exact path="/userstyle" element={auth(Good, true)} />
+          <Route path="/travelspot" element={auth(TravelSpotPage, true)} />
+          <Route path="/myschedule" element={auth(Myschedule, true)} />
+          <Route path="/userstyle" element={auth(Good, true)} />
 
           <Route
-            exact
             path="/usertravelstyle"
             element={auth(UserTravelStyle, true)}
           ></Route>
           <Route
-            exact
             path="/detail/:contentsId"
             element={auth(TravelDetail, null)}
           ></Route>
           <Route
-            exact
             path="/mytravel/:id"
             element={auth(MyscheduleDetail, null)}
           ></Route>
           <Route
-            exact
             path="/communityupdate"
             element={auth(CommunityUpdate, true)}
           ></Route>
 
-          <Route
-            exact
-            path="/register/"
-            element={auth(RegisterPage, false)}
-          ></Route>
-          <Route exact path="/login/" element={auth(LoginPage, false)}></Route>
+          <Route path="/register/" element={auth(RegisterPage, false)}></Route>
+          <Route path="/login/" element={auth(LoginPage, false)}></Route>
         </Routes>
       </div>
       <Footer></Footer>
