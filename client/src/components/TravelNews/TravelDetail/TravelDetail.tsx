@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./TravelDetail.scss";
-import { useNavigate, useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { addToGood } from "./../../../_actions/User_action";
+import { addToGood } from "../../../_actions/User_action";
 import { GiCrownedHeart } from "react-icons/gi";
 
 const TravelDetail = () => {
   const { contentsId } = useParams();
-  const [newdata, setnewdata] = useState([]);
-  const navigate = useNavigate();
-  const [Images, setImages] = useState([]);
+  const [newdata, setnewdata] = useState<any>([]);
 
   console.log("contentsId", contentsId);
   const dispatch = useDispatch();
@@ -28,7 +26,6 @@ const TravelDetail = () => {
     }
   }, []);
 
-  console.log(newdata);
   const ClickHandler = () => {
     dispatch(
       addToGood(
@@ -42,7 +39,7 @@ const TravelDetail = () => {
 
   return (
     <div className="travelDetail" style={{ height: "720px" }}>
-      {newdata.map((item) => {
+      {newdata.map((item: any) => {
         return (
           <span style={{ display: "flex", justifyContent: "space-around" }}>
             <span>

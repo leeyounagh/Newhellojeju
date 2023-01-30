@@ -1,24 +1,32 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-
 import "./Good.scss";
 import { removeFromgood } from "../../_actions/User_action";
-
 import { HiTrash } from "react-icons/hi";
-const UserStyle = (props) => {
+
+type GoodObj = {
+  title: string;
+  image: string;
+  id: string;
+  address: string;
+};
+const UserStyle = (props: any) => {
   let dispatch = useDispatch();
 
   useEffect(() => {
     test();
   }, []);
 
-  let removeHandler = (contentsId) => {
-    console.log(contentsId);
-    dispatch(removeFromgood(contentsId)).catch((err) => console.log(err));
+  let removeHandler = (contentsId: string | number) => {
+    try {
+      dispatch(removeFromgood(contentsId));
+    } catch (err) {
+      console.log(err);
+    }
   };
   const test = () => {
     if (props.user.userData && props.user.userData.good) {
-      return props.user.userData.good.map((item, index) => {
+      return props.user.userData.good.map((item: GoodObj, index: number) => {
         return (
           <div
             key={index}

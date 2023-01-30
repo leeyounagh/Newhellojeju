@@ -26,8 +26,7 @@ export async function loginUser(dataToSubmit) {
 export function registerUser(dataToSubmit) {
   const request = axios
     .post("/api/users/register", dataToSubmit)
-    .then((response) => response.data)
-    .catch((err) => alert(err));
+    .then((response) => response.data);
 
   return {
     type: REGISTER_USER,

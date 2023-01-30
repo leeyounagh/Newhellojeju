@@ -13,12 +13,10 @@ const { Meta } = Card;
 
 const NorthHotSpotPage = () => {
   const [loading, setLoading] = useState(false);
-  const [test, setTest] = useState([]);
+  const [filterArr, setFilterArr] = useState([]);
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [contents, setContents] = useState("c5");
-
-  const [navbarposition, setnavbarposition] = useState(0);
 
   useEffect(() => {
     axiosData();
@@ -36,7 +34,7 @@ const NorthHotSpotPage = () => {
       await axios
         .get(`${mainUrl}${urlPage}${contentsPage}`)
         .then((response) => {
-          filtertest(response.data.items);
+          filter(response.data.items);
         });
       setLoading(false);
     } catch (error) {
@@ -44,10 +42,10 @@ const NorthHotSpotPage = () => {
     }
   };
 
-  function filtertest(arr) {
+  function filter(arr: string[]) {
     let i = 0;
-    let newdata = [];
-    let copy = [];
+    let newdata: any = [];
+    let copy: string[] = [];
     newdata = Array.from(arr);
 
     while (i < newdata.length) {
@@ -58,14 +56,14 @@ const NorthHotSpotPage = () => {
       i++;
     }
 
-    return setTest((oldphotos) => {
+    return setFilterArr((oldphotos) => {
       return [...copy, ...oldphotos];
     });
   }
 
   useEffect(() => {
     window.addEventListener("scroll", event);
-    setnavbarposition(window.scrollTop);
+
     return () => window.removeEventListener("scroll", event);
   }, [loading]);
 
@@ -82,7 +80,7 @@ const NorthHotSpotPage = () => {
       });
     }
   };
-  const showFilterResults = (filters) => {
+  const showFilterResults = (filters: any) => {
     // filter =>1이면 관광지만
     //filter =>2면 맛집만
     setContents("");
@@ -90,33 +88,33 @@ const NorthHotSpotPage = () => {
     console.log("안녕", filters[0], contents);
     if (Number(filters[0]) === 1) {
       setContents("");
-      let copy = [];
+      let copy: never[] = [];
 
       setContents("c1");
-      setTest([...copy]);
+      setFilterArr([...copy]);
       setPage(1);
     } else if (Number(filters[0]) === 2) {
       setContents("");
-      let copy = [];
+      let copy: never[] = [];
       setContents("c2");
-      setTest([...copy]);
+      setFilterArr([...copy]);
       setPage(1);
     } else if (Number(filters[0]) === 3) {
-      let copy = [];
+      let copy: never[] = [];
       setContents("");
-      setTest([...copy]);
+      setFilterArr([...copy]);
       setContents("c3");
       setPage(1);
     } else if (Number(filters[0]) === 4) {
-      let copy = [];
+      let copy: never[] = [];
       setContents("");
-      setTest([...copy]);
+      setFilterArr([...copy]);
       setContents("c4");
       setPage(1);
     }
   };
 
-  const handleFilters = (filters) => {
+  const handleFilters = (filters: any) => {
     showFilterResults({ ...filters });
   };
 
@@ -124,7 +122,7 @@ const NorthHotSpotPage = () => {
     return window.scrollTo(0, 0);
   };
 
-  const onChangeSearch = (e) => {
+  const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setSearchTerm(e.target.value);
   };
@@ -141,7 +139,7 @@ const NorthHotSpotPage = () => {
       <div>
         <RadioBox
           data={jejuSection}
-          handleFilters={(filters) => handleFilters(filters)}
+          handleFilters={(filters: any) => handleFilters(filters)}
         ></RadioBox>
       </div>
       <div>
@@ -173,7 +171,7 @@ const NorthHotSpotPage = () => {
       <div style={{ position: "absolute", top: "400px", left: "200px" }}>
         <Row>
           {test
-            .filter((val) => {
+            .filter((val: any) => {
               if (searchTerm == "") {
                 return val;
               } else if (
@@ -219,10 +217,9 @@ const NorthHotSpotPage = () => {
         className="heart_all"
         style={{
           position: "fixed",
-          top: "1600px",
           marginTop: "100px",
           left: "1050px",
-          top: { navbarposition },
+
           width: "100px",
           height: "500px",
           cursor: "pointer",
@@ -242,8 +239,8 @@ const NorthHotSpotPage = () => {
           ></FaArrowAltCircleUp>
         </div>
 
-        <div class="heart-box">
-          <div style={{ height: "500px" }} class="heart">
+        <div className="heart-box">
+          <div style={{ height: "500px" }} className="heart">
             <svg
               width="80"
               height="80"
@@ -253,7 +250,7 @@ const NorthHotSpotPage = () => {
               <path d="m263.42 235.15c-66.24 0-120 53.76-120 120 0 134.76 135.93 170.09 228.56 303.31 87.574-132.4 228.56-172.86 228.56-303.31 0-66.24-53.76-120-120-120-48.048 0-89.402 28.37-108.56 69.188-19.161-40.817-60.514-69.188-108.56-69.188z" />
             </svg>
           </div>
-          <div class="heart">
+          <div className="heart">
             <svg
               width="70"
               height="70"
@@ -263,7 +260,7 @@ const NorthHotSpotPage = () => {
               <path d="m263.42 235.15c-66.24 0-120 53.76-120 120 0 134.76 135.93 170.09 228.56 303.31 87.574-132.4 228.56-172.86 228.56-303.31 0-66.24-53.76-120-120-120-48.048 0-89.402 28.37-108.56 69.188-19.161-40.817-60.514-69.188-108.56-69.188z" />
             </svg>
           </div>
-          <div class="heart">
+          <div className="heart">
             <svg
               width="68"
               height="68"

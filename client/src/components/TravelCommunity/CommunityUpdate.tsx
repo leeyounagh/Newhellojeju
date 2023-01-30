@@ -4,26 +4,23 @@ import { useDispatch } from "react-redux";
 import { v4 } from "uuid";
 import { addcommunity } from "../../_actions/User_action";
 import axios from "axios";
-import TravelCommunity from "./TravelCommunity";
-import { AiFillPicture } from "react-icons/ai";
+
 import "./Update.scss";
-import { Scrollbars } from "react-custom-scrollbars-2";
-const CommunityUpdate = (props) => {
+
+const CommunityUpdate = (props: any) => {
   const [title, SetTitle] = useState("");
   const [desc, setDesc] = useState("");
   const dispatch = useDispatch();
-  const [images, SetImages] = useState([]);
+  const [images, SetImages] = useState<any[]>([]);
 
   console.log(images);
-  const titleHandler = (event) => {
+  const titleHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     SetTitle(event.currentTarget.value);
-    console.log(title);
   };
-  const textareaHandler = (event) => {
+  const textareaHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setDesc(event.currentTarget.value);
-    console.log(desc);
   };
-  const onsubmitHandler = (event) => {
+  const onsubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     console.log(props.user.userData);
     if (!title || !desc) {
       return alert("모든값을 넣어주셔야됩니다.");
@@ -39,23 +36,22 @@ const CommunityUpdate = (props) => {
     dispatch(addcommunity(body));
   };
 
-  const onDropHandler = (files) => {
+  const onDropHandler = (files: any) => {
     let formData = new FormData();
 
-    const config = {
+    const config: any = {
       header: { "content-type": "multipart/form-data" },
     };
     formData.append("file", files[0]);
     axios.post("/api/contents/image", formData, config).then((response) => {
       if (response.data.success) {
-        console.log(response.data);
-        SetImages([...images, response.data.fileName]);
+        SetImages([...images, ...response.data.fileName]);
       } else {
         alert("파일을 저장하는데 실패했습니다.");
       }
     });
   };
-  const deleteHandler = (image) => {
+  const deleteHandler = (image: string) => {
     const currentIndex = images.indexOf(image);
     let newImages = [...images];
     newImages.splice(currentIndex, 1);
@@ -151,7 +147,7 @@ const CommunityUpdate = (props) => {
                   style={{ position: "relative", left: "120px", top: "10px" }}
                 >
                   <button
-                    class="custom-btn btn-16 update_btn"
+                    className="custom-btn btn-16 update_btn"
                     style={{}}
                     type="submit"
                   >
@@ -172,7 +168,7 @@ const CommunityUpdate = (props) => {
                             whiteSpace: "nowrap",
                             position: "absolute",
                             top: "40px",
-                            pointer: "cursor",
+
                             left: "7px",
                           }}
                         >
@@ -193,15 +189,6 @@ const CommunityUpdate = (props) => {
                       top: "80px",
                     }}
                   >
-                    {/* {images?images.map((image,index)=>{
-           return( <div key ={index} onClick={()=>deleteHandler(image)} >
-                 <img key={index} style={{minWidth:'100px', width: '200px', height:'200px'}} 
-
-            src = {`http://localhost:5000/${image}`} />
-
-         
-               </div>) 
-          }):images===null?<div><h2>등록된 사진이 없습니다.</h2></div>:null} */}
                     {ImageRendering()}
                   </div>
                 </div>

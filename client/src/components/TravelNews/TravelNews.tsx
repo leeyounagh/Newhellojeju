@@ -3,50 +3,6 @@ import Gallery from "./utils/Gallery";
 import "./TravelNews.scss";
 import Recomendation from "./utils/Recomendation";
 const TravelNews = () => {
-  var vid = document.getElementById("vid");
-
-  function handleClick(evt) {
-    const times = parseTime(evt.target);
-    if (!times) return;
-    // update the video's current time
-    vid.currentTime = times.start;
-    // update the shared variable
-    let next_stop = times.end;
-    // start playing if needed
-    if (vid.paused) {
-      vid.play();
-    }
-  }
-
-  onclick = (e) => {
-    let next_stop = Infinity; // a variable shared by both event listeners
-
-    // add the event listeners only once
-    vid.addEventListener("timeupdate", handleTimeupdate, { passive: true });
-    document.addEventListener("click", handleClick);
-
-    function handleTimeupdate(evt) {
-      // not set? exit early
-      if (!isFinite(next_stop)) return;
-      // a single action
-      if (this.currentTime > next_stop) {
-        this.pause();
-      }
-    }
-
-    const data = e.target.dataset;
-    if (!data.start) return;
-    vid.src = vid.src.split("#")[0] + "#t=" + data.start + "," + data.end;
-    // url.vid#t=start,end
-    vid.play();
-  };
-
-  function parseTime(target) {
-    const data = target.dataset;
-    if (!data || !data.start) return null;
-    return { start: +data.start, end: +data.end };
-  }
-
   return (
     <div style={{ background: "#DAEAF1", overflowX: "hidden" }}>
       <div className="recomm1">
@@ -77,7 +33,7 @@ const TravelNews = () => {
                 }}
               >
                 <button
-                  class="custom-btn1 btn-161 update_btn1"
+                  className="custom-btn1 btn-161 update_btn1"
                   style={{
                     width: "80px",
                     height: "30px",
@@ -149,7 +105,7 @@ const TravelNews = () => {
                 }}
               >
                 <button
-                  class="custom-btn1 btn-161 update_btn1"
+                  className="custom-btn1 btn-161 update_btn1"
                   style={{
                     width: "80px",
                     height: "30px",
@@ -177,14 +133,13 @@ const TravelNews = () => {
                 }}
               >
                 <button
-                  class="custom-btn1 btn-161 update_btn1"
+                  className="custom-btn1 btn-161 update_btn1"
                   style={{
                     width: "80px",
                     height: "30px",
                     border: "none",
                     fontSize: "10px",
                     whiteSpace: "nowrap",
-                    marginTop: "10px",
                     marginTop: "10px",
                   }}
                   data-start="10"
@@ -208,7 +163,7 @@ const TravelNews = () => {
                 }}
               >
                 <button
-                  class="custom-btn1 btn-161 update_btn1"
+                  className="custom-btn1 btn-161 update_btn1"
                   style={{
                     width: "80px",
                     height: "30px",
@@ -239,7 +194,7 @@ const TravelNews = () => {
                 }}
               >
                 <button
-                  class="custom-btn1 btn-161 update_btn1"
+                  className="custom-btn1 btn-161 update_btn1"
                   style={{
                     width: "80px",
                     height: "30px",
@@ -272,7 +227,7 @@ const TravelNews = () => {
                 }}
               >
                 <button
-                  class="custom-btn1 btn-161 update_btn1"
+                  className="custom-btn1 btn-161 update_btn1"
                   style={{
                     width: "80px",
                     height: "30px",

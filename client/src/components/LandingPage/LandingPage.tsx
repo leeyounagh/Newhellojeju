@@ -13,7 +13,7 @@ const LandingPage = (props: any) => {
       <PageIntroduce></PageIntroduce>
       {props.user.userData && props.user.userData.isAuth ? (
         <>
-          <Slider userdata={props.user.userData}></Slider>
+          <Slider />
         </>
       ) : null}
     </div>

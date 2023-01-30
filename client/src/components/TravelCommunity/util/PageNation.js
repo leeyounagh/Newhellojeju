@@ -5,8 +5,8 @@ function Pagination({ total, limit, page, setPage }) {
 
   return (
     <>
-     <Nav>
-     <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
+      <Nav>
+        <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
           &lt;
         </Button>
         {Array(numPages)
@@ -14,7 +14,10 @@ function Pagination({ total, limit, page, setPage }) {
           .map((_, i) => (
             <Button
               key={i + 1}
-              onClick={() => {setPage(i + 1); console.log('클릭') }}
+              onClick={() => {
+                setPage(i + 1);
+                console.log("클릭");
+              }}
               aria-current={page === i + 1 ? "page" : null}
             >
               {i + 1}
@@ -23,9 +26,7 @@ function Pagination({ total, limit, page, setPage }) {
         <Button onClick={() => setPage(page + 1)} disabled={page === numPages}>
           &gt;
         </Button>
-     </Nav>
-     
-    
+      </Nav>
     </>
   );
 }

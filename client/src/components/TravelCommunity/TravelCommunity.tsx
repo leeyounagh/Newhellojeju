@@ -4,17 +4,30 @@ import axios from "axios";
 import Pagination from "./util/PageNation";
 import { GrNext, GrPrevious } from "react-icons/gr";
 
+type Latest = {
+  Communutytitle: string;
+  _id: string;
+  images: string[];
+};
+
+type List = {
+  Communutytitle: string;
+  _id: string;
+  images: string[];
+  writer: any;
+};
+
 const TravelCommunity = () => {
   const [letter, Setletter] = useState([]);
-  const [Skip, setSkip] = useState(0);
-  const [limit, setLimit] = useState(10);
-  const [position, setPosition] = useState(0);
-  const [page, setPage] = useState(1);
-  const offset = (page - 1) * limit; //페이지 처음시작하는 인덱스번호
-  const [imgPage, setImgPage] = useState(1);
+  const [Skip, setSkip] = useState<number>(0);
+  const [limit, setLimit] = useState<number>(10);
+  const [position, setPosition] = useState<number>(0);
+  const [page, setPage] = useState<number>(1);
+  const offset: number = (page - 1) * limit; //페이지 처음시작하는 인덱스번호
+  const [imgPage, setImgPage] = useState<number>(1);
   let [style, setStyle] = useState("");
   let [Search, setSearch] = useState("");
-  const totalImglength = 150 * letter.length;
+  const totalImglength: number = 150 * letter.length;
 
   useEffect(() => {
     let body = {
@@ -25,7 +38,7 @@ const TravelCommunity = () => {
     getProduct(body);
   }, []);
 
-  const getProduct = (body) => {
+  const getProduct = (body: object) => {
     axios.post("/api/users/addcommunity/letter", body).then((response) => {
       if (response.data.success) {
         console.log(response.data);
@@ -38,7 +51,7 @@ const TravelCommunity = () => {
   };
 
   const LatestUpdate = () => {
-    return letter.map((item, index) => {
+    return letter.map((item: Latest, index) => {
       return (
         <div key={index} style={letterMove}>
           <a href={`/community/${item._id}`}>
@@ -62,14 +75,13 @@ const TravelCommunity = () => {
           ></div>
 
           <a href={`/community/${item._id}`}>
-            {" "}
             <div
               style={{
                 color: "black",
                 position: "relative",
                 top: "-80px",
                 zIndex: "300",
-                color: "white",
+
                 fontSize: "5px",
                 padding: "5px",
               }}
@@ -82,7 +94,7 @@ const TravelCommunity = () => {
     });
   };
 
-  const letterMove = {
+  const letterMove: any = {
     position: "relative",
     left: `${position}px`,
     transition: "1.0s all ease-out",
@@ -91,7 +103,7 @@ const TravelCommunity = () => {
 
   const RenderList = () => {
     return letter
-      .filter((val) => {
+      .filter((val: any) => {
         if (Search == "") {
           return val;
         } else if (
@@ -107,7 +119,7 @@ const TravelCommunity = () => {
         }
       })
       .slice(offset, offset + limit)
-      .map((item, index) => {
+      .map((item: List, index) => {
         return (
           <div
             key={index}
@@ -121,7 +133,6 @@ const TravelCommunity = () => {
               position: "relative",
               left: "250px",
               top: "50px",
-              margin: "5px",
             }}
           >
             <div style={{ position: "absolute", left: "0px" }}>
@@ -180,12 +191,12 @@ const TravelCommunity = () => {
     console.log("포지션확인", position);
   };
 
-  const SearchHandler = (event) => {
+  const SearchHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.currentTarget.value);
     console.log(Search);
   };
 
-  const selectedHandler = (event) => {
+  const selectedHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setStyle(event.currentTarget.value);
     console.log(style);
   };

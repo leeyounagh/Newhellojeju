@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./MyStyle.scss";
 import axios from "axios";
 
-const UserStyle = (props) => {
+const UserStyle = (props: any) => {
   const [UserTravelStyle, setUserTravelStyle] = useState("");
-  const [count, setCount] = useState(0);
+
   const [lastStyle, setlaststyle] = useState(false);
 
   const StyleUpload = () => {
@@ -22,7 +22,7 @@ const UserStyle = (props) => {
       }
     });
   };
-  const Stylehandler = (event) => {
+  const Stylehandler = (event: any) => {
     setUserTravelStyle(event.currentTarget.id);
 
     setlaststyle(true);
@@ -31,7 +31,7 @@ const UserStyle = (props) => {
   const StyleRender = () => {
     if (UserTravelStyle === "맛집여행자") {
       return (
-        <div style={{ display: "flex", justifyContents: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <div style={{ position: "relative", left: "200px" }}>
             <img
               style={{ borderRadius: "20px" }}
@@ -57,7 +57,7 @@ const UserStyle = (props) => {
       );
     } else if (UserTravelStyle === "쇼핑중심여행자") {
       return (
-        <div style={{ display: "flex", justifyContents: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <div style={{ position: "relative", left: "200px" }}>
             <img
               style={{ borderRadius: "20px" }}
@@ -75,7 +75,7 @@ const UserStyle = (props) => {
             style={{
               borderRadius: "20px",
               display: "flex",
-              justifyContents: "center",
+              justifyContent: "center",
             }}
             src="https://i.pinimg.com/564x/95/8d/ac/958dac43e60f054116c84cef0c1135a9.jpg"
             width="400px"
@@ -121,7 +121,7 @@ const UserStyle = (props) => {
                 className="res_hover"
                 style={{ width: "200px", height: "400px" }}
                 id="맛집여행자"
-                onClick={Stylehandler}
+                onClick={(event) => Stylehandler(event)}
               >
                 <img
                   style={{ borderRadius: "20px" }}

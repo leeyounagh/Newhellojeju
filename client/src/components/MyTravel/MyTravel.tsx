@@ -8,7 +8,15 @@ import { BsFillTrashFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { removeforschedule } from "../../_actions/User_action";
 
-const MyTravelUpdate = (props) => {
+type Data = {
+  title: string;
+  style: string;
+  startDate: string;
+  endDate: string;
+  id: string;
+};
+
+const MyTravelUpdate = (props: any) => {
   let dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,10 +24,12 @@ const MyTravelUpdate = (props) => {
 
     <BsFillTrashFill></BsFillTrashFill>;
   }, []);
-  const removeHandler = (scheduleId) => {
-    console.log("scheduleId", scheduleId);
-
-    dispatch(removeforschedule(scheduleId)).catch((err) => console.log(err));
+  const removeHandler = (scheduleId: string) => {
+    try {
+      dispatch(removeforschedule(scheduleId));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -29,7 +39,7 @@ const MyTravelUpdate = (props) => {
   const list = () => {
     if (props.user.userData && props.user.userData.schedule) {
       <MyscheduleDetail schedule={props.user.userData.schedule} />;
-      return props.user.userData.schedule.map((item, index) => {
+      return props.user.userData.schedule.map((item: Data, index: number) => {
         return (
           <div
             key={index}

@@ -2,7 +2,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TravelCommunity from "./TravelCommunity";
-const CommunityDetail = (props) => {
+
+type Comment = {
+  comment: string;
+  writer: string;
+};
+
+type Community = {
+  Communutytitle: string;
+  writer: any;
+  Communutydesc: string;
+};
+const CommunityDetail = (props: any) => {
   const { productId } = useParams();
   const [community, setCommunity] = useState([]);
   const [comment, SetComment] = useState("");
@@ -27,8 +38,8 @@ const CommunityDetail = (props) => {
       });
   }, []);
 
-  const getComment = (event) => {
-    console.log(props.user.userData);
+  const getComment = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     const body = {
       writer: props.user.userData.name,
       comment: comment,
@@ -49,15 +60,14 @@ const CommunityDetail = (props) => {
 
   useEffect(() => {
     CommentArea();
-  }, [comment]);
-  const inputHandler = (event) => {
-    console.log(event.currentTarget.value);
+  }, []);
+  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     SetComment(event.currentTarget.value);
   };
   const CommentArea = () => {
     return (
       <div>
-        {allComment.map((item, index) => {
+        {allComment.map((item: Comment, index) => {
           return (
             <div
               key={index}
@@ -87,13 +97,13 @@ const CommunityDetail = (props) => {
     console.log(Img);
     return (
       <div>
-        {Img.map((item, index) => {
+        {Img.map((item: string, index: any) => {
           return (
             <div>
               <img
                 alt={index}
                 src={`http://localhost:5000/${item}`}
-                style={{ maxWidth: "500px", maxWidth: "500px" }}
+                style={{ maxWidth: "500px" }}
               ></img>
             </div>
           );
@@ -112,7 +122,7 @@ const CommunityDetail = (props) => {
         height: "30000px",
       }}
     >
-      {community.map((item, index) => {
+      {community.map((item: Community, index) => {
         return (
           <div key={index}>
             <div style={{ borderBottom: "1px solid lightgray" }}>
@@ -148,11 +158,11 @@ const CommunityDetail = (props) => {
               marginRight: "10px",
             }}
             placeholder="댓글을 입력하세요"
-            onChange={inputHandler}
+            onChange={(event) => inputHandler(event)}
             value={comment}
           ></input>
           <button
-            class="custom-btn2 btn-162 update_btn2"
+            className="custom-btn2 btn-162 update_btn2"
             style={{
               cursor: "pointer",
               fontSize: "12px",

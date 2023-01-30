@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-const Search = (props) => {
+const Search = (props: any) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const onChangeSearch = (e) => {
+  const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setSearchTerm(e.target.value);
     props.SearchHandler(searchTerm);

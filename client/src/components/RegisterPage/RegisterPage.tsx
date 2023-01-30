@@ -4,25 +4,27 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.scss";
 
-const RegisterPage = (props: any) => {
+const RegisterPage = () => {
   const dispatch = useDispatch();
-  const NaviGate = useNavigate();
+  const navigate = useNavigate();
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [Name, setName] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
 
-  const onEmailHandler = (event: any) => {
+  const onEmailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.currentTarget.value);
   };
-  const onPasswordHandler = (event: any) => {
+  const onPasswordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.currentTarget.value);
   };
-  const onNameHandler = (event: any) => {
+  const onNameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.currentTarget.value);
   };
 
-  const onConfimPasswordHandler = (event: any) => {
+  const onConfimPasswordHandler = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setconfirmPassword(event.currentTarget.value);
   };
   const onSubmitHandler = (event: any) => {
@@ -37,7 +39,12 @@ const RegisterPage = (props: any) => {
       password: Password,
       name: Name,
     };
-    dispatch(registerUser(body));
+    try {
+      dispatch(registerUser(body));
+      navigate("/login");
+    } catch (err) {
+      alert(err);
+    }
   };
 
   return (

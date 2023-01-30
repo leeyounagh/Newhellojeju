@@ -4,35 +4,31 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.scss";
 
-const LoginPage = (props) => {
+const LoginPage = (props: any) => {
   const dispatch = useDispatch();
   const NaviGate = useNavigate();
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
 
-  const onEmailHandler = (event) => {
+  const onEmailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.currentTarget.value);
   };
-  const onPasswordHandler = (event) => {
+  const onPasswordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.currentTarget.value);
   };
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = async (event: any) => {
     event.preventDefault();
 
     let body = {
       email: Email,
       password: Password,
     };
-
-    dispatch(loginUser(body)).then((response) => {
-      if (response.payload.loginSuccess) {
-        NaviGate("/landing");
-      } else {
-        alert("Error˝");
-      }
-    });
-
-    dispatch(loginUser(body));
+    try {
+      dispatch(await loginUser(body));
+      NaviGate("/landing");
+    } catch (err) {
+      alert(`${err}`);
+    }
   };
 
   return (
@@ -56,7 +52,7 @@ const LoginPage = (props) => {
             zIndex: "100",
             position: "relative",
             left: "-20px",
-            weight: "100",
+
             top: "30px",
           }}
         >
@@ -123,51 +119,51 @@ const LoginPage = (props) => {
         <div id="shakeHead">
           <div id="snoHead"></div>
           <div style={{ background: " rgb(237, 255, 246);" }} id="ears">
-            <div class="snoLeftEar"></div>
-            <div class="snoLeftEarshadow"></div>
-            <div class="snoRightEar"></div>
-            <div class="snoRightEarshadow"></div>
+            <div className="snoLeftEar"></div>
+            <div className="snoLeftEarshadow"></div>
+            <div className="snoRightEar"></div>
+            <div className="snoRightEarshadow"></div>
           </div>
           <div id="face">
-            <div class="snoLeftFace"></div>
-            <div class="snoRightFace"></div>
+            <div className="snoLeftFace"></div>
+            <div className="snoRightFace"></div>
           </div>
           <div id="leftWhiskers"></div>
           <div id="rightWhiskers"></div>
           <div id="eyes">
-            <div class="snoLeftEye"></div>
-            <div class="snoRightEye"></div>
-            <div class="snoMouthLine"></div>
+            <div className="snoLeftEye"></div>
+            <div className="snoRightEye"></div>
+            <div className="snoMouthLine"></div>
           </div>
         </div>
         <div style={{ zIndex: 10 }} id="snoBody">
-          <div class="snoBelly"></div>
+          <div className="snoBelly"></div>
           <div id="marking">
-            <div class="cresentBlock1"></div>
+            <div className="cresentBlock1"></div>
 
-            <div class="cresentBlock2"></div>
+            <div className="cresentBlock2"></div>
 
-            <div class="cresentBlock3"></div>
+            <div className="cresentBlock3"></div>
 
-            <div class="cresentBlock4"></div>
+            <div className="cresentBlock4"></div>
 
-            <div class="cresentBlock5"></div>
+            <div className="cresentBlock5"></div>
 
-            <div class="cresentBlock6"></div>
+            <div className="cresentBlock6"></div>
 
-            <div class="cresentBlock7"></div>
+            <div className="cresentBlock7"></div>
           </div>
         </div>
         <div id="arms">
-          <div class="snoLeftArm"></div>
-          <div class="snoRightArm"></div>
+          <div className="snoLeftArm"></div>
+          <div className="snoRightArm"></div>
         </div>
         <div style={{ zIndex: 12 }} id="legs">
-          <div class="snoLeftLeg">
-            <div class="bottomLeft"></div>
+          <div className="snoLeftLeg">
+            <div className="bottomLeft"></div>
           </div>
-          <div style={{ zIndex: 5 }} class="snoRightLeg">
-            <div style={{ zIndex: 5 }} class="bottomRight"></div>
+          <div style={{ zIndex: 5 }} className="snoRightLeg">
+            <div style={{ zIndex: 5 }} className="bottomRight"></div>
           </div>
         </div>
       </div>

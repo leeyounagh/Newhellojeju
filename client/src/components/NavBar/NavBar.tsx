@@ -19,7 +19,7 @@ const LogoutNavbarElement = [
 ];
 
 const NavBar = () => {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state: any) => state.user);
   const NaviGate = useNavigate();
 
   const logoutHandler = () => {
@@ -61,11 +61,7 @@ const NavBar = () => {
   };
   // 조건에 맞게 네브바를 렌더링하는 함수
 
-  return (
-    <div>
-      <NavbarRendering />
-    </div>
-  );
+  return <div>{NavbarRendering()}</div>;
 };
 
 export default NavBar;

@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Modal from "react-modal";
 
 import { rastaurantdata } from "./Data/rastaurantdata";
@@ -15,7 +15,15 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import "./Recomendation.scss";
 
-export let Context = createContext();
+type MapData = {
+  latitude: number;
+  longitude: number;
+  contentsid: string;
+};
+type MapPosition = {
+  lat: any;
+  lng: any;
+};
 const customStyles = {
   content: {
     top: "0px",
@@ -27,8 +35,6 @@ const customStyles = {
     height: "500px",
 
     overflow: "none",
-
-    //   transform: 'translate(-50%, -50%)',
   },
 };
 
@@ -37,14 +43,12 @@ const containerStyle = {
   height: "400px",
 };
 
-const Recomendation = (props) => {
-  let subtitle;
+const Recomendation = (props: any) => {
+  let subtitle: any;
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const placeInfo = useRef();
   let restaurant = rastaurantdata;
   const [datanumber, setdatanumber] = useState(1);
-
-  const [check, setChecked] = useState(false);
   const [center, setCenter] = useState({
     lat: Number(33.37212380975274),
     lng: Number(126.53518867943278),
@@ -57,11 +61,10 @@ const Recomendation = (props) => {
     googleMapsApiKey: "AIzaSyBGRsNeYWBKmbw5-YWDwHVL8EOnXx-KTRc",
   });
 
-  const [map, setMap] = React.useState(null);
   const [zoom, setZoom] = useState(11);
-  const options = { closeBoxURL: "", enableEventPropagation: true };
+  const options: any = { closeBoxURL: "", enableEventPropagation: true };
 
-  function openModal(event) {
+  function openModal(event: any) {
     setIsOpen(true);
 
     setdatanumber(event.target.dataset.number);
@@ -82,19 +85,12 @@ const Recomendation = (props) => {
     dataHandler();
   }, [Modal]);
 
-  const Test = (props) => {
+  const InfoBoxRender = (props: any) => {
     if (markerClick && ref.current) {
       return (
         <div style={{ overflow: "hidden" }}>
           {
-            <InfoBox
-              options={options}
-              position={{
-                lat: Number(props.data[ref.current].latitude),
-                lng: Number(props.data[ref.current].longitude),
-              }}
-              zoomOnClick={false}
-            >
+            <InfoBox options={options}>
               <div
                 className="map_font"
                 style={{
@@ -104,7 +100,7 @@ const Recomendation = (props) => {
                   fontWeight: "700",
                 }}
               >
-                <div style={{ fontColor: `#08233B` }}>
+                <div style={{ color: `#08233B` }}>
                   <div>
                     <img
                       style={{ marginBottom: "10px" }}
@@ -157,14 +153,7 @@ const Recomendation = (props) => {
       return (
         <div style={{ overflow: "none" }}>
           {
-            <InfoBox
-              options={options}
-              position={{
-                lat: Number(props.data[props.imgRef].latitude),
-                lng: Number(props.data[props.imgRef].longitude),
-              }}
-              zoomOnClick={false}
-            >
+            <InfoBox>
               <div
                 className="map_font"
                 style={{
@@ -225,14 +214,7 @@ const Recomendation = (props) => {
       return (
         <div style={{ overflow: "none" }}>
           {
-            <InfoBox
-              options={options}
-              position={{
-                lat: Number(props.data[ref.current].latitude),
-                lng: Number(props.data[ref.current].longitude),
-              }}
-              zoomOnClick={false}
-            >
+            <InfoBox>
               <div
                 className="map_font"
                 style={{
@@ -293,13 +275,13 @@ const Recomendation = (props) => {
     }
   };
 
-  const infoboxHandler = (index) => {
+  const infoboxHandler = (index: number) => {
     SetMarkerClick(true);
 
     ref.current = index;
   };
 
-  const Map = (props) => {
+  const Map = (props: any) => {
     return isLoaded ? (
       <div>
         <GoogleMap
@@ -307,7 +289,7 @@ const Recomendation = (props) => {
           center={center}
           zoom={zoom}
         >
-          {props.data.map((item, i) => {
+          {props.data.map((item: MapData, i: number) => {
             return (
               <div>
                 <Marker
@@ -331,7 +313,7 @@ const Recomendation = (props) => {
             );
           })}
 
-          {<Test data={props.data}></Test>}
+          {<InfoBoxRender data={props.data}></InfoBoxRender>}
 
           <></>
         </GoogleMap>
@@ -354,7 +336,6 @@ const Recomendation = (props) => {
               opacity: "4",
               position: "relative",
               top: "50px",
-              background: "rgb(248, 248, 248)",
             }}
           >
             <Scrollbars style={{ width: 500, height: 400, color: "black" }}>
@@ -430,7 +411,6 @@ const Recomendation = (props) => {
               opacity: "4",
               position: "relative",
               top: "50px",
-              background: "rgb(248, 248, 248)",
             }}
           >
             <Scrollbars style={{ width: 500, height: 400, color: "black" }}>
@@ -492,7 +472,6 @@ const Recomendation = (props) => {
             }}
           >
             <Map data={shopping}></Map>
-            {/* <GMap data ={shopping} ></GMap> */}
           </div>
         </div>
       );
@@ -508,7 +487,6 @@ const Recomendation = (props) => {
               opacity: "4",
               position: "relative",
               top: "50px",
-              background: "rgb(248, 248, 248)",
             }}
           >
             {" "}
@@ -570,9 +548,6 @@ const Recomendation = (props) => {
               left: "500px",
             }}
           >
-            {/*               
-               <GMap data ={restaurant}></GMap> */}
-
             <Map data={restaurant}></Map>
           </div>
         </div>
@@ -590,8 +565,6 @@ const Recomendation = (props) => {
               opacity: "4",
               position: "relative",
               top: "50px",
-              border: "1px solid black",
-              background: "rgb(248, 248, 248)",
             }}
           >
             <Scrollbars style={{ width: 500, height: 400, color: "black" }}>
@@ -652,16 +625,15 @@ const Recomendation = (props) => {
               left: "500px",
             }}
           >
-            {/* <GMap data ={spot} ></GMap> */}
             <Map data={spot}></Map>
           </div>
         </div>
       );
   };
 
-  const modalHandler = (event) => {
+  const modalHandler = () => {
     return (
-      <div style={{ overFlow: "none" }}>
+      <div style={{ overflow: "none" }}>
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
