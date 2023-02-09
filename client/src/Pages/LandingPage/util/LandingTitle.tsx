@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Lottie from "react-lottie";
 import animationData from "../../../lotties/23936-lighthouse.json";
