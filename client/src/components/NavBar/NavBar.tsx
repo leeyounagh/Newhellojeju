@@ -2,21 +2,9 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { BsHeartFill } from "react-icons/bs";
-
-const LogoutNavbarElement = [
-  {
-    name: "Home",
-    link: "/landing",
-  },
-  {
-    name: "Register",
-    link: "/register",
-  },
-  {
-    name: "Login",
-    link: "/login",
-  },
-];
+import styled from "styled-components";
+import LogoutNavbarElement from "./Data/Logout";
+import LoginNavbarElement from "./Data/Login";
 
 const NavBar = () => {
   const user = useSelector((state: any) => state.user);
@@ -31,37 +19,44 @@ const NavBar = () => {
       }
     });
   };
-  // 로그아웃 api를 호출하는 함수
 
-  const NavbarRendering = () => {
-    if (user.userData && !user.userData.isAuth) {
-      return LogoutNavbarElement.map((item) => {
-        return (
-          <>
-            <Link to={item.link}>{item.name}</Link>
-          </>
-        );
-      });
-    } else {
-      return (
-        <>
-          <Link to="/travelspot">TravelSpot</Link>
-          <Link to="/travelnews">News</Link>
-          <Link to="/community">community</Link>
-          <Link to="/userstyle">
-            <BsHeartFill></BsHeartFill>
-          </Link>
-          <Link to="/mytravel">MyTravel</Link>
-          <Link to="/logout" onClick={logoutHandler}>
-            logout
-          </Link>
-        </>
-      );
-    }
-  };
-  // 조건에 맞게 네브바를 렌더링하는 함수
-
-  return <div>{NavbarRendering()}</div>;
+  return (
+    <NavBarContainer>
+      {user.userData && !user.userData.isAuth
+        ? LogoutNavbarElement.map((item) => {
+            return (
+              <Item>
+                <Link to={item.link}>{item.name}</Link>
+              </Item>
+            );
+          })
+        : LoginNavbarElement.map((item) => {
+            return (
+              <Item>
+                <Link to={item.link}>{item.name}</Link>
+              </Item>
+            );
+          })}
+    </NavBarContainer>
+  );
 };
 
+const NavBarContainer = styled.header`
+  width: 100vw;
+  height: 10vh;
+  position: fixed;
+  top: 0px;
+  background-color: #94b1b9;
+  z-index: 500;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: 900;
+  a {
+    color: #f3efe6;
+    text-decoration: none;
+    font-size: 1.8rem;
+  }
+`;
+const Item = styled.div``;
 export default NavBar;

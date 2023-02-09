@@ -1,24 +1,24 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import LandingPage from "./components/LandingPage/LandingPage";
-import RegisterPage from "./components/RegisterPage/RegisterPage";
-import LoginPage from "./components/LoginPage/LoginPage";
+import LandingPage from "./Pages/LandingPage/LandingPage";
+import RegisterPage from "./Pages/RegisterPage/RegisterPage";
+import LoginPage from "./Pages/LoginPage/LoginPage";
 import auth from "./hoc/auth";
-import StartPage from "./components/StartPage/StartPage";
+import StartPage from "./Pages/StartPage/StartPage";
 import NavBar from "./components/NavBar/NavBar";
-import MyTravel from "./components/MyTravel/MyTravel";
-import TravelCommunity from "./components/TravelCommunity/TravelCommunity";
-import TravelSpotPage from "./components/TravelSpotPage/TravelSpotpage";
-import TravelNews from "./components/TravelNews/TravelNews";
-import Good from "./components/Good/Good";
-import NorthHotSPot from "./components/TravelSpotPage/NorthHotSpotPage";
-import SouthHotSpot from "./components/TravelSpotPage/SouthHotSpot";
-import TravelDetail from "./components/TravelNews/TravelDetail/TravelDetail";
-import Myschedule from "./components/MyTravel/MySchedule/Myschedule";
-import MyscheduleDetail from "./components/MyTravel/MySchedule/MyscheduleDetail";
-import CommunityUpdate from "./components/TravelCommunity/CommunityUpdate";
-import CommunityDetail from "./components/TravelCommunity/CommunityDetail";
-import UserTravelStyle from "./components/MyTravel/MyStyle/MylStyle";
+import MyTravel from "./Pages/MyTravel/MyTravel";
+import TravelCommunity from "./Pages/TravelCommunity/TravelCommunity";
+import TravelSpotPage from "./Pages/TravelSpotPage/TravelSpotpage";
+import TravelNews from "./Pages/TravelNews/TravelNews";
+import Good from "./Pages/Good/Good";
+import NorthHotSPot from "./Pages/TravelSpotPage/NorthHotSpotPage";
+import SouthHotSpot from "./Pages/TravelSpotPage/SouthHotSpot";
+import TravelDetail from "./Pages/TravelNews/TravelDetail/TravelDetail";
+import Myschedule from "./Pages/MyTravel/MySchedule/Myschedule";
+import MyscheduleDetail from "./Pages/MyTravel/MySchedule/MyscheduleDetail";
+import CommunityUpdate from "./Pages/TravelCommunity/CommunityUpdate";
+import CommunityDetail from "./Pages/TravelCommunity/CommunityDetail";
+import UserTravelStyle from "./Pages/MyTravel/MyStyle/MylStyle";
 import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -70,7 +70,7 @@ function App() {
           <Route path="/login/" element={auth(LoginPage, false)}></Route>
         </Routes>
       </div>
-      <Footer></Footer>
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-import LandingTitle from "./util/LandingTitle";
+import LandingLogo from "./util/LandingTitle";
 
 import PageIntroduce from "./util/PageIntroduce";
 import Slider from "./util/Slider";
@@ -8,14 +8,14 @@ import Slider from "./util/Slider";
 const LandingPage = (props: any) => {
   return (
     <div>
-      <LandingTitle />
+      <LandingLogo />
 
-      <PageIntroduce></PageIntroduce>
-      {props.user.userData && props.user.userData.isAuth ? (
+      <PageIntroduce />
+      {/* {props.user.userData && props.user.userData.isAuth ? (
         <>
           <Slider />
         </>
-      ) : null}
+      ) : null} */}
     </div>
   );
 };

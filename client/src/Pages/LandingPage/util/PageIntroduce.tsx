@@ -1,6 +1,6 @@
 import "./PageIntroduce.scss";
 
-const LandingBottom = () => {
+const LandingIndroduce = () => {
   return (
     <div
       className="bottom_body"
@@ -74,4 +74,4 @@ const LandingBottom = () => {
   );
 };
 
-export default LandingBottom;
+export default LandingIndroduce;
