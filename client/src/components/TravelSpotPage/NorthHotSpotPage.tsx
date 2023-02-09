@@ -13,7 +13,7 @@ const { Meta } = Card;
 
 const NorthHotSpotPage = () => {
   const [loading, setLoading] = useState(false);
-  const [filterArr, setFilterArr] = useState([]);
+  const [filterArr, setFilterArr] = useState<any[]>([]);
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [contents, setContents] = useState("c5");
@@ -44,7 +44,7 @@ const NorthHotSpotPage = () => {
 
   function filter(arr: string[]) {
     let i = 0;
-    let newdata: any = [];
+    let newdata: any[] = [];
     let copy: string[] = [];
     newdata = Array.from(arr);
 
@@ -88,7 +88,7 @@ const NorthHotSpotPage = () => {
     console.log("안녕", filters[0], contents);
     if (Number(filters[0]) === 1) {
       setContents("");
-      let copy: never[] = [];
+      let copy: any[] = [];
 
       setContents("c1");
       setFilterArr([...copy]);
@@ -168,10 +168,9 @@ const NorthHotSpotPage = () => {
         </span>
       </div>
 
-      <div style={{ position: "absolute", top: "400px", left: "200px" }}>
+      {/* <div style={{ position: "absolute", top: "400px", left: "200px" }}>
         <Row>
-          {test
-            .filter((val: any) => {
+          {test.filter((val: any) => {
               if (searchTerm == "") {
                 return val;
               } else if (
@@ -212,7 +211,7 @@ const NorthHotSpotPage = () => {
               );
             })}
         </Row>
-      </div>
+      </div> */}
       <div
         className="heart_all"
         style={{
