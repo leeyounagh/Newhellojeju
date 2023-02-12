@@ -20,6 +20,7 @@ import CommunityUpdate from "./Pages/TravelCommunity/CommunityUpdate";
 import CommunityDetail from "./Pages/TravelCommunity/CommunityDetail";
 import UserTravelStyle from "./Pages/MyTravel/MyStyle/MylStyle";
 import Footer from "./components/Footer/Footer";
+import { useEffect } from "react";
 
 function App() {
   const Header = () => {

@@ -14,12 +14,20 @@ const defaultOptions = {
 };
 
 const Description = () => {
-  const [showText, setShotext] = useState<Boolean>(false);
+  const [showText, setShowtext] = useState<Boolean>(false);
+  const [scroll, setscroll] = useState<Boolean>(false);
   useEffect(() => {
-    setTimeout(() => {
-      setShotext(true);
-    }, 1500);
+    window.addEventListener("scroll", scrollEvent);
   }, []);
+  const scrollEvent = () => {
+    if (window.scrollY >= 300) {
+      setTimeout(() => {
+        setShowtext(true);
+      }, 1500);
+      setscroll(true);
+      window.removeEventListener("scroll", scrollEvent);
+    }
+  };
   return (
     <Container>
       <LottieContainer>
@@ -29,9 +37,12 @@ const Description = () => {
           width="100%"
           style={{ zIndex: 10 }}
         />
-        {showText ? <Title>제주도여행,</Title> : null}
-
-        <ItemText> HelloJeju와 함께 계획을 짜보아요.</ItemText>
+        {scroll === true ? (
+          <>
+            {showText ? <Title>제주도여행,</Title> : null}{" "}
+            <ItemText> HelloJeju와 함께 계획을 짜보아요.</ItemText>
+          </>
+        ) : null}
       </LottieContainer>
     </Container>
   );
