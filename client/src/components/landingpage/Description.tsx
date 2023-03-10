@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Lottie from "react-lottie";
-import animationData from "../../../lotties/114285-animated-wallpaper-under-sea.json";
+import animationData from "../../lotties/114285-animated-wallpaper-under-sea.json";
 
 const defaultOptions = {
   loop: true,
@@ -11,41 +11,6 @@ const defaultOptions = {
   rendererSettings: {
     preserveAspectRatio: "xMidYMid slice",
   },
-};
-
-const Description = () => {
-  const [showText, setShowtext] = useState<Boolean>(false);
-  const [scroll, setscroll] = useState<Boolean>(false);
-  useEffect(() => {
-    window.addEventListener("scroll", scrollEvent);
-  }, []);
-  const scrollEvent = () => {
-    if (window.scrollY >= 300) {
-      setTimeout(() => {
-        setShowtext(true);
-      }, 1500);
-      setscroll(true);
-      window.removeEventListener("scroll", scrollEvent);
-    }
-  };
-  return (
-    <Container>
-      <LottieContainer>
-        <Lottie
-          options={defaultOptions}
-          height="100%"
-          width="100%"
-          style={{ zIndex: 10 }}
-        />
-        {scroll === true ? (
-          <>
-            {showText ? <Title>제주도여행,</Title> : null}{" "}
-            <ItemText> HelloJeju와 함께 계획을 짜보아요.</ItemText>
-          </>
-        ) : null}
-      </LottieContainer>
-    </Container>
-  );
 };
 const Container = styled.section`
   width: 100vw;
@@ -106,5 +71,41 @@ const ItemText = styled.div`
     }
   }
 `;
+
+const Description = () => {
+  const [showText, setShowtext] = useState<Boolean>(false);
+  const [scroll, setscroll] = useState<Boolean>(false);
+  useEffect(() => {
+    window.addEventListener("scroll", scrollEvent);
+  }, []);
+
+  const scrollEvent = () => {
+    if (window.scrollY >= 300) {
+      setTimeout(() => {
+        setShowtext(true);
+      }, 1500);
+      setscroll(true);
+      window.removeEventListener("scroll", scrollEvent);
+    }
+  };
+  return (
+    <Container>
+      <LottieContainer>
+        <Lottie
+          options={defaultOptions}
+          height="100%"
+          width="100%"
+          style={{ zIndex: 10 }}
+        />
+        {scroll === true ? (
+          <>
+            {showText ? <Title>제주도여행,</Title> : null}{" "}
+            <ItemText> HelloJeju와 함께 계획을 짜보아요.</ItemText>
+          </>
+        ) : null}
+      </LottieContainer>
+    </Container>
+  );
+};
 
 export default Description;

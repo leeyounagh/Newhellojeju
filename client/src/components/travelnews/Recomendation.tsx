@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import Modal from "react-modal";
 
-import { rastaurantdata } from "./Data/rastaurantdata";
-import { hotel } from "./Data/hotel";
-import { shopping } from "./Data/shopping";
-import { spot } from "./Data/spot";
+import { rastaurantdata } from "../../data/rastaurantdata";
+import { hotel } from "../../data/hotel";
+import { shopping } from "../../data/shopping";
+import { spot } from "../../data/spot";
 import {
   GoogleMap,
   useJsApiLoader,

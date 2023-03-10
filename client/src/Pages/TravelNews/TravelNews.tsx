@@ -1,7 +1,7 @@
 import React from "react";
-import Gallery from "./utils/Gallery";
+import Gallery from "../../components/travelnews/Gallery";
 import "./TravelNews.scss";
-import Recomendation from "./utils/Recomendation";
+import Recomendation from "../../components/travelnews/Recomendation";
 const TravelNews = () => {
   return (
     <div style={{ background: "#DAEAF1", overflowX: "hidden" }}>

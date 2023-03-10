@@ -9,9 +9,9 @@ import React, {
   createContext,
 } from "react";
 import "./NorthHotSpot.scss";
-import RadioBox from "./Section/RadioBox";
-import { jejuSection } from "./Section/data";
-import Search from "./Section/Search";
+import RadioBox from "../../components/travelspot/RadioBox";
+import { jejuSection } from "../../data/data";
+import Search from "../../components/travelspot/Search";
 import { FaParachuteBox, FaArrowAltCircleUp } from "react-icons/fa";
 
 const mainUrl = `http://api.visitjeju.net/vsjApi/contents/searchList?apiKey=sbrr93ynwcggx6br&locale=kr`;

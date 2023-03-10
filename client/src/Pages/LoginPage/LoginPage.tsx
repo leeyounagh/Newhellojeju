@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux";
 import { loginUser } from "../../_actions/User_action";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.scss";
 
 const LoginPage = (props: any) => {
   const dispatch = useDispatch();
@@ -110,63 +109,6 @@ const LoginPage = (props: any) => {
           login
         </button>
       </form>
-
-      <div
-        style={{ position: "relative", top: "-100px", left: "-100px" }}
-        className="login_body"
-        id="snotomax"
-      >
-        <div id="shakeHead">
-          <div id="snoHead"></div>
-          <div style={{ background: " rgb(237, 255, 246);" }} id="ears">
-            <div className="snoLeftEar"></div>
-            <div className="snoLeftEarshadow"></div>
-            <div className="snoRightEar"></div>
-            <div className="snoRightEarshadow"></div>
-          </div>
-          <div id="face">
-            <div className="snoLeftFace"></div>
-            <div className="snoRightFace"></div>
-          </div>
-          <div id="leftWhiskers"></div>
-          <div id="rightWhiskers"></div>
-          <div id="eyes">
-            <div className="snoLeftEye"></div>
-            <div className="snoRightEye"></div>
-            <div className="snoMouthLine"></div>
-          </div>
-        </div>
-        <div style={{ zIndex: 10 }} id="snoBody">
-          <div className="snoBelly"></div>
-          <div id="marking">
-            <div className="cresentBlock1"></div>
-
-            <div className="cresentBlock2"></div>
-
-            <div className="cresentBlock3"></div>
-
-            <div className="cresentBlock4"></div>
-
-            <div className="cresentBlock5"></div>
-
-            <div className="cresentBlock6"></div>
-
-            <div className="cresentBlock7"></div>
-          </div>
-        </div>
-        <div id="arms">
-          <div className="snoLeftArm"></div>
-          <div className="snoRightArm"></div>
-        </div>
-        <div style={{ zIndex: 12 }} id="legs">
-          <div className="snoLeftLeg">
-            <div className="bottomLeft"></div>
-          </div>
-          <div style={{ zIndex: 5 }} className="snoRightLeg">
-            <div style={{ zIndex: 5 }} className="bottomRight"></div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

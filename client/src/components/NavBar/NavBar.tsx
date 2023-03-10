@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { BsHeartFill } from "react-icons/bs";
 import styled from "styled-components";
-import LogoutNavbarElement from "./Data/Logout";
-import LoginNavbarElement from "./Data/Login";
+import LogoutNavbarElement from "../../data/Logout";
+import LoginNavbarElement from "../../data/Login";
 
 const NavBar = () => {
   const user = useSelector((state: any) => state.user);

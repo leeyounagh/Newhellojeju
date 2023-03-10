@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { BsCalendarPlusFill } from "react-icons/bs";
 
-import MyscheduleDetail from "./MySchedule/MyscheduleDetail";
+import MyscheduleDetail from "../myschedule/MyscheduleDetail";
 import "./Mytravel.scss";
 import { BsFillTrashFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";

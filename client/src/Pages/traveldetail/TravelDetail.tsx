@@ -3,7 +3,7 @@ import "./TravelDetail.scss";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { addToGood } from "../../../_actions/User_action";
+import { addToGood } from "../../_actions/User_action";
 import { GiCrownedHeart } from "react-icons/gi";
 
 const TravelDetail = () => {

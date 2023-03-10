@@ -2,8 +2,8 @@ import axios from "axios";
 import { Card, Row, Col } from "antd";
 import React, { useEffect, useState } from "react";
 import "./NorthHotSpot.scss";
-import RadioBox from "./Section/RadioBox";
-import { jejuSection } from "./Section/data";
+import RadioBox from "../../components/travelspot/RadioBox";
+import { jejuSection } from "../../data/data";
 
 import { FaArrowAltCircleUp } from "react-icons/fa";
 

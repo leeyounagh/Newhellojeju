@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Lottie from "react-lottie";
-import animationData from "../../../lotties/23936-lighthouse.json";
+import animationData from "../../lotties/23936-lighthouse.json";
 
 const defaultOptions = {
   loop: true,
@@ -11,20 +11,6 @@ const defaultOptions = {
     preserveAspectRatio: "xMidYMid slice",
   },
 };
-
-const LandingLogo = () => {
-  return (
-    <LogoContainer>
-      <LogoInnerContainer>
-        <Logo>HelloJeju</Logo>
-        <Logo>
-          <Lottie options={defaultOptions} height={500} width={500} />
-        </Logo>
-      </LogoInnerContainer>
-    </LogoContainer>
-  );
-};
-
 const LogoContainer = styled.section`
   width: 100vw;
   height: 100vh;
@@ -46,5 +32,17 @@ const LogoInnerContainer = styled.div`
   width: 50%;
   height: 60%;
 `;
+const LandingLogo = () => {
+  return (
+    <LogoContainer>
+      <LogoInnerContainer>
+        <Logo>HelloJeju</Logo>
+        <Logo>
+          <Lottie options={defaultOptions} height={500} width={500} />
+        </Logo>
+      </LogoInnerContainer>
+    </LogoContainer>
+  );
+};
 
 export default LandingLogo;

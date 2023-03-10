@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Myschedule.scss";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
-import { addschedule } from "../../../_actions/User_action";
+import { addschedule } from "../../_actions/User_action";
 import { parse as uuidParse } from "uuid";
 import moment from "moment";
 import { DateRange } from "react-date-range";
