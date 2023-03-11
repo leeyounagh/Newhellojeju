@@ -1,115 +1,194 @@
-import { useDispatch } from "react-redux";
-import { loginUser } from "../../_actions/User_action";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import OnChangeEvent from "../../utils/OnChangeEvent";
+import styled from "styled-components";
+import animationData from "../../lotties/2523-loading.json";
+import Lottie from "react-lottie";
+import axios, { AxiosResponse } from "axios";
 
-const LoginPage = (props: any) => {
-  const dispatch = useDispatch();
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: animationData,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
+
+const SLayout = styled.div`
+  background: white;
+  overflow-y: hidden;
+  margin-top: 80px;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const SForm = styled.form`
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+`;
+const SLottieDiv = styled.div`
+  width: 80%;
+  height: 100%;
+
+  text-align: center;
+  margin-right: 10px;
+  h1 {
+    margin-top: 30px;
+    white-space: nowrap;
+  }
+`;
+const SLoginDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 90%;
+  text-align: center;
+  h1 {
+    margin-bottom: 30px;
+    white-space: nowrap;
+  }
+  margin-left: 10px;
+`;
+const SItemDiv = styled.div`
+  display: flex;
+  width: 50%;
+  height: 100%;
+  padding-top: 50px;
+`;
+const SInput = styled.input`
+  height: 60px;
+  width: 400px;
+  border-radius: 10px;
+  font-size: 20px;
+  padding-left: 10px;
+  outline: none !important;
+  border-color: #89a6ae;
+  -webkit-appearance: none;
+
+  -moz-appearance: none;
+
+  appearance: none;
+`;
+const SButton = styled.button`
+  height: 60px;
+  width: 400px;
+  color: #f3efe6;
+  border-radius: 10px;
+  background-color: #333333;
+  font-weight: 900;
+  font-size: 20px;
+  cursor: pointer;
+  &:hover {
+    background: #89a6ae;
+  }
+  -webkit-appearance: none;
+
+  -moz-appearance: none;
+
+  appearance: none;
+  border: 0;
+  outline: 0;
+`;
+const SDiv = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+`;
+interface PasswordType {
+  password?: string;
+}
+
+interface EmailType {
+  email?: string;
+}
+
+const LoginPage = () => {
   const NaviGate = useNavigate();
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
+  const [Email, setEmail] = useState<EmailType | any>({ email: "" });
+  const [Password, setPassword] = useState<PasswordType | any>({
+    password: "",
+  });
 
-  const onEmailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.currentTarget.value);
-  };
-  const onPasswordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.currentTarget.value);
-  };
   const onSubmitHandler = async (event: any) => {
     event.preventDefault();
-
+    const { email } = Email;
+    const { password } = Password;
     let body = {
-      email: Email,
-      password: Password,
+      email: email,
+      password: password,
     };
+
     try {
-      dispatch(await loginUser(body));
-      NaviGate("/landing");
+      const response: AxiosResponse = await axios.post(
+        "http://localhost:8080/api/users/login",
+        body
+      );
+      const data: AxiosResponse = await response.data.loginSuccess;
+
+      if (data) {
+        NaviGate("/landing");
+      } else {
+        alert("Error˝");
+      }
     } catch (err) {
+      console.log(err);
       alert(`${err}`);
     }
   };
 
   return (
-    <div
-      className="login_background"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "120vh",
-      }}
-    >
-      <form
-        className="login_font"
-        style={{ display: "flex", flexDirection: "column" }}
-        onSubmit={onSubmitHandler}
-      >
-        <label
-          style={{
-            zIndex: "100",
-            position: "relative",
-            left: "-20px",
-
-            top: "30px",
-          }}
-        >
-          Email
-        </label>
-        <input
-          style={{
-            zIndex: "100",
-            position: "relative",
-            left: "-10px",
-            height: "20px",
-            borderRadius: "50px",
-            top: "30px",
-          }}
-          type="email"
-          value={Email}
-          onChange={onEmailHandler}
-        />
-        <label
-          style={{
-            zIndex: "100",
-            position: "relative",
-            left: "-20px",
-            top: "30px",
-          }}
-        >
-          Password
-        </label>
-        <input
-          style={{
-            zIndex: "100",
-            position: "relative",
-            left: "-10px",
-            height: "20px",
-            borderRadius: "50px",
-            top: "30px",
-          }}
-          type="password"
-          value={Password}
-          onChange={onPasswordHandler}
-        />
-        <br />
-        <button
-          style={{
-            zIndex: "100",
-            position: "relative",
-            left: "55px",
-            top: "20px",
-            width: "50px",
-            borderRadius: "30px",
-            background: "white",
-          }}
-          type="submit"
-        >
-          login
-        </button>
-      </form>
-    </div>
+    <SLayout>
+      <SForm onSubmit={onSubmitHandler}>
+        <SItemDiv>
+          <SLottieDiv>
+            <Lottie options={defaultOptions} height={400} width="100%" />
+            <h1>Welcome to HelloJeju</h1>
+          </SLottieDiv>
+          <SLoginDiv>
+            <h1>Login</h1>
+            <SDiv>
+              <SInput
+                name="email"
+                placeholder="email"
+                onChange={(event) =>
+                  OnChangeEvent(
+                    event.target.value,
+                    event.target.name,
+                    Email,
+                    setEmail
+                  )
+                }
+              />
+            </SDiv>
+            <SDiv>
+              <SInput
+                type="password"
+                name="password"
+                placeholder="password"
+                onChange={(event) =>
+                  OnChangeEvent(
+                    event.target.value,
+                    event.target.name,
+                    Password,
+                    setPassword
+                  )
+                }
+              />
+            </SDiv>
+            <SDiv>
+              <SButton type="submit">Login</SButton>
+            </SDiv>
+          </SLoginDiv>
+        </SItemDiv>
+      </SForm>
+    </SLayout>
   );
 };
 

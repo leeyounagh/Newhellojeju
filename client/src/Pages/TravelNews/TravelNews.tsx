@@ -1,6 +1,6 @@
 import React from "react";
 import Gallery from "../../components/travelnews/Gallery";
-import "./TravelNews.scss";
+
 import Recomendation from "../../components/travelnews/Recomendation";
 const TravelNews = () => {
   return (

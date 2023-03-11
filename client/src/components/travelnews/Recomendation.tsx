@@ -13,7 +13,6 @@ import {
 } from "@react-google-maps/api";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Scrollbars } from "react-custom-scrollbars-2";
-import "./Recomendation.scss";
 
 type MapData = {
   latitude: number;

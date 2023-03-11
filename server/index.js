@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 8080;
-
+const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -10,7 +10,13 @@ const contentRouter = require("./router/Contents");
 const communityRouter = require("./router/Community");
 
 require("dotenv").config();
-
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+    // optionsSuccessStatus: 200,
+  })
+);
 app.use("/static", express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

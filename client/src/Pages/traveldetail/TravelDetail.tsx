@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./TravelDetail.scss";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./TravelSpotPage.scss";
 
 const TravelSpotpage = () => {
   const [northhover, setnorthhover] = useState(false);

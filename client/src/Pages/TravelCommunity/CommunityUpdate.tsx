@@ -5,8 +5,6 @@ import { v4 } from "uuid";
 import { addcommunity } from "../../_actions/User_action";
 import axios from "axios";
 
-import "./Update.scss";
-
 const CommunityUpdate = (props: any) => {
   const [title, SetTitle] = useState("");
   const [desc, setDesc] = useState("");

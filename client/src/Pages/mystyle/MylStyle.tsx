@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./MyStyle.scss";
 import axios from "axios";
 
 const UserStyle = (props: any) => {

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import "./Good.scss";
+
 import { removeFromgood } from "../../_actions/User_action";
 import { HiTrash } from "react-icons/hi";
 

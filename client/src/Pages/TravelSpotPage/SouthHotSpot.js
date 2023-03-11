@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Card, Row, Col } from "antd";
+// import { Card, Row, Col } from "antd";
 import React, {
   useCallback,
   useEffect,
@@ -8,7 +8,6 @@ import React, {
   useState,
   createContext,
 } from "react";
-import "./NorthHotSpot.scss";
 import RadioBox from "../../components/travelspot/RadioBox";
 import { jejuSection } from "../../data/data";
 import Search from "../../components/travelspot/Search";
@@ -16,7 +15,7 @@ import { FaParachuteBox, FaArrowAltCircleUp } from "react-icons/fa";
 
 const mainUrl = `http://api.visitjeju.net/vsjApi/contents/searchList?apiKey=sbrr93ynwcggx6br&locale=kr`;
 
-const { Meta } = Card;
+// const { Meta } = Card;
 
 const SouthHotSpot = () => {
   const [loading, setLoading] = useState(false);
@@ -196,7 +195,7 @@ const SouthHotSpot = () => {
       </div>
 
       <div style={{ position: "absolute", top: "400px", left: "200px" }}>
-        <Row>
+        {/* <Row>
           {test
             .filter((val) => {
               if (searchTerm == "") {
@@ -238,7 +237,7 @@ const SouthHotSpot = () => {
                 </div>
               );
             })}
-        </Row>
+        </Row> */}
       </div>
       <div
         className="heart_all"

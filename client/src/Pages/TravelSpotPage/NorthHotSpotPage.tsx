@@ -1,7 +1,5 @@
 import axios from "axios";
-import { Card, Row, Col } from "antd";
 import React, { useEffect, useState } from "react";
-import "./NorthHotSpot.scss";
 import RadioBox from "../../components/travelspot/RadioBox";
 import { jejuSection } from "../../data/data";
 
@@ -9,7 +7,7 @@ import { FaArrowAltCircleUp } from "react-icons/fa";
 
 const mainUrl = `http://api.visitjeju.net/vsjApi/contents/searchList?apiKey=sbrr93ynwcggx6br&locale=kr`;
 
-const { Meta } = Card;
+// const { Meta } = Card;
 
 const NorthHotSpotPage = () => {
   const [loading, setLoading] = useState(false);

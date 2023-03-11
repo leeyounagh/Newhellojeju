@@ -5,7 +5,7 @@ import RegisterPage from "./Pages/registerpage/RegisterPage";
 import LoginPage from "./Pages/loginPage/LoginPage";
 import auth from "./hoc/auth";
 import StartPage from "./Pages/startpage/StartPage";
-import NavBar from "./components/navbar/NavBar";
+import NavBar from "./components/header/NavBar";
 import MyTravel from "./Pages/mytravel/MyTravel";
 import TravelCommunity from "./Pages/travelcommunity/TravelCommunity";
 import TravelSpotPage from "./Pages/travelspotpage/TravelSpotpage";
@@ -65,8 +65,8 @@ function App() {
             element={auth(CommunityUpdate, true)}
           ></Route>
 
-          <Route path="/register/" element={auth(RegisterPage, false)}></Route>
-          <Route path="/login/" element={auth(LoginPage, false)}></Route>
+          <Route path="/register" element={auth(RegisterPage, false)}></Route>
+          <Route path="/login" element={auth(LoginPage, false)}></Route>
         </Routes>
       </div>
     </div>

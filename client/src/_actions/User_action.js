@@ -11,18 +11,6 @@ import {
   REMOVE_SCHEDULE,
 } from "./types";
 
-export async function loginUser(dataToSubmit) {
-  const request = await axios
-    .post("/api/users/login", dataToSubmit)
-    .then((response) => response.data)
-    .catch((err) => console.log(err));
-
-  return {
-    type: LOGIN_USER,
-    payload: request,
-  };
-}
-
 export function registerUser(dataToSubmit) {
   const request = axios
     .post("/api/users/register", dataToSubmit)
@@ -36,7 +24,7 @@ export function registerUser(dataToSubmit) {
 
 export function auth() {
   const request = axios
-    .get("/api/users/auth")
+    .get("http://localhost:8080/api/users/auth")
     .then((response) => response.data);
   return {
     type: AUTH_USER,
