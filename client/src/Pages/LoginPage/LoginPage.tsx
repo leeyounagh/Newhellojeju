@@ -5,6 +5,7 @@ import styled from "styled-components";
 import animationData from "../../lotties/2523-loading.json";
 import Lottie from "react-lottie";
 import axios, { AxiosResponse } from "axios";
+import AxiosInstance from "../../data/AxiosInstance";
 
 const defaultOptions = {
   loop: true,
@@ -126,8 +127,8 @@ const LoginPage = () => {
     };
 
     try {
-      const response: AxiosResponse = await axios.post(
-        "http://localhost:8080/api/users/login",
+      const response: AxiosResponse = await AxiosInstance.post(
+        "/users/login",
         body
       );
       const data: AxiosResponse = await response.data.loginSuccess;
