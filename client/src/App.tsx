@@ -19,6 +19,8 @@ import MyscheduleDetail from "./Pages/myschedule/MyscheduleDetail";
 import CommunityUpdate from "./Pages/travelcommunity/CommunityUpdate";
 import CommunityDetail from "./Pages/travelcommunity/CommunityDetail";
 import UserTravelStyle from "./Pages/mystyle/MylStyle";
+import AxiosInstance from "./data/AxiosInstance";
+import { useEffect } from "react";
 
 function App() {
   const Header = () => {
@@ -26,47 +28,41 @@ function App() {
     return <NavBar></NavBar>;
   };
 
+  useEffect(() => {
+    AxiosInstance.get("/users/auth")
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="App">
       <div>
         <Header></Header>
 
         <Routes>
-          <Route path="/" element={auth(StartPage, null)} />
-          <Route path="/southspot" element={auth(SouthHotSpot, null)} />
-          <Route path="/northspot" element={auth(NorthHotSPot, null)} />
+          <Route path="/" element={<StartPage />} />
+          <Route path="/southspot" element={<SouthHotSpot />} />
+          <Route path="/northspot" element={<NorthHotSPot />} />
           <Route path="/landing" element={auth(LandingPage, null)} />
 
-          <Route path="/travelnews" element={auth(TravelNews, null)} />
-          <Route path="/mytravel" element={auth(MyTravel, true)} />
-          <Route path="/community" element={auth(TravelCommunity, true)} />
+          <Route path="/travelnews" element={<TravelNews />} />
+          <Route path="/mytravel" element={<MyTravel />} />
+          <Route path="/community" element={<TravelCommunity />} />
           <Route
             path="/community/:productId"
-            element={auth(CommunityDetail, null)}
+            element={<CommunityDetail />}
           ></Route>
-          <Route path="/travelspot" element={auth(TravelSpotPage, true)} />
-          <Route path="/myschedule" element={auth(Myschedule, true)} />
-          <Route path="/userstyle" element={auth(Good, true)} />
+          <Route path="/travelspot" element={<TravelSpotPage />} />
+          <Route path="/myschedule" element={<Myschedule />} />
+          <Route path="/userstyle" element={<Good />} />
 
-          <Route
-            path="/usertravelstyle"
-            element={auth(UserTravelStyle, true)}
-          ></Route>
-          <Route
-            path="/detail/:contentsId"
-            element={auth(TravelDetail, null)}
-          ></Route>
-          <Route
-            path="/mytravel/:id"
-            element={auth(MyscheduleDetail, null)}
-          ></Route>
-          <Route
-            path="/communityupdate"
-            element={auth(CommunityUpdate, true)}
-          ></Route>
+          <Route path="/usertravelstyle" element={<UserTravelStyle />}></Route>
+          <Route path="/detail/:contentsId" element={<TravelDetail />}></Route>
+          <Route path="/mytravel/:id" element={<MyscheduleDetail />}></Route>
+          <Route path="/communityupdate" element={<CommunityUpdate />}></Route>
 
-          <Route path="/register" element={auth(RegisterPage, false)}></Route>
-          <Route path="/login" element={auth(LoginPage, false)}></Route>
+          <Route path="/register" element={<RegisterPage />}></Route>
+          <Route path="/login" element={<LoginPage />}></Route>
         </Routes>
       </div>
     </div>

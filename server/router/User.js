@@ -1,24 +1,11 @@
 const express = require("express");
+const app = express();
 const router = express.Router();
 const { auth } = require("../middleware/auth");
 const { User } = require("../models/User");
+const cookieParser = require("cookie-parser");
 
-router.get("/auth", auth, (req, res) => {
-  res.status(200).json({
-    _id: req.user._id,
-    isAdmin: req.user.role === 0 ? false : true,
-    isAuth: true,
-    email: req.user.email,
-    name: req.user.name,
-    lastname: req.user.lastname,
-    role: req.user.role,
-    image: req.user.image,
-    good: req.user.good,
-    history: req.user.history,
-    schedule: req.user.schedule,
-    UserStyle: req.user.userStyle,
-  });
-});
+app.use(cookieParser());
 
 router.post("/register", async (req, res) => {
   const user = await new User(req.body);
@@ -51,7 +38,7 @@ router.post("/login", async (req, res, next) => {
           });
         user.generateToken((err, user) => {
           if (err) return res.status(400).send(err);
-
+          console.log("확인", user.token);
           res
             .cookie("x_auth", user.token)
             .status(200)
@@ -64,6 +51,22 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
+router.get("/auth", auth, (req, res) => {
+  res.status(200).json({
+    _id: req.user._id,
+    isAdmin: req.user.role === 0 ? false : true,
+    isAuth: true,
+    email: req.user.email,
+    name: req.user.name,
+    lastname: req.user.lastname,
+    role: req.user.role,
+    image: req.user.image,
+    good: req.user.good,
+    history: req.user.history,
+    schedule: req.user.schedule,
+    UserStyle: req.user.userStyle,
+  });
+});
 router.post("/addToGood", auth, async (req, res) => {
   const { _id } = req.user;
   const { contentsId, image, address, title } = req.body;

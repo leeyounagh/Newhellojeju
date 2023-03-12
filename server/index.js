@@ -8,6 +8,8 @@ const cookieParser = require("cookie-parser");
 const userRouter = require("./router/User");
 const contentRouter = require("./router/Contents");
 const communityRouter = require("./router/Community");
+const { auth } = require("./middleware/auth");
+const { User } = require("./models/User");
 
 require("dotenv").config();
 app.use(
@@ -29,7 +31,11 @@ mongoose
   .then(() => console.log("mongoDb connected"))
   .catch((err) => console.log(err));
 
-app.get("/", (req, res) => res.send("Hello world!"));
+// app.get("/", (req, res) => res.send("Hello world!"));
+
+app.get("/", function (req, res) {
+  console.log("Cookies: ", req.cookies);
+});
 
 app.use("/api/users", userRouter);
 app.use("/api/contents", contentRouter);

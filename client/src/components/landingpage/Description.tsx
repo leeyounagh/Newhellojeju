@@ -100,7 +100,7 @@ const Description = () => {
         {scroll === true ? (
           <>
             {showText ? <Title>제주도여행,</Title> : null}{" "}
-            <ItemText> HelloJeju와 함께 계획을 짜보아요.</ItemText>
+            <ItemText> HelloJeju와 함께 계획을 세워보아요.</ItemText>
           </>
         ) : null}
       </LottieContainer>

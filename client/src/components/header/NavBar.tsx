@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import LogoutNavbarElement from "../../data/Logout";
 import LoginNavbarElement from "../../data/Login";
+import AxiosInstance from "../../data/AxiosInstance";
 const SLayout = styled.header`
   width: 100vw;
   height: 10vh;
@@ -31,18 +32,19 @@ const NavBar = () => {
   const NaviGate = useNavigate();
 
   const logoutHandler = () => {
-    axios.get("/api/users/logout").then((response) => {
-      if (response.status === 200) {
-        NaviGate("/login");
-      } else {
-        alert("로그아웃에 실패했습니다.");
-      }
+    AxiosInstance.get("/users/logout").then((response) => {
+      console.log(response);
+      // if (response.status === 200) {
+      //   NaviGate("/login");
+      // } else {
+      //   alert("로그아웃에 실패했습니다.");
+      // }
     });
   };
 
   return (
     <SLayout>
-      {user.userData && !user.userData.isAuth
+      {/* {user.userData && !user.userData.isAuth
         ? LogoutNavbarElement.map((item) => {
             return (
               <Link to={item.link}>
@@ -56,7 +58,17 @@ const NavBar = () => {
                 <Link to={item.link}>{item.name}</Link>
               </Item>
             );
-          })}
+          })} */}
+      {LogoutNavbarElement.map((item) => {
+        return (
+          <div>
+            <Item>
+              <Link to={item.link}>{item.name}</Link>
+            </Item>
+          </div>
+        );
+      })}
+      <Item onClick={logoutHandler}>Logout</Item>
     </SLayout>
   );
 };

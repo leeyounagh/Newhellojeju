@@ -9,7 +9,10 @@ export default function (SpecificComponent, option, adminRoute = null) {
   //false => 로그인한 유저는 출입 불가능한페이지
 
   function AuthenticationCheck(props) {
+    // 여기서 auth를 받아오면될듯
+
     let user = useSelector((state) => state.user);
+    console.log(user);
     const dispatch = useDispatch();
     const NaviGate = useNavigate();
     const memorizenavigate = useCallback(() => {

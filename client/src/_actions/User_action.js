@@ -1,7 +1,7 @@
 import axios from "axios";
+import AxiosInstance from "../data/AxiosInstance";
 
 import {
-  LOGIN_USER,
   REGISTER_USER,
   AUTH_USER,
   Add_TO_GOOD,
@@ -13,7 +13,7 @@ import {
 
 export function registerUser(dataToSubmit) {
   const request = axios
-    .post("/api/users/register", dataToSubmit)
+    .post("/users/register", dataToSubmit)
     .then((response) => response.data);
 
   return {
@@ -23,9 +23,9 @@ export function registerUser(dataToSubmit) {
 }
 
 export function auth() {
-  const request = axios
-    .get("http://localhost:8080/api/users/auth")
-    .then((response) => response.data);
+  const request = AxiosInstance.get("/users/auth").then(
+    (response) => response.data
+  );
   return {
     type: AUTH_USER,
     payload: request,
