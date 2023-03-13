@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import LandingPage from "./Pages/landingPage/LandingPage";
 import RegisterPage from "./Pages/registerpage/RegisterPage";
 import LoginPage from "./Pages/loginPage/LoginPage";
-import auth from "./hoc/auth";
 import StartPage from "./Pages/startpage/StartPage";
 import NavBar from "./components/header/NavBar";
 import MyTravel from "./Pages/mytravel/MyTravel";
@@ -19,24 +18,37 @@ import MyscheduleDetail from "./Pages/myschedule/MyscheduleDetail";
 import CommunityUpdate from "./Pages/travelcommunity/CommunityUpdate";
 import CommunityDetail from "./Pages/travelcommunity/CommunityDetail";
 import UserTravelStyle from "./Pages/mystyle/MylStyle";
+import { setUserInformation } from "./slice/UserSlice";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 function App() {
-  const user = useSelector((state: any) => state.UserReducer);
+  const user = useSelector((state: any) => state.UserReducer.user);
+  const dispatch = useDispatch();
 
   console.log(user);
   const Header = () => {
-    if (window.location.pathname === "/") return null;
-    return <NavBar />;
+    if (window.location.pathname === "/") {
+      return null;
+    } else {
+      return <NavBar />;
+    }
   };
 
   useEffect(() => {
-    axios
-      .get("/api/users/auth")
-      .then((res) => console.log("확인", res))
-      .catch((err) => console.log(err));
+    getAuth();
+    async function getAuth() {
+      try {
+        let response = await axios.get("/api/users/auth");
+        let data = await response.data;
+        dispatch(setUserInformation(data));
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    Header();
   }, []);
 
   return (

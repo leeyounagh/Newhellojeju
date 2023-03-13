@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: String[] | any[] = [];
+const initialState: String | any = {
+  user: [],
+};
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     setUserInformation: (state, action) => {
-      state.push(action.payload);
+      state.user = [action.payload];
     },
   },
 });

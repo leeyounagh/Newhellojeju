@@ -1,34 +1,29 @@
-type LoginType ={
-    name:string;
-    link:string;
-}
+type LoginType = {
+  name: string;
+  link: string;
+};
 
+const LoginNavbarElement: LoginType[] = [
+  {
+    name: "TravelSpot",
+    link: "/travelspot",
+  },
+  {
+    name: "Travelnews",
+    link: "/travelspot",
+  },
+  {
+    name: "Community",
+    link: "/community",
+  },
+  {
+    name: "Good",
+    link: "/userstyle",
+  },
+  {
+    name: "Mytravel",
+    link: "/mytravel",
+  },
+];
 
-const LoginNavbarElement:LoginType[] = [
-    {
-      name: "TravelSpot",
-      link: "/travelspot",
-    },
-    {
-      name: "Travelnews",
-      link: "/travelspot",
-    },
-    {
-      name: "Community",
-      link: "/community",
-    },
-    {
-      name: "Good",
-      link: "/userstyle",
-    },
-    {
-      name: "Mytravel",
-      link: "/mytravel",
-    },
-    {
-        name: "Logout",
-        link: "/Logout",
-      },
-  ];
-  
-  export default LoginNavbarElement
+export default LoginNavbarElement;

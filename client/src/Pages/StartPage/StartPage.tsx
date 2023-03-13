@@ -17,9 +17,9 @@ const StartPage = () => {
 
   return (
     <Container>
-      <Link to="/landing">
+      <a href="/landing">
         <Title>Let's go Jeju...!</Title>
-      </Link>
+      </a>
 
       <Sky>
         <div className="container">{cloudRenderer()}</div>

@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { setUserInformation } from "../../slice/UserSlice";
 import styled from "styled-components";
 import LogoutNavbarElement from "../../data/Logout";
 import LoginNavbarElement from "../../data/Login";
@@ -25,49 +26,51 @@ const SLayout = styled.header`
 `;
 const Item = styled.div`
   z-index: 600;
+  color: #f3efe6;
+  text-decoration: none;
+  font-size: 1.8rem;
+  z-index: 800;
+  cursor: pointer;
 `;
 
 const NavBar = () => {
-  const user = useSelector((state: any) => state.user);
+  const user = useSelector((state: any) => state.UserReducer.user);
+  console.log();
   const NaviGate = useNavigate();
 
   const logoutHandler = () => {
-    axios.get("/users/logout").then((response) => {
-      console.log(response);
-      // if (response.status === 200) {
-      //   NaviGate("/login");
-      // } else {
-      //   alert("로그아웃에 실패했습니다.");
-      // }
+    axios.get("/api/users/logout").then((response) => {
+      if (response.status === 200) {
+        NaviGate("/login");
+        window.location.reload();
+      } else {
+        alert("로그아웃에 실패했습니다.");
+      }
     });
   };
 
   return (
     <SLayout>
-      {/* {user.userData && !user.userData.isAuth
-        ? LogoutNavbarElement.map((item) => {
+      {user?.[0]?.isAuth === true ? (
+        <>
+          {LoginNavbarElement.map((item) => {
             return (
               <Link to={item.link}>
                 <Item>{item.name}</Item>
               </Link>
             );
-          })
-        : LoginNavbarElement.map((item) => {
-            return (
-              <Item>
-                <Link to={item.link}>{item.name}</Link>
-              </Item>
-            );
-          })} */}
-      {LogoutNavbarElement.map((item) => {
-        return (
-          <div>
+          })}
+          <Item onClick={() => logoutHandler()}>Logout</Item>
+        </>
+      ) : (
+        LogoutNavbarElement.map((item) => {
+          return (
             <Item>
               <Link to={item.link}>{item.name}</Link>
             </Item>
-          </div>
-        );
-      })}
+          );
+        })
+      )}
     </SLayout>
   );
 };

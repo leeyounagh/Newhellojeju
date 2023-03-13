@@ -6,7 +6,6 @@ import animationData from "../../lotties/2523-loading.json";
 import Lottie from "react-lottie";
 import { setUserInformation } from "../../slice/UserSlice";
 import axios, { AxiosResponse } from "axios";
-import { useDispatch } from "react-redux";
 
 const defaultOptions = {
   loop: true,
@@ -112,7 +111,6 @@ interface EmailType {
 }
 
 const LoginPage = () => {
-  const dispatch = useDispatch();
   const NaviGate = useNavigate();
   const [Email, setEmail] = useState<EmailType | any>({ email: "" });
   const [Password, setPassword] = useState<PasswordType | any>({
@@ -133,12 +131,11 @@ const LoginPage = () => {
         "/api/users/login",
         body
       );
-      const data: AxiosResponse = await response.data.userId;
       const status: AxiosResponse = await response.data.loginSuccess;
 
       if (status) {
-        dispatch(setUserInformation(data));
         NaviGate("/landing");
+        window.location.reload();
       } else {
         alert("Error˝");
       }
