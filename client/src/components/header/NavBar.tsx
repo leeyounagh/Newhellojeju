@@ -35,7 +35,7 @@ const Item = styled.div`
 
 const NavBar = () => {
   const user = useSelector((state: any) => state.UserReducer.user);
-  console.log();
+  console.log(user);
   const NaviGate = useNavigate();
 
   const logoutHandler = () => {

@@ -23,9 +23,10 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { RootState } from "./store/store";
 
 function App() {
-  const user = useSelector((state: any) => state.UserReducer.user);
+  const user = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
 
   console.log(user);
