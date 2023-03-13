@@ -1,148 +1,236 @@
-import { useDispatch } from "react-redux";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import animationData from "../../lotties/139259-girl-with-suitcase.json";
+import styled from "styled-components";
+import Lottie from "react-lottie";
+import OnChangeEvent from "../../utils/OnChangeEvent";
+import axios from "axios";
+
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: animationData,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
+
+const SLayout = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const SForm = styled.form`
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+`;
+const SItemDiv = styled.div`
+  display: flex;
+  width: 50%;
+  height: 100%;
+  padding-top: 50px;
+`;
+const SLottieDiv = styled.div`
+  width: 80%;
+  height: 100%;
+  text-align: center;
+  margin-right: 10px;
+  h1 {
+    margin-top: 30px;
+    white-space: nowrap;
+  }
+`;
+const SLoginDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  h1 {
+    margin-bottom: 30px;
+    white-space: nowrap;
+  }
+  margin-left: 10px;
+`;
+const SInput = styled.input`
+  height: 60px;
+  width: 400px;
+  border-radius: 10px;
+  font-size: 20px;
+  padding-left: 10px;
+  outline: none !important;
+  border-color: #89a6ae;
+  -webkit-appearance: none;
+
+  -moz-appearance: none;
+
+  appearance: none;
+`;
+const SButton = styled.button`
+  height: 60px;
+  width: 400px;
+  color: #f3efe6;
+  border-radius: 10px;
+  background-color: #333333;
+  font-weight: 900;
+  font-size: 20px;
+  cursor: pointer;
+  &:hover {
+    background: #89a6ae;
+  }
+  -webkit-appearance: none;
+
+  -moz-appearance: none;
+
+  appearance: none;
+  border: 0;
+  outline: 0;
+`;
+const SDiv = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+`;
+
+interface PasswordType {
+  password: string;
+}
+
+interface ConfirmPasswordType {
+  confirmpassword: string;
+}
+interface EmailType {
+  email?: string;
+}
+interface NameType {
+  name?: string;
+}
 
 const RegisterPage = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
-  const [Name, setName] = useState("");
-  const [confirmPassword, setconfirmPassword] = useState("");
+  const [Email, setEmail] = useState<EmailType | any>({ email: "" });
+  const [Password, setPassword] = useState<PasswordType | any>({
+    password: "",
+  });
+  const [confirmPassword, setconfirmPassword] = useState<
+    ConfirmPasswordType | any
+  >({
+    confirmpassword: "",
+  });
+  const [Name, setName] = useState<NameType | any>({
+    name: "",
+  });
 
-  const onEmailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.currentTarget.value);
-  };
-  const onPasswordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.currentTarget.value);
-  };
-  const onNameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.currentTarget.value);
-  };
-
-  const onConfimPasswordHandler = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setconfirmPassword(event.currentTarget.value);
-  };
-  const onSubmitHandler = (event: any) => {
+  const onSubmitHandler = async (event: any) => {
     event.preventDefault();
+    const { email } = Email;
+    const { password } = Password;
+    const { name } = Name;
+    const { confirmpassword } = confirmPassword;
 
-    if (Password !== confirmPassword) {
+    if (password !== confirmpassword) {
       return alert("비밀번호와 비밀번호 확인은 같아야 합니다.");
     }
 
     let body = {
-      email: Email,
-      password: Password,
-      name: Name,
+      email: email,
+      password: password,
+      name: name,
     };
     try {
-      navigate("/login");
+      const response = await axios.post("/api/users/register", body);
+      const status = await response.status;
+
+      if (status === 200) {
+        navigate("/login");
+      }
     } catch (err) {
       alert(err);
     }
   };
 
   return (
-    <div
-      className="regi_font"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "100vh",
-        position: "relative",
-        left: "0px",
-        background: "#dcf0fa",
-      }}
-    >
-      <form
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          position: "relative",
-          left: "450px",
-          top: "-20px",
-        }}
-        onSubmit={onSubmitHandler}
-      >
-        <label style={{ zIndex: "50" }}>Email</label>
-        <input
-          style={{
-            zIndex: "50",
-            borderRadius: "50px",
-            border: "none",
-            marginLeft: "5px",
-          }}
-          type="email"
-          value={Email}
-          onChange={onEmailHandler}
-        />
-
-        <label style={{ zIndex: "50" }}>Name</label>
-        <input
-          style={{
-            zIndex: "50",
-            borderRadius: "50px",
-            border: "none",
-            marginLeft: "5px",
-          }}
-          type="text"
-          value={Name}
-          onChange={onNameHandler}
-        />
-
-        <label style={{ zIndex: "50" }}>Password</label>
-        <input
-          style={{
-            zIndex: "50",
-            borderRadius: "50px",
-            border: "none",
-            marginLeft: "5px",
-          }}
-          type="password"
-          value={Password}
-          onChange={onPasswordHandler}
-        />
-
-        <label style={{ zIndex: "50" }}>Confirm Password</label>
-        <input
-          style={{
-            zIndex: "50",
-            borderRadius: "50px",
-            border: "none",
-            marginLeft: "5px",
-          }}
-          type="password"
-          value={confirmPassword}
-          onChange={onConfimPasswordHandler}
-        />
-        <br />
-        <button
-          style={{
-            zIndex: "50",
-            borderRadius: "50px",
-            border: "none",
-            width: "100px",
-            position: "relative",
-            left: "60px",
-            background: "white",
-          }}
-          type="submit"
-        >
-          회원가입
-        </button>
-      </form>
-
-      <div
-        style={{ position: "relative", left: "50px" }}
-        className="spring"
-        role="img"
-        aria-label="Animated cartoon showing a sunny scene with a field with flowers and a flying bee."
-      ></div>
-    </div>
+    <SLayout>
+      <SForm onSubmit={onSubmitHandler}>
+        <SItemDiv>
+          <SLottieDiv>
+            <Lottie options={defaultOptions} height={400} width="80%" />
+            <h1>Come with HelloJeju</h1>
+          </SLottieDiv>
+          <SLoginDiv>
+            <h1>Register</h1>
+            <SDiv>
+              <SInput
+                name="name"
+                placeholder="name"
+                onChange={(event) => {
+                  OnChangeEvent(
+                    event.target.value,
+                    event.target.name,
+                    Name,
+                    setName
+                  );
+                }}
+              />
+            </SDiv>
+            <SDiv>
+              <SInput
+                type="email"
+                name="email"
+                placeholder="email"
+                onChange={(event) => {
+                  OnChangeEvent(
+                    event.target.value,
+                    event.target.name,
+                    Email,
+                    setEmail
+                  );
+                }}
+              />
+            </SDiv>
+            <SDiv>
+              <SInput
+                type="password"
+                name="password"
+                placeholder="password"
+                onChange={(event) =>
+                  OnChangeEvent(
+                    event.target.value,
+                    event.target.name,
+                    Password,
+                    setPassword
+                  )
+                }
+              />
+            </SDiv>
+            <SDiv>
+              <SInput
+                type="confirmpassword"
+                name="confirmpassword"
+                placeholder="confirmpassword"
+                onChange={(event) =>
+                  OnChangeEvent(
+                    event.target.value,
+                    event.target.name,
+                    confirmPassword,
+                    setconfirmPassword
+                  )
+                }
+              />
+            </SDiv>
+            <SDiv>
+              <SButton type="submit">Register</SButton>
+            </SDiv>
+          </SLoginDiv>
+        </SItemDiv>
+      </SForm>
+    </SLayout>
   );
 };
 

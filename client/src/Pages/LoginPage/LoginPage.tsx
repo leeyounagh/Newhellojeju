@@ -4,7 +4,6 @@ import OnChangeEvent from "../../utils/OnChangeEvent";
 import styled from "styled-components";
 import animationData from "../../lotties/2523-loading.json";
 import Lottie from "react-lottie";
-import { setUserInformation } from "../../slice/UserSlice";
 import axios, { AxiosResponse } from "axios";
 
 const defaultOptions = {

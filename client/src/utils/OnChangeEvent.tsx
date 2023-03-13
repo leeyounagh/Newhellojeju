@@ -4,7 +4,6 @@ const OnChangeEvent = (
   data: String,
   setData: any
 ) => {
-  console.log(value, name);
   const newData = {
     ...data,
     [name]: value,

@@ -5,6 +5,7 @@ import { setUserInformation } from "../../slice/UserSlice";
 import styled from "styled-components";
 import LogoutNavbarElement from "../../data/Logout";
 import LoginNavbarElement from "../../data/Login";
+import { RootState } from "../../store/store";
 
 const SLayout = styled.header`
   width: 100vw;
@@ -34,7 +35,7 @@ const Item = styled.div`
 `;
 
 const NavBar = () => {
-  const user = useSelector((state: any) => state.UserReducer.user);
+  const user = useSelector((state: RootState) => state.UserReducer.user);
   console.log(user);
   const NaviGate = useNavigate();
 
