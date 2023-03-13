@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
-import { addschedule } from "../../_actions/User_action";
 import { DateRange } from "react-date-range";
 import { v4 } from "uuid";
 const UUID = require("uuid-int");
@@ -56,7 +55,6 @@ const Myschedule = (props) => {
       id: v4(),
     };
 
-    dispatch(addschedule(body));
     NaviGate("/mytravel");
   };
 

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Dropzone from "react-dropzone";
 import { useDispatch } from "react-redux";
 import { v4 } from "uuid";
-import { addcommunity } from "../../_actions/User_action";
 import axios from "axios";
 
 const CommunityUpdate = (props: any) => {
@@ -30,8 +29,6 @@ const CommunityUpdate = (props: any) => {
       images: images,
       id: v4(),
     };
-
-    dispatch(addcommunity(body));
   };
 
   const onDropHandler = (files: any) => {

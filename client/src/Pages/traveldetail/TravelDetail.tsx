@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { addToGood } from "../../_actions/User_action";
 import { GiCrownedHeart } from "react-icons/gi";
 
 const TravelDetail = () => {
@@ -25,16 +24,7 @@ const TravelDetail = () => {
     }
   }, []);
 
-  const ClickHandler = () => {
-    dispatch(
-      addToGood(
-        newdata[0].contentsid,
-        newdata[0].repPhoto.photoid.imgpath,
-        newdata[0].address,
-        newdata[0].title
-      )
-    );
-  };
+  const ClickHandler = () => {};
 
   return (
     <div className="travelDetail" style={{ height: "720px" }}>

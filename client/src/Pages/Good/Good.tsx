@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { removeFromgood } from "../../_actions/User_action";
 import { HiTrash } from "react-icons/hi";
 
 type GoodObj = {
@@ -19,7 +18,6 @@ const UserStyle = (props: any) => {
 
   let removeHandler = (contentsId: string | number) => {
     try {
-      dispatch(removeFromgood(contentsId));
     } catch (err) {
       console.log(err);
     }

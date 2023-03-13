@@ -5,7 +5,6 @@ import { BsCalendarPlusFill } from "react-icons/bs";
 import MyscheduleDetail from "../myschedule/MyscheduleDetail";
 import { BsFillTrashFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { removeforschedule } from "../../_actions/User_action";
 
 type Data = {
   title: string;
@@ -25,7 +24,6 @@ const MyTravelUpdate = (props: any) => {
   }, []);
   const removeHandler = (scheduleId: string) => {
     try {
-      dispatch(removeforschedule(scheduleId));
     } catch (err) {
       console.log(err);
     }

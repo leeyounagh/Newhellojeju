@@ -19,18 +19,23 @@ import MyscheduleDetail from "./Pages/myschedule/MyscheduleDetail";
 import CommunityUpdate from "./Pages/travelcommunity/CommunityUpdate";
 import CommunityDetail from "./Pages/travelcommunity/CommunityDetail";
 import UserTravelStyle from "./Pages/mystyle/MylStyle";
-import AxiosInstance from "./data/AxiosInstance";
+import axios from "axios";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function App() {
+  const user = useSelector((state: any) => state.UserReducer);
+
+  console.log(user);
   const Header = () => {
     if (window.location.pathname === "/") return null;
-    return <NavBar></NavBar>;
+    return <NavBar />;
   };
 
   useEffect(() => {
-    AxiosInstance.get("/users/auth")
-      .then((res) => console.log(res))
+    axios
+      .get("/api/users/auth")
+      .then((res) => console.log("확인", res))
       .catch((err) => console.log(err));
   }, []);
 
@@ -43,7 +48,7 @@ function App() {
           <Route path="/" element={<StartPage />} />
           <Route path="/southspot" element={<SouthHotSpot />} />
           <Route path="/northspot" element={<NorthHotSPot />} />
-          <Route path="/landing" element={auth(LandingPage, null)} />
+          <Route path="/landing" element={<LandingPage />} />
 
           <Route path="/travelnews" element={<TravelNews />} />
           <Route path="/mytravel" element={<MyTravel />} />

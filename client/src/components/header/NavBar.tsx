@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import LogoutNavbarElement from "../../data/Logout";
 import LoginNavbarElement from "../../data/Login";
-import AxiosInstance from "../../data/AxiosInstance";
+
 const SLayout = styled.header`
   width: 100vw;
   height: 10vh;
@@ -32,7 +32,7 @@ const NavBar = () => {
   const NaviGate = useNavigate();
 
   const logoutHandler = () => {
-    AxiosInstance.get("/users/logout").then((response) => {
+    axios.get("/users/logout").then((response) => {
       console.log(response);
       // if (response.status === 200) {
       //   NaviGate("/login");
@@ -68,7 +68,6 @@ const NavBar = () => {
           </div>
         );
       })}
-      <Item onClick={logoutHandler}>Logout</Item>
     </SLayout>
   );
 };

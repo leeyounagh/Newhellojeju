@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import { registerUser } from "../../_actions/User_action";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -39,7 +38,6 @@ const RegisterPage = () => {
       name: Name,
     };
     try {
-      dispatch(registerUser(body));
       navigate("/login");
     } catch (err) {
       alert(err);
