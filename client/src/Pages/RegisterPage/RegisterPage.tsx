@@ -66,9 +66,7 @@ const SInput = styled.input`
   outline: none !important;
   border-color: #89a6ae;
   -webkit-appearance: none;
-
   -moz-appearance: none;
-
   appearance: none;
 `;
 const SButton = styled.button`
@@ -84,9 +82,7 @@ const SButton = styled.button`
     background: #89a6ae;
   }
   -webkit-appearance: none;
-
   -moz-appearance: none;
-
   appearance: none;
   border: 0;
   outline: 0;

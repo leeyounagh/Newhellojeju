@@ -5,6 +5,10 @@ type LoginType = {
 
 const LoginNavbarElement: LoginType[] = [
   {
+    name: "Home",
+    link: "/landing",
+  },
+  {
     name: "TravelSpot",
     link: "/travelspot",
   },

@@ -11,7 +11,7 @@ const defaultOptions = {
     preserveAspectRatio: "xMidYMid slice",
   },
 };
-const LogoContainer = styled.section`
+const SLayout = styled.section`
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -28,20 +28,20 @@ const Logo = styled.article`
   text-align: center;
   font-size: 100px;
 `;
-const LogoInnerContainer = styled.div`
+const SLogoDiv = styled.div`
   width: 50%;
   height: 60%;
 `;
 const LandingLogo = () => {
   return (
-    <LogoContainer>
-      <LogoInnerContainer>
+    <SLayout>
+      <SLogoDiv>
         <Logo>HelloJeju</Logo>
         <Logo>
           <Lottie options={defaultOptions} height={500} width={500} />
         </Logo>
-      </LogoInnerContainer>
-    </LogoContainer>
+      </SLogoDiv>
+    </SLayout>
   );
 };
 
