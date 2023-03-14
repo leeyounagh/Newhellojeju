@@ -14,15 +14,11 @@ const LoginNavbarElement: LoginType[] = [
   },
   {
     name: "Travelnews",
-    link: "/travelspot",
+    link: "/travelnews",
   },
   {
     name: "Community",
     link: "/community",
-  },
-  {
-    name: "Good",
-    link: "/userstyle",
   },
   {
     name: "Mytravel",

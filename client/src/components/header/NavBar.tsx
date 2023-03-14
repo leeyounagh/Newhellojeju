@@ -25,13 +25,18 @@ const SLayout = styled.header`
     z-index: 800;
   }
 `;
-const Item = styled.div`
+const SItem = styled.div`
   z-index: 600;
   color: #f3efe6;
   text-decoration: none;
   font-size: 1.8rem;
   z-index: 800;
   cursor: pointer;
+`;
+const SInnerDiv = styled.div`
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
 `;
 
 const NavBar = () => {
@@ -52,26 +57,28 @@ const NavBar = () => {
 
   return (
     <SLayout>
-      {user?.[0]?.isAuth === true ? (
-        <>
-          {LoginNavbarElement.map((item) => {
+      <SInnerDiv>
+        {user?.[0]?.isAuth === true ? (
+          <>
+            {LoginNavbarElement.map((item) => {
+              return (
+                <Link to={item.link}>
+                  <SItem>{item.name}</SItem>
+                </Link>
+              );
+            })}
+            <SItem onClick={() => logoutHandler()}>Logout</SItem>
+          </>
+        ) : (
+          LogoutNavbarElement.map((item) => {
             return (
-              <Link to={item.link}>
-                <Item>{item.name}</Item>
-              </Link>
+              <SItem>
+                <Link to={item.link}>{item.name}</Link>
+              </SItem>
             );
-          })}
-          <Item onClick={() => logoutHandler()}>Logout</Item>
-        </>
-      ) : (
-        LogoutNavbarElement.map((item) => {
-          return (
-            <Item>
-              <Link to={item.link}>{item.name}</Link>
-            </Item>
-          );
-        })
-      )}
+          })
+        )}
+      </SInnerDiv>
     </SLayout>
   );
 };

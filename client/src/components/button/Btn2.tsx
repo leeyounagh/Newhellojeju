@@ -26,8 +26,10 @@ const SBtn2 = styled.button`
     border: 1px solid ${color.main};
     color: ${color.main};
 `;
-
-function Btn2({ title }: any) {
+type TitleType = {
+  title: String;
+};
+function Btn2({ title }: TitleType) {
   return (
     <Slayout>
       <SBtn2>{title}</SBtn2>

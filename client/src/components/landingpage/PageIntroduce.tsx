@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Btn1 from "../button/Btn1";
 
 const SLayout = styled.section`
   width: 100vw;
@@ -33,6 +34,8 @@ const SFirstCardDiv = styled.div`
     opacity: 0;
     position: absolute;
     top: 0;
+    display: flex;
+    flex-direction: column;
   }
   &:hover {
     .title1 {
@@ -71,6 +74,8 @@ const SSecondCardDiv = styled.div`
     opacity: 0;
     position: absolute;
     top: 0;
+    display: flex;
+    flex-direction: column;
   }
   &:hover {
     .title2 {
@@ -109,6 +114,8 @@ const SThirdCardDiv = styled.div`
     opacity: 0;
     position: absolute;
     top: 0;
+    display: flex;
+    flex-direction: column;
   }
   &:hover {
     .title3 {
@@ -147,6 +154,8 @@ const SFourthCardDiv = styled.div`
     opacity: 0;
     position: absolute;
     top: 0;
+    display: flex;
+    flex-direction: column;
   }
   &:hover {
     .title4 {
@@ -168,61 +177,68 @@ const SFourthCardDiv = styled.div`
     }
   }
 `;
+const SBtnDiv = styled.div`
+  width: 50%;
+  margin-top: 10px;
+`;
 const LandingIndroduce = () => {
   return (
     <SLayout>
       <SItemDiv>
         <SFirstCardDiv>
-          <h2 className="title1" style={{ whiteSpace: "nowrap" }}>
-            Travel Spot
-          </h2>
-          <Link to="/travelspot">
-            <div className="hover-text1">
-              <p>
-                제주도는 북쪽으로는 제주시, 남쪽에는 서귀포시로 나누어져
-                있습니다. 각지역별 맛집,관광지,호텔,쇼핑스팟까지 한눈에 보며,
-                관심있는 곳은 찜해두고 여행계획에 추가해보아요!
-              </p>
-            </div>
-          </Link>
+          <h2 className="title1">Travel Spot</h2>
+          <div className="hover-text1">
+            <p>
+              제주도는 북쪽으로는 제주시, 남쪽에는 서귀포시로 나누어져 있습니다.
+              각지역별 맛집,관광지,호텔,쇼핑스팟까지 한눈에 보며, 관심있는 곳은
+              찜해두고 여행계획에 추가해보아요!
+            </p>
+            <SBtnDiv>
+              <Link to="/travelspot">
+                <Btn1 title="바로가기" />
+              </Link>
+            </SBtnDiv>
+          </div>
         </SFirstCardDiv>
-
         <SSecondCardDiv>
-          <h2 className="title2" style={{ whiteSpace: "nowrap" }}>
-            News
-          </h2>
-          <Link to="/travelnews">
-            <div className="hover-text2">
-              <p>
-                에디터가 추천해주는 제주 스팟들과 Hello Jeju 추천
-                관광지,맛집,쇼핑스팟,호텔을 지도와 함께 위치를 확인하며 계획에
-                추가해보세요!
-              </p>
-            </div>
-          </Link>
+          <h2 className="title2">News</h2>
+          <div className="hover-text2">
+            <p>
+              에디터가 추천해주는 제주 스팟들과 Hello Jeju 추천
+              관광지,맛집,쇼핑스팟,호텔을 지도와 함께 위치를 확인하며 계획에
+              추가해보세요!
+            </p>
+            <SBtnDiv>
+              <Link to="/travelnews">
+                <Btn1 title="바로가기" />
+              </Link>
+            </SBtnDiv>
+          </div>
         </SSecondCardDiv>
         <SThirdCardDiv>
-          <h2 className="title3" style={{ whiteSpace: "nowrap" }}>
-            Community
-          </h2>
-          <Link to="/community">
-            <div className="hover-text3">
-              <p>
-                Hello Jeju 유저들과 제주여행 정보 공유하고, 서로 소통하며 더욱더
-                Hello Jeju를 즐겨보세요!
-              </p>
-            </div>
-          </Link>
+          <h2 className="title3">Community</h2>
+          <div className="hover-text3">
+            <p>
+              Hello Jeju 유저들과 제주여행 정보 공유하고, 서로 소통하며 더욱더
+              Hello Jeju를 즐겨보세요!
+            </p>
+            <SBtnDiv>
+              <Link to="/community">
+                <Btn1 title="바로가기" />
+              </Link>
+            </SBtnDiv>
+          </div>
         </SThirdCardDiv>
         <SFourthCardDiv>
-          <h2 className="title4" style={{ whiteSpace: "nowrap" }}>
-            My Travel
-          </h2>
-          <Link to="/mytravel">
-            <div className="hover-text4">
-              <p>당신의 제주 여행 계획을 세워보세요!</p>
-            </div>
-          </Link>
+          <h2 className="title4">My Travel</h2>
+          <div className="hover-text4">
+            <p>당신의 제주 여행 계획을 세워보세요!</p>
+            <SBtnDiv>
+              <Link to="/mytravel">
+                <Btn1 title="바로가기" />
+              </Link>
+            </SBtnDiv>
+          </div>
         </SFourthCardDiv>
       </SItemDiv>
     </SLayout>

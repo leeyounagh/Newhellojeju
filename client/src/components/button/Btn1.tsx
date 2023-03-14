@@ -3,43 +3,40 @@ import styled from "styled-components";
 import color from "../../styles/colors";
 
 const Slayout = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const SInput = styled.input`
-  border-radius: 10px;
-  background-color: ${color.white};
-  width: 410px;
+  width: 100%;
   height: 50px;
-  padding-left: 24px;
-  border-radius: 16px;
-  border: solid 1px ${color.gray4};
-  background-color: ${color.white};
-  outline-color: ${color.main};
 `;
 
-function Input(props: any) {
-  const { _onChange, placeholder, name, value } = props;
+const SBtn1 = styled.button`
+  width: 100%;
+  height: 100%;
+  background-color: ${color.gray1};
+  color: ${color.white};
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
 
+  &:active {
+    background: ${color.gray3};
+  }
+
+  &:hover {
+    background: ${color.main};
+  }
+`;
+
+type TitleType = {
+  title: String;
+};
+
+function Btn1({ title }: TitleType) {
   return (
     <Slayout>
-      <SInput
-        placeholder={placeholder}
-        onChange={_onChange}
-        name={name}
-        value={value}
-      />
+      <SBtn1>{title}</SBtn1>
     </Slayout>
   );
 }
 
-Input.defaultProps = {
-  _onChange: () => {},
-  placeholder: "입력해주세요",
-  name: "",
-  value: "",
-};
-
-export default Input;
+export default Btn1;
