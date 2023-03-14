@@ -11,7 +11,7 @@ import TravelSpotPage from "./Pages/travelspotpage/TravelSpotpage";
 import TravelNews from "./Pages/travelnews/TravelNews";
 import Good from "./Pages/good/Good";
 import NorthHotSPot from "./Pages/northhotspot/NorthHotSpotPage";
-import SouthHotSpot from "./Pages/southhotspot/SouthHotSpot";
+import SouthHotSpot from "./Pages/southhotspot/SouthHotSpotPage";
 import TravelDetail from "./Pages/traveldetail/TravelDetail";
 import Myschedule from "./Pages/myschedule/Myschedule";
 import MyscheduleDetail from "./Pages/myschedule/MyscheduleDetail";
@@ -22,14 +22,10 @@ import { setUserInformation } from "./slice/UserSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "./store/store";
 
 function App() {
-  const user = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
 
-  console.log(user);
   const Header = () => {
     if (window.location.pathname === "/") {
       return null;

@@ -1,34 +1,29 @@
 import React, { useState } from "react";
+import styled from "styled-components";
+import { FaSearch } from "@react-icons/all-files/fa/FaSearch";
 
-const Search = (props: any) => {
-  const [searchTerm, setSearchTerm] = useState("");
+const SLayout = styled.div`
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const SInput = styled.input`
+  width: 80%;
+  height: 60%;
+  border-radius: 50px;
+  padding-left: 20px;
+  font-size: 20px;
+  border: solid 1px lightgray;
+`;
 
-  const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setSearchTerm(e.target.value);
-    props.SearchHandler(searchTerm);
-  };
+const Search = () => {
   return (
-    <div>
-      <span>
-        <span>
-          <input
-            style={{
-              position: "relative",
-              left: "850px",
-              top: "270px",
-              height: "30px",
-            }}
-            type="text"
-            placeholder="검색.."
-            onChange={(e) => {
-              onChangeSearch(e);
-            }}
-          ></input>
-        </span>
-      </span>
-      <div className="search-border"></div>
-    </div>
+    <SLayout>
+      <SInput placeholder="Search" />
+      <FaSearch style={{ marginLeft: "10px", cursor: "pointer" }} size={30} />
+    </SLayout>
   );
 };
 
