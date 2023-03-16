@@ -4,16 +4,14 @@ import styled from "styled-components";
 import Filters from "../../components/travelspot/Filters";
 import Search from "../../components/travelspot/Search";
 import Card from "../../components/travelspot/Card";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const { REACT_APP_VisitJeju_KEY } = process.env;
 
-const mainUrl = `http://api.visitjeju.net/vsjApi/contents/searchList?apiKey=${REACT_APP_VisitJeju_KEY}&locale=kr`;
-
 const SLayout = styled.div`
   width: 100vw;
-
   margin-top: 100px;
-
   vertical-align: text-bottom;
   h1 {
     display: flex;
@@ -38,19 +36,32 @@ const SInnerDiv = styled.div`
   width: 80%;
   padding-top: 30px;
 `;
-const SouthHotSpotPage = () => {
-  const [southData, setSouthData] = useState<String[]>([]);
+
+const NorthHotSpotPage = () => {
+  const contentId = useSelector(
+    (state: RootState) => state.ContentReducer.content
+  );
+
+  const [northData, setNorthData] = useState<String[] | any[]>([]);
+  const mainUrl = `http://api.visitjeju.net/vsjApi/contents/searchList?apiKey=${REACT_APP_VisitJeju_KEY}&locale=kr&category=${contentId}`;
+
   useEffect(() => {
     async function getData() {
-      const response = await axios.get(`${mainUrl}`);
-      const data = await response.data;
-      setSouthData(data);
+      try {
+        const response = await axios.get(`${mainUrl}`);
+        const data = await response.data.items;
+
+        setNorthData(
+          data.filter((item: any) => item?.region1cd?.label === "서귀포시")
+        );
+      } catch (err) {
+        console.log(err);
+      }
     }
     getData();
-    console.log(southData);
-  }, []);
+  }, [contentId, mainUrl]);
 
-  //  서귀포시
+  //제주시
   return (
     <SLayout>
       <h1>서귀포시</h1>
@@ -60,9 +71,9 @@ const SouthHotSpotPage = () => {
           <Filters />
         </SInnerDiv>
       </SFilterDiv>
-      <Card data={southData} />
+      <Card data={northData} />
     </SLayout>
   );
 };
 
-export default React.memo(SouthHotSpotPage);
+export default React.memo(NorthHotSpotPage);

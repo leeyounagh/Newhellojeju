@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import useDebounce from "../../utils/useDebounce";
 import { Link } from "react-router-dom";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const SLayout = styled.div`
   width: 100%;

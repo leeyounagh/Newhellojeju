@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { GiCrownedHeart } from "react-icons/gi";
 import styled from "styled-components";
-import color from "../../styles/colors";
-
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 const { REACT_APP_VisitJeju_KEY } = process.env;
 
 const SLayout = styled.div`
@@ -44,7 +44,7 @@ const STitleDiv = styled.div`
   color: white;
   width: 100%;
   text-align: center;
-  font-size: 40px;
+  font-size: 2rem;
   margin-top: 100px;
   h1 {
     margin-bottom: 50px;
@@ -98,7 +98,6 @@ const SIconDiv = styled.div`
   margin-bottom: 10px;
 `;
 const SDescInnerDiv = styled.div`
-  border: 1px solid white;
   width: 70%;
   height: 70%;
   display: flex;
@@ -109,6 +108,7 @@ const SDescInnerDiv = styled.div`
 `;
 
 const TravelDetail = () => {
+  const user = useSelector((state: RootState) => state.UserReducer.user);
   const { contentsId } = useParams();
   const [newdata, setNewData] = useState<string[] | any[]>([]);
   const mainUrl = `http://api.visitjeju.net/vsjApi/contents/searchList?apiKey=${REACT_APP_VisitJeju_KEY}&locale=kr&cid=${contentsId}`;
@@ -127,6 +127,24 @@ const TravelDetail = () => {
     getData();
   }, []);
 
+  const handleAddGood = async () => {
+    const body = {
+      contentsId: newdata[0].contentsid,
+      image: newdata[0].repPhoto.photoid.imgpath,
+      address: newdata[0].address,
+      title: newdata[0].title,
+    };
+    try {
+      const response = await axios.post("/api/users/addToGood", body);
+      const status = await response.status;
+      if (status === 200) {
+        window.confirm("찜목록에 추가 되었습니다.");
+      }
+    } catch (err) {
+      alert("실패했습니다.");
+      console.log(err);
+    }
+  };
   return (
     <SLayout>
       <SImgDiv>
@@ -161,7 +179,13 @@ const TravelDetail = () => {
             <SItemDiv>
               <h3>찜하기</h3>
               {/* 유저일때 아닐때 나눠서 */}
-              <GiCrownedHeart size={50} />
+              {user?.[0]?.isAuth === true ? (
+                <GiCrownedHeart
+                  onClick={handleAddGood}
+                  style={{ cursor: "pointer" }}
+                  size={50}
+                />
+              ) : null}
             </SItemDiv>
           </SIconDiv>
         </SDescInnerDiv>

@@ -1,9 +1,9 @@
-const OnChangeEvent = (
+const OnChangeEvent = <T>(
   value: String,
   name: string,
   data: String,
-  setData: any
-) => {
+  setData: T | any
+): T => {
   const newData = {
     ...data,
     [name]: value,

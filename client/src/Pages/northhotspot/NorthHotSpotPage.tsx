@@ -50,6 +50,7 @@ const NorthHotSpotPage = () => {
       try {
         const response = await axios.get(`${mainUrl}`);
         const data = await response.data.items;
+
         setNorthData(
           data.filter((item: any) => item.region1cd.label === "제주시")
         );
