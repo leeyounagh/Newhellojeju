@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import useDebounce from "../../utils/useDebounce";
+import { Link } from "react-router-dom";
 
 const SLayout = styled.div`
   width: 100%;
@@ -22,6 +23,10 @@ const SItemDiv = styled.div`
   }
   h4 {
     margin-top: 30px;
+  }
+  a {
+    text-decoration: none;
+    color: black;
   }
 `;
 const SInnerDiv = styled.div`
@@ -58,15 +63,17 @@ const Card = ({ data }: DataType) => {
           .map((item) => {
             return (
               <>
-                {" "}
                 <SItemDiv>
-                  <img
-                    src={item?.repPhoto?.photoid?.thumbnailpath}
-                    width="100%"
-                    height="60%"
-                  />
-                  <h3>{item?.title}</h3>
-                  <h4>{item?.tag?.split(",", 4).join(" , ")}</h4>
+                  <Link to={`/travelspot/${item?.contentsid}`}>
+                    <img
+                      src={item?.repPhoto?.photoid?.thumbnailpath}
+                      width="100%"
+                      height="60%"
+                    />
+
+                    <h3>{item?.title}</h3>
+                    <h4>{item?.tag?.split(",", 4).join(" , ")}</h4>
+                  </Link>
                 </SItemDiv>
               </>
             );

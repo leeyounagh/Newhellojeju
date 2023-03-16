@@ -59,6 +59,10 @@ function App() {
           <Route path="/travelspot" element={<TravelSpotPage />} />
           <Route path="/southspot" element={<SouthHotSpot />} />
           <Route path="/northspot" element={<NorthHotSPot />} />
+          <Route
+            path="/travelspot/:contentsId"
+            element={<TravelDetail />}
+          ></Route>
 
           <Route path="/travelnews" element={<TravelNews />} />
 
@@ -72,7 +76,7 @@ function App() {
           <Route path="/userstyle" element={<Good />} />
 
           <Route path="/usertravelstyle" element={<UserTravelStyle />}></Route>
-          <Route path="/detail/:contentsId" element={<TravelDetail />}></Route>
+
           <Route path="/mytravel" element={<MyTravel />} />
           <Route path="/mytravel/:id" element={<MyscheduleDetail />}></Route>
           <Route path="/communityupdate" element={<CommunityUpdate />}></Route>

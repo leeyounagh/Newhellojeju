@@ -47,11 +47,15 @@ const NorthHotSpotPage = () => {
 
   useEffect(() => {
     async function getData() {
-      const response = await axios.get(`${mainUrl}`);
-      const data = await response.data.items;
-      setNorthData(
-        data.filter((item: any) => item.region1cd.label === "제주시")
-      );
+      try {
+        const response = await axios.get(`${mainUrl}`);
+        const data = await response.data.items;
+        setNorthData(
+          data.filter((item: any) => item.region1cd.label === "제주시")
+        );
+      } catch (err) {
+        console.log(err);
+      }
     }
     getData();
   }, [contentId, mainUrl]);
