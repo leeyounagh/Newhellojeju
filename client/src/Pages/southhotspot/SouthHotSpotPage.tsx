@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Filters from "../../utils/Filters";
-import Search from "../../utils/Search";
+import Filters from "../../components/travelspot/Filters";
+import Search from "../../components/travelspot/Search";
 import Card from "../../components/travelspot/Card";
 
 const { REACT_APP_VisitJeju_KEY } = process.env;
@@ -39,12 +39,12 @@ const SInnerDiv = styled.div`
   padding-top: 30px;
 `;
 const SouthHotSpotPage = () => {
-  const [southData, setSorthData] = useState<String[]>([]);
+  const [southData, setSouthData] = useState<String[]>([]);
   useEffect(() => {
     async function getData() {
       const response = await axios.get(`${mainUrl}`);
       const data = await response.data;
-      setSorthData(data);
+      setSouthData(data);
     }
     getData();
     console.log(southData);

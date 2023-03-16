@@ -14,7 +14,7 @@ import NorthHotSPot from "./Pages/northhotspot/NorthHotSpotPage";
 import SouthHotSpot from "./Pages/southhotspot/SouthHotSpotPage";
 import TravelDetail from "./Pages/traveldetail/TravelDetail";
 import Myschedule from "./Pages/myschedule/Myschedule";
-import MyscheduleDetail from "./Pages/myschedule/MyscheduleDetail";
+import MyscheduleDetail from "./Pages/myscheduledetail/MyscheduleDetail";
 import CommunityUpdate from "./Pages/travelcommunity/CommunityUpdate";
 import CommunityDetail from "./Pages/travelcommunity/CommunityDetail";
 import UserTravelStyle from "./Pages/mystyle/MylStyle";

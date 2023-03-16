@@ -1,12 +1,12 @@
-import React, { MouseEvent, SyntheticEvent } from "react";
+import React, { MouseEvent } from "react";
 import styled from "styled-components";
 import { GiTangerine } from "react-icons/gi";
 import { GiShop } from "react-icons/gi";
 import { MdLocalHotel } from "react-icons/md";
 import { MdRestaurantMenu } from "react-icons/md";
-import color from "../styles/colors";
+import color from "../../styles/colors";
 import { useDispatch } from "react-redux";
-import { setContentInformation } from "../slice/TravelContetSlice";
+import { setContentInformation } from "../../slice/TravelContetSlice";
 
 const SLayout = styled.div`
   width: 100%;

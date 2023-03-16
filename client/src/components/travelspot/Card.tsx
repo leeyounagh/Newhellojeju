@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import useDebounce from "../../utils/useDebounce";
 
 const SLayout = styled.div`
   width: 100%;
@@ -34,26 +37,50 @@ interface DataType {
   data: String[] | any[];
 }
 const Card = ({ data }: DataType) => {
+  const searchText = useSelector(
+    (state: RootState) => state.SearchDataSlice.searchText
+  );
+
+  const debouncedValue = useDebounce<string>(searchText, 500);
+  const dataRenderer = () => {
+    return (
+      <>
+        {data
+          ?.filter((val) => {
+            if (searchText == "") {
+              return val;
+            } else if (
+              val?.title?.toLowerCase().includes(searchText?.toLowerCase())
+            ) {
+              return val;
+            }
+          })
+          .map((item) => {
+            return (
+              <>
+                {" "}
+                <SItemDiv>
+                  <img
+                    src={item?.repPhoto?.photoid?.thumbnailpath}
+                    width="100%"
+                    height="60%"
+                  />
+                  <h3>{item?.title}</h3>
+                  <h4>{item?.tag?.split(",", 4).join(" , ")}</h4>
+                </SItemDiv>
+              </>
+            );
+          })}
+      </>
+    );
+  };
+
+  useEffect(() => {
+    dataRenderer();
+  }, [debouncedValue]);
   return (
     <SLayout>
-      <SInnerDiv>
-        {data?.map((item) => {
-          return (
-            <>
-              {" "}
-              <SItemDiv>
-                <img
-                  src={item?.repPhoto?.photoid?.thumbnailpath}
-                  width="100%"
-                  height="60%"
-                />
-                <h3>{item?.title}</h3>
-                <h4>{item?.tag?.split(",", 4).join(" , ")}</h4>
-              </SItemDiv>
-            </>
-          );
-        })}
-      </SInnerDiv>
+      <SInnerDiv>{dataRenderer()}</SInnerDiv>
     </SLayout>
   );
 };

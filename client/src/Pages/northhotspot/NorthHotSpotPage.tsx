@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Filters from "../../utils/Filters";
-import Search from "../../utils/Search";
+import Filters from "../../components/travelspot/Filters";
+import Search from "../../components/travelspot/Search";
 import Card from "../../components/travelspot/Card";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
