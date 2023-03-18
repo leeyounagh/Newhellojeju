@@ -177,14 +177,16 @@ const TravelDetail = () => {
           </SBasicInfoDiv>
           <SIconDiv>
             <SItemDiv>
-              <h3>찜하기</h3>
               {/* 유저일때 아닐때 나눠서 */}
               {user?.[0]?.isAuth === true ? (
-                <GiCrownedHeart
-                  onClick={handleAddGood}
-                  style={{ cursor: "pointer" }}
-                  size={50}
-                />
+                <>
+                  <h3>찜하기</h3>
+                  <GiCrownedHeart
+                    onClick={handleAddGood}
+                    style={{ cursor: "pointer" }}
+                    size={50}
+                  />
+                </>
               ) : null}
             </SItemDiv>
           </SIconDiv>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import TravelCommunity from "./TravelCommunity";
+import TravelCommunity from "../travelcommunity/TravelCommunity";
 
 type Comment = {
   comment: string;

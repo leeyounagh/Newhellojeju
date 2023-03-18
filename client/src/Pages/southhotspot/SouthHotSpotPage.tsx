@@ -6,6 +6,7 @@ import Search from "../../components/travelspot/Search";
 import Card from "../../components/travelspot/Card";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import TopBtn from "../../components/button/TopBtn";
 
 const { REACT_APP_VisitJeju_KEY } = process.env;
 
@@ -37,12 +38,21 @@ const SInnerDiv = styled.div`
   padding-top: 30px;
 `;
 
+interface ItemType {
+  [x: string]: any;
+
+  item: {
+    region1cd: {
+      label: string;
+    };
+  };
+}
 const NorthHotSpotPage = () => {
   const contentId = useSelector(
     (state: RootState) => state.ContentReducer.content
   );
 
-  const [northData, setNorthData] = useState<String[] | any[]>([]);
+  const [northData, setNorthData] = useState<String[]>([]);
   const mainUrl = `http://api.visitjeju.net/vsjApi/contents/searchList?apiKey=${REACT_APP_VisitJeju_KEY}&locale=kr&category=${contentId}`;
 
   useEffect(() => {
@@ -52,7 +62,7 @@ const NorthHotSpotPage = () => {
         const data = await response.data.items;
 
         setNorthData(
-          data.filter((item: any) => item?.region1cd?.label === "서귀포시")
+          data.filter((item: ItemType) => item?.region1cd?.label === "서귀포시")
         );
       } catch (err) {
         console.log(err);
@@ -72,6 +82,7 @@ const NorthHotSpotPage = () => {
         </SInnerDiv>
       </SFilterDiv>
       <Card data={northData} />
+      <TopBtn />
     </SLayout>
   );
 };

@@ -19,10 +19,6 @@ const SInput = styled.input`
   border: solid 1px lightgray;
   font-family: Arial, FontAwesome;
 `;
-interface searchType {
-  searchText: string;
-  setSearchText: () => void;
-}
 
 const Search = () => {
   const dispatch = useDispatch();

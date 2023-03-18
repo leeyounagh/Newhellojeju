@@ -42,6 +42,8 @@ const Filters = () => {
     const target = event.currentTarget as HTMLDivElement;
 
     dispatch(setContentInformation(target?.dataset?.id));
+
+    // target의 경우 자식요소의 dataset을 찾기때문에 undifiend값이 나오고 currentTarget의경우에는 이벤트 버블링으로 인하여 자기자신을 지칭하게됨
   };
   return (
     <SLayout>

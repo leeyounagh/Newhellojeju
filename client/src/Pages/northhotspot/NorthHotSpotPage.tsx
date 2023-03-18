@@ -6,6 +6,7 @@ import Search from "../../components/travelspot/Search";
 import Card from "../../components/travelspot/Card";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import TopBtn from "../../components/button/TopBtn";
 
 const { REACT_APP_VisitJeju_KEY } = process.env;
 
@@ -42,7 +43,7 @@ const NorthHotSpotPage = () => {
     (state: RootState) => state.ContentReducer.content
   );
 
-  const [northData, setNorthData] = useState<String[] | any[]>([]);
+  const [northData, setNorthData] = useState<String[]>([]);
   const mainUrl = `http://api.visitjeju.net/vsjApi/contents/searchList?apiKey=${REACT_APP_VisitJeju_KEY}&locale=kr&category=${contentId}`;
 
   useEffect(() => {
@@ -72,6 +73,7 @@ const NorthHotSpotPage = () => {
         </SInnerDiv>
       </SFilterDiv>
       <Card data={northData} />
+      <TopBtn />
     </SLayout>
   );
 };
