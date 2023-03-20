@@ -37,7 +37,15 @@ const SInnerDiv = styled.div`
   width: 80%;
   padding-top: 30px;
 `;
+interface ItemType {
+  [x: string]: any;
 
+  item: {
+    region1cd: {
+      label: string;
+    };
+  };
+}
 const NorthHotSpotPage = () => {
   const contentId = useSelector(
     (state: RootState) => state.ContentReducer.content
@@ -53,7 +61,7 @@ const NorthHotSpotPage = () => {
         const data = await response.data.items;
 
         setNorthData(
-          data.filter((item: any) => item.region1cd.label === "제주시")
+          data.filter((item: ItemType) => item.region1cd.label === "제주시")
         );
       } catch (err) {
         console.log(err);
