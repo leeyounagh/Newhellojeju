@@ -1,15 +1,14 @@
-import React, { MouseEvent, useRef, useState } from "react";
+import React, { MouseEvent, useRef } from "react";
 import styled from "styled-components";
 import NewsData from "../../data/NewsData";
+import color from "../../styles/colors";
 
 const SLayout = styled.div`
-  border: 1px solid black;
-  height: 60vh;
+  height: 70vh;
   display: flex;
 `;
 const SVideoDiv = styled.div`
-  width: 60%;
-  border: 1px solid black;
+  width: 55%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -19,11 +18,25 @@ const SClipDiv = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  border: 1px solid black;
   flex-direction: column;
   button {
     width: 50%;
-    height: 100%;
+    height: 90%;
+    background-color: ${color.gray1};
+    color: ${color.white};
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+
+    &:active {
+      background: ${color.gray3};
+    }
+
+    &:hover {
+      background: ${color.main};
+    }
   }
 `;
 const SVideo = styled.video`
@@ -33,11 +46,12 @@ const SVideo = styled.video`
 `;
 
 const SEditorDiv = styled.div`
-  border: 1px solid black;
+  border: 1px solid lightgray;
   width: 40%;
   height: 100%;
+
   h2 {
-    height: 20%;
+    height: 23%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -45,8 +59,6 @@ const SEditorDiv = styled.div`
   }
 `;
 const SDescDiv = styled.div`
-  border: 1px solid black;
-  width: 100%;
   height: 60%;
   text-align: center;
   display: flex;
@@ -54,16 +66,15 @@ const SDescDiv = styled.div`
 `;
 const SBtnDiv = styled.div`
   width: 100%;
-  border: 1px solid black;
   height: 20%;
   display: flex;
 `;
 const SDiv = styled.div`
-  border: 1px solid black;
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.5rem;
 `;
 const VideoClip = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);

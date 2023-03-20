@@ -25,11 +25,12 @@ const SBtn2 = styled.button`
   &:hover {
     border: 1px solid ${color.main};
     color: ${color.main};
+  }
 `;
 type TitleType = {
   title: String;
 };
-function Btn2({ title }: TitleType) {
+function Btn2({ title }: TitleType | any) {
   return (
     <Slayout>
       <SBtn2>{title}</SBtn2>

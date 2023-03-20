@@ -17,7 +17,7 @@ const SLayout = styled.div`
     format("woff2");
   font-weight: normal;
   font-style: normal;
-    background: linear-gradient(#94b1b9,#89a6ae, white);
+    // background: linear-gradient(#94b1b9,#89a6ae, white);
   z-index;1;
 `;
 const SImgDiv = styled.div`
@@ -30,18 +30,15 @@ const SImg = styled.img`
 `;
 const SDescDiv = styled.div`
   width: 50%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: black;
-  opacity: 0.4;
-  margin-top: 50px;
+  padding-top: 100px;
 `;
 const STitleDiv = styled.div`
   z-index: 10;
-  color: white;
+
   width: 100%;
   text-align: center;
   font-size: 2rem;
@@ -52,7 +49,7 @@ const STitleDiv = styled.div`
 `;
 const SItemDiv = styled.div`
   z-index: 10;
-  color: white;
+  color: black;
   font-size: 20px;
   text-align: center;
   h3 {
@@ -61,7 +58,7 @@ const SItemDiv = styled.div`
   }
 `;
 const STagDiv = styled.div`
-  color: white;
+  color: black;
   font-size: 20px;
   width: 100%;
   text-align: center;
@@ -69,18 +66,18 @@ const STagDiv = styled.div`
   margin-bottom: 20px;
 `;
 const SDescItemDiv = styled.div`
-  color: white;
+  color: black;
   width: 100%;
   padding-bottom: 10px;
   text-align: center;
   vertical-align: bottom;
 `;
 const SLineDiv = styled.div`
-  border: 1px solid #94b1b9;
+  border: 1px solid lightgray;
   width: 100%;
 `;
 const SBasicInfoDiv = styled.div`
-  border: 1px solid #94b1b9;
+  border: 1px solid lightgray;
   width: 60%;
   padding: 5px;
   margin-top: 50px;
@@ -92,19 +89,19 @@ const SLineOuterDiv = styled.div`
 const SIconDiv = styled.div`
   margin-top: 50px;
   width: 100%;
-  height: 10%;
+  height: 10vh;
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
 `;
 const SDescInnerDiv = styled.div`
+  border: 1px solid lightgray;
   width: 70%;
-  height: 70%;
+  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 100px;
 `;
 
 const TravelDetail = () => {
