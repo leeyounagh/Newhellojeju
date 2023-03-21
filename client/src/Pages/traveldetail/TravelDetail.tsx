@@ -12,13 +12,9 @@ const SLayout = styled.div`
   height: 100vh;
   display: flex;
   overflow-y: hidden;
-  font-family: "Dovemayo_gothic";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2")
-    format("woff2");
-  font-weight: normal;
-  font-style: normal;
-    // background: linear-gradient(#94b1b9,#89a6ae, white);
   z-index;1;
+  position:absolute;
+  top:10vh;
 `;
 const SImgDiv = styled.div`
   width: 50%;
@@ -34,7 +30,6 @@ const SDescDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
 `;
 const STitleDiv = styled.div`
   z-index: 10;
@@ -42,7 +37,7 @@ const STitleDiv = styled.div`
   width: 100%;
   text-align: center;
   font-size: 2rem;
-  margin-top: 100px;
+
   h1 {
     margin-bottom: 50px;
   }
@@ -102,6 +97,7 @@ const SDescInnerDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 50px;
 `;
 
 const TravelDetail = () => {

@@ -4,12 +4,13 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import useDebounce from "../../utils/useDebounce";
 import { Link } from "react-router-dom";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 const SLayout = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+
+  font-size: 1.2rem;
 `;
 
 const SItemDiv = styled.div`

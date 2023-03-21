@@ -15,6 +15,8 @@ const SLayout = styled.div`
   display:flex;
   align-items;
   margin-left:100px;
+
+  font-size: 1.2rem;
 `;
 const SItemDiv = styled.div`
   width: 200px;

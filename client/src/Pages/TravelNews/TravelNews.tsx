@@ -6,17 +6,19 @@ import VideoClip from "../../components/travelnews/VideoClip";
 const SLayout = styled.div`
   width: 100%;
   margin-top: 200px;
-  font-family: "Dovemayo_gothic";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2")
-    format("woff2");
-  font-weight: normal;
-  font-style: normal;
 `;
-
+const STitleDiv = styled.div`
+  margin-top: 100px;
+  text-align: center;
+  font-size: 18px;
+`;
 const TravelNews = () => {
   return (
     <SLayout>
       <VideoClip />
+      <STitleDiv>
+        <h1>Hello Jeju 추천</h1>
+      </STitleDiv>
       <Recomendation />
     </SLayout>
   );
