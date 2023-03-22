@@ -1,5 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
+import Map from "./Map";
+import { AiFillCloseCircle } from "react-icons/ai";
 
 const SLayout = styled.div`
   border: 1px solid black;
@@ -9,7 +11,6 @@ const SLayout = styled.div`
   height: 80vh;
   position: fixed;
   top: 15%;
-  display: flex;
 `;
 const SContentDiv = styled.div`
   width: 40%;
@@ -38,6 +39,20 @@ const SDescDiv = styled.div`
   width: 70%;
   height: 100%;
 `;
+const SInnerLayout = styled.div`
+  display: flex;
+  border: 1px solid red;
+  width: 100%;
+  height: 90%;
+`;
+const SButtonDiv = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 10%;
+  padding-right: 20px;
+  cursor: pointer;
+`;
 type DataType = {
   setOpenModal: Dispatch<SetStateAction<boolean>>;
   dataInfo: string | null | undefined;
@@ -45,13 +60,26 @@ type DataType = {
 export default function MapModal({ setOpenModal, dataInfo }: DataType) {
   return (
     <SLayout>
-      <SContentDiv>
-        <SItemDiv>
-          <SImgDiv></SImgDiv>
-          <SDescDiv></SDescDiv>
-        </SItemDiv>
-      </SContentDiv>
-      <SMapDiv>adfsadsf</SMapDiv>
+      <SButtonDiv>
+        <AiFillCloseCircle
+          size={50}
+          onClick={() => {
+            setOpenModal(false);
+          }}
+        />
+      </SButtonDiv>
+
+      <SInnerLayout>
+        <SContentDiv>
+          <SItemDiv>
+            <SImgDiv></SImgDiv>
+            <SDescDiv></SDescDiv>
+          </SItemDiv>
+        </SContentDiv>{" "}
+        <SMapDiv>
+          <Map dataInfo={dataInfo} />
+        </SMapDiv>
+      </SInnerLayout>
     </SLayout>
   );
 }

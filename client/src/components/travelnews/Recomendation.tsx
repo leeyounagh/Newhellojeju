@@ -41,7 +41,7 @@ const Recomendation = () => {
   const [dataInfo, setDataInfo] = useState<string | null>();
   // 맵은 true일경우 모달이나옴
 
-  console.log(dataInfo);
+  console.log(dataInfo, openModal);
   useEffect(() => {
     const html = document.documentElement;
     if (openModal) {
@@ -60,7 +60,7 @@ const Recomendation = () => {
   const handleModal = (event: MouseEvent<HTMLElement>) => {
     const target = event.currentTarget as HTMLDivElement;
     setOpenModal(true);
-    setDataInfo(target.dataset.id);
+    setDataInfo(target?.dataset?.id);
   };
 
   return (
@@ -83,10 +83,10 @@ const Recomendation = () => {
           <SImg src="image/beach.png" />
         </SItemDiv>
       </SInnderDiv>
-      <MapModal setOpenModal={setOpenModal} dataInfo={dataInfo} />
-      {/* {openModal ? (
+      {/* <MapModal setOpenModal={setOpenModal} dataInfo={dataInfo} /> */}
+      {openModal ? (
         <MapModal setOpenModal={setOpenModal} dataInfo={dataInfo} />
-      ) : null} */}
+      ) : null}
     </SLayout>
   );
 };
