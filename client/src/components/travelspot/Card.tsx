@@ -45,7 +45,7 @@ interface DataType {
 }
 const Card = ({ data }: DataType) => {
   const searchText = useSelector(
-    (state: RootState) => state.SearchDataSlice.searchText
+    (state: RootState) => state.SearchDataReducer.searchText
   );
 
   const debouncedValue = useDebounce<string>(searchText, 500);

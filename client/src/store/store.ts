@@ -1,13 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import UserReducer from "../slice/UserSlice";
 import ContentReducer from "../slice/TravelContetSlice";
-import SearchDataSlice from "../slice/SearchDataSlice";
+import SearchDataReducer from "../slice/SearchDataSlice";
+import MapDataReducer from "../slice/MapDataSlice";
 
 const rootReducer = configureStore({
   reducer: {
     UserReducer,
     ContentReducer,
-    SearchDataSlice,
+    SearchDataReducer,
+    MapDataReducer,
   },
 });
 export default rootReducer;

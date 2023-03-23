@@ -1,7 +1,13 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styled from "styled-components";
 import Map from "./Map";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { hotel } from "../../data/hotel";
+import { shopping } from "../../data/shopping";
+import { tour } from "../../data/spot";
+import { restaurant } from "../../data/restaurant";
+import { setMapData } from "../../slice/MapDataSlice";
+import { useDispatch } from "react-redux";
 
 const SLayout = styled.div`
   border: 1px solid black;
@@ -10,13 +16,14 @@ const SLayout = styled.div`
   width: 90vw;
   height: 80vh;
   position: fixed;
-  top: 15%;
+  top: 10%;
 `;
 const SContentDiv = styled.div`
   width: 40%;
   height: 100%;
   border: 1px solid black;
   background: #f5f6f7;
+  overflow-y: scroll;
 `;
 const SMapDiv = styled.div`
   border: 1px solid black;
@@ -31,12 +38,12 @@ const SItemDiv = styled.div`
 `;
 const SImgDiv = styled.div`
   border: 1px solid black;
-  width: 30%;
+  width: 40%;
   height: 100%;
 `;
 const SDescDiv = styled.div`
   border: 1px solid black;
-  width: 70%;
+  width: 60%;
   height: 100%;
 `;
 const SInnerLayout = styled.div`
@@ -51,17 +58,46 @@ const SButtonDiv = styled.div`
   align-items: center;
   height: 10%;
   padding-right: 20px;
-  cursor: pointer;
+`;
+const SImg = styled.img`
+  width: 100%;
+  height: 100%;
+`;
+const STitleDiv = styled.div`
+  font-size: 1.5rem;
+  height: 30%;
+  padding-left: 10px;
+`;
+const STagDiv = styled.div`
+  padding-left: 10px;
 `;
 type DataType = {
   setOpenModal: Dispatch<SetStateAction<boolean>>;
-  dataInfo: string | null | undefined;
+  dataInfo: "hotel" | "shopping" | "tour" | "restaurant";
+};
+type FilterType = {
+  title: string;
+  latitude: number;
+  longitude: number;
+  contentsid: string;
+  tag: string;
+  introduction: string;
+  roadaddress: string;
+  thumbnailpath: string;
+  imgpath: string;
 };
 export default function MapModal({ setOpenModal, dataInfo }: DataType) {
+  const data = [{ hotel }, { shopping }, { tour }, { restaurant }];
+  const dispatch = useDispatch();
+  let filteredData = data.filter((item) => item[dataInfo])[0][dataInfo];
+  useEffect(() => {
+    dispatch(setMapData(filteredData));
+  }, [dataInfo]);
   return (
     <SLayout>
       <SButtonDiv>
         <AiFillCloseCircle
+          style={{ cursor: "pointer" }}
           size={50}
           onClick={() => {
             setOpenModal(false);
@@ -71,13 +107,24 @@ export default function MapModal({ setOpenModal, dataInfo }: DataType) {
 
       <SInnerLayout>
         <SContentDiv>
-          <SItemDiv>
-            <SImgDiv></SImgDiv>
-            <SDescDiv></SDescDiv>
-          </SItemDiv>
+          {filteredData?.map((item) => {
+            return (
+              <>
+                <SItemDiv>
+                  <SImgDiv>
+                    <SImg src={item.imgpath} />
+                  </SImgDiv>
+                  <SDescDiv>
+                    <STitleDiv>{item.title}</STitleDiv>
+                    <STagDiv>{item.tag}</STagDiv>
+                  </SDescDiv>
+                </SItemDiv>
+              </>
+            );
+          })}
         </SContentDiv>{" "}
         <SMapDiv>
-          <Map dataInfo={dataInfo} />
+          <Map />
         </SMapDiv>
       </SInnerLayout>
     </SLayout>
