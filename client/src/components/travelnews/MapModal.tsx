@@ -8,6 +8,7 @@ import { tour } from "../../data/spot";
 import { restaurant } from "../../data/restaurant";
 import { setMapData } from "../../slice/MapDataSlice";
 import { useDispatch } from "react-redux";
+import ModalType from "../../types/types";
 
 const SLayout = styled.div`
   border: 1px solid black;
@@ -35,6 +36,7 @@ const SItemDiv = styled.div`
   width: 100%;
   height: 25%;
   display: flex;
+  cursor: pointer;
 `;
 const SImgDiv = styled.div`
   border: 1px solid black;
@@ -75,24 +77,23 @@ type DataType = {
   setOpenModal: Dispatch<SetStateAction<boolean>>;
   dataInfo: "hotel" | "shopping" | "tour" | "restaurant";
 };
-type FilterType = {
-  title: string;
-  latitude: number;
-  longitude: number;
-  contentsid: string;
-  tag: string;
-  introduction: string;
-  roadaddress: string;
-  thumbnailpath: string;
-  imgpath: string;
-};
+
 export default function MapModal({ setOpenModal, dataInfo }: DataType) {
   const data = [{ hotel }, { shopping }, { tour }, { restaurant }];
+  const [selectedData, setSelectedData] = useState<ModalType[]>([]);
+
   const dispatch = useDispatch();
   let filteredData = data.filter((item) => item[dataInfo])[0][dataInfo];
+
   useEffect(() => {
     dispatch(setMapData(filteredData));
   }, [dataInfo]);
+
+  const handleClickedData = (item: ModalType) => {
+    setSelectedData([item]);
+    dispatch(setMapData([item]));
+    // boolean값이랑 변수하나더 세팅해서 조건을 바꿔보자
+  };
   return (
     <SLayout>
       <SButtonDiv>
@@ -110,7 +111,11 @@ export default function MapModal({ setOpenModal, dataInfo }: DataType) {
           {filteredData?.map((item) => {
             return (
               <>
-                <SItemDiv>
+                <SItemDiv
+                  onClick={() => {
+                    handleClickedData(item);
+                  }}
+                >
                   <SImgDiv>
                     <SImg src={item.imgpath} />
                   </SImgDiv>
@@ -124,7 +129,7 @@ export default function MapModal({ setOpenModal, dataInfo }: DataType) {
           })}
         </SContentDiv>{" "}
         <SMapDiv>
-          <Map />
+          <Map selectedData={selectedData} setSelectedData={setSelectedData} />
         </SMapDiv>
       </SInnerLayout>
     </SLayout>
