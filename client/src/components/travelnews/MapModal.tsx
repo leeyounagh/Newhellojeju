@@ -11,46 +11,47 @@ import { useDispatch } from "react-redux";
 import ModalType from "../../types/types";
 
 const SLayout = styled.div`
-  border: 1px solid black;
   z-index: 900;
   background-color: white;
   width: 90vw;
   height: 80vh;
   position: fixed;
   top: 10%;
+  font-family: "양진체";
+  src: url("https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-style: normal;
 `;
 const SContentDiv = styled.div`
   width: 40%;
   height: 100%;
-  border: 1px solid black;
   background: #f5f6f7;
   overflow-y: scroll;
 `;
 const SMapDiv = styled.div`
-  border: 1px solid black;
   width: 60%;
   height: 100%;
 `;
 const SItemDiv = styled.div`
-  border: 1px solid black;
   width: 100%;
   height: 25%;
   display: flex;
   cursor: pointer;
+  margin-bottom: 30px;
+  padding: 10px;
 `;
 const SImgDiv = styled.div`
-  border: 1px solid black;
   width: 40%;
   height: 100%;
 `;
 const SDescDiv = styled.div`
-  border: 1px solid black;
   width: 60%;
   height: 100%;
 `;
 const SInnerLayout = styled.div`
   display: flex;
-  border: 1px solid red;
   width: 100%;
   height: 90%;
 `;
@@ -80,8 +81,10 @@ type DataType = {
 
 export default function MapModal({ setOpenModal, dataInfo }: DataType) {
   const data = [{ hotel }, { shopping }, { tour }, { restaurant }];
-  const [selectedData, setSelectedData] = useState<ModalType[]>([]);
 
+  const [selectedData, setSelectedData] = useState<ModalType[]>([]);
+  const [markerClick, SetMarkerClick] = useState<boolean>(false);
+  const [ImgClick, SetImgClick] = useState<boolean>(false);
   const dispatch = useDispatch();
   let filteredData = data.filter((item) => item[dataInfo])[0][dataInfo];
 
@@ -91,8 +94,8 @@ export default function MapModal({ setOpenModal, dataInfo }: DataType) {
 
   const handleClickedData = (item: ModalType) => {
     setSelectedData([item]);
-    dispatch(setMapData([item]));
-    // boolean값이랑 변수하나더 세팅해서 조건을 바꿔보자
+    SetMarkerClick(true);
+    SetImgClick(true);
   };
   return (
     <SLayout>
@@ -127,9 +130,16 @@ export default function MapModal({ setOpenModal, dataInfo }: DataType) {
               </>
             );
           })}
-        </SContentDiv>{" "}
+        </SContentDiv>
         <SMapDiv>
-          <Map selectedData={selectedData} setSelectedData={setSelectedData} />
+          <Map
+            selectedData={selectedData}
+            setSelectedData={setSelectedData}
+            markerClick={markerClick}
+            SetMarkerClick={SetMarkerClick}
+            ImgClick={ImgClick}
+            SetImgClick={SetImgClick}
+          />
         </SMapDiv>
       </SInnerLayout>
     </SLayout>

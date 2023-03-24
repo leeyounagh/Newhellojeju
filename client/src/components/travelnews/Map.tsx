@@ -18,10 +18,12 @@ const containerStyle = {
   height: "100%",
 };
 const SInfoBoxDiv = styled.div`
-  border: 1px solid black;
   background: #f2f3f5;
   width: 300px;
   height: 300px;
+  a {
+    text-decoration: none;
+  }
 `;
 const SImg = styled.img`
   width: 100%;
@@ -47,13 +49,30 @@ const SButton = styled.button`
   font-size: 1.2rem;
   background-color: white;
   cursor: pointer;
+  border: 0;
+  outline: 0;
+  &:hover {
+    background: black;
+    color: white;
+  }
 `;
 
 type DataType = {
   selectedData: ModalType[];
   setSelectedData: Dispatch<SetStateAction<any>>;
+  markerClick: boolean;
+  SetMarkerClick: Dispatch<SetStateAction<boolean>>;
+  ImgClick: boolean;
+  SetImgClick: Dispatch<SetStateAction<boolean>>;
 };
-function Map({ selectedData, setSelectedData }: DataType) {
+function Map({
+  selectedData,
+  setSelectedData,
+  markerClick,
+  SetMarkerClick,
+  ImgClick,
+  SetImgClick,
+}: DataType) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: `${REACT_APP_GOOGLEMAP_KEY}`,
@@ -61,13 +80,22 @@ function Map({ selectedData, setSelectedData }: DataType) {
   const mapData = useSelector(
     (state: RootState) => state?.MapDataReducer?.filteredData
   );
-  const [markerClick, SetMarkerClick] = useState<boolean>(false);
-
   const options = { closeBoxURL: "", enableEventPropagation: true };
 
   const [center, setCenter] = useState(
     new google.maps.LatLng(mapData?.[0]?.latitude, mapData?.[0]?.longitude)
   );
+  useEffect(() => {
+    if (ImgClick === true) {
+      setCenter(
+        new google.maps.LatLng(
+          Number(selectedData?.[0]?.latitude),
+          Number(selectedData?.[0]?.longitude)
+        )
+      );
+      SetImgClick(false);
+    }
+  }, [selectedData]);
 
   const handleCenter = (item: ModalType) => {
     setCenter(

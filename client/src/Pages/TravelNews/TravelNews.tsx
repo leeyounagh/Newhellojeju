@@ -10,7 +10,7 @@ const SLayout = styled.div`
 const STitleDiv = styled.div`
   margin-top: 100px;
   text-align: center;
-  font-size: 18px;
+  font-size: 1.5rem;
 `;
 const TravelNews = () => {
   return (

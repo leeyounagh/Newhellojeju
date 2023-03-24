@@ -35,20 +35,12 @@ const SInnderDiv = styled.div`
   justify-content: space-between;
   cursor: pointer;
 `;
-const SModalDiv = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background: black;
-  opacity: 0.4;
-`;
 
 const Recomendation = () => {
-  // 클릭시 해당데이터셋 넘버에 해당하는 맵과 데이터가 나와야됨
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [dataInfo, setDataInfo] = useState<
     "hotel" | "shopping" | "tour" | "restaurant"
   >("hotel");
-  // 맵은 true일경우 모달이나옴
 
   console.log(dataInfo, openModal);
   useEffect(() => {
@@ -70,7 +62,6 @@ const Recomendation = () => {
     const target = event.currentTarget as HTMLDivElement;
     setOpenModal(true);
     setDataInfo(target?.dataset?.id as "hotel");
-    // setDataInfo(target?.dataset?.id);
   };
 
   return (
