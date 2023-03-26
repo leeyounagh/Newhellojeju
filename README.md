@@ -4,17 +4,12 @@
 
 - [서비스설명](#서비스설명)
 - [기술스택](#기술스택)
-- [실제 웹사이트 구현 화면](#실제 웹사이트 구현 화면)
 - [주요기능](#주요기능)
 - [리팩토링](#리팩토링)
 - [배포주소](#배포주소)
 - [Installing](#Installing)
-- [convention](#깃 커밋 컨벤션)
+- [convention](#깃커밋컨벤션)
 - [파일구조](#파일구조)
-  <!-- - [배포사이트링크](#배포사이트링크) -->
-  <!--  Other options to write Readme
-- [Used or Referenced Projects](Used-or-Referenced-Projects)
-  -->
 
 ## 서비스설명
 
