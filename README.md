@@ -50,25 +50,27 @@ HelloJeju는 코로나로 인한 관광사업침체에 도움이 되고자 제�
 
 ## 실제 웹사이트 구현 화면
 
-<br>
-<br>
 **메인페이지**
-<br>
+
 ![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjk4MmE5MjEzNjI4ZWM3MjQxMDk2YmY3ZmRhNjlkOTgyODcyOWU3YSZjdD1n/MkCl5uZm04o61PWDeg/giphy.gif)
 <br>
 <br>
-<!-- **회원가입 로그인 페이지**
-<br>
+
+**회원가입 로그인 페이지**
 ![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWI5MDdjMDhhODQ2ODVmOTI0NzUxYTkyNGI4ZjVlMDI5OTZkZGFiMSZjdD1n/OoBhloOdDZEtxiskAg/giphy.gif)
 <br>
 <br>
 **travelspot 페이지**
+
 <br>
+
 ![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGZhMGE5NzNhYjQxNzEyYTU4NDhlYmEwNmI3ZDM0NjBlMjgxMGE3NiZjdD1n/anWw53TvyyYmucsrUr/giphy.gif)
+
 <br>
 **travelnews 페이지**
 <br>
-![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDU0NTExM2QyNWQ4NTI3MmViMTNlZTU4MGE1OTIwOWZlZDZkY2NiYiZjdD1n/n1jvBGEp7bpojQDyAp/giphy.gif) -->
+
+![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDU0NTExM2QyNWQ4NTI3MmViMTNlZTU4MGE1OTIwOWZlZDZkY2NiYiZjdD1n/n1jvBGEp7bpojQDyAp/giphy.gif)
 
 ## 주요기능
 
