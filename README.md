@@ -5,7 +5,8 @@
 - [서비스설명](#서비스설명)
 - [기술스택](#기술스택)
 - [주요기능](#주요기능)
-- [리팩토링](#리팩토링)
+- [성능개선](#성능개선)
+- [구현화면](#실제웹사이트구현화면)
 - [배포주소](#배포주소)
 - [Installing](#Installing)
 - [convention](#깃커밋컨벤션)
@@ -14,8 +15,7 @@
 ## 서비스설명
 
 HelloJeju는 코로나로 인한 관광사업침체에 도움이 되고자 제작하게 되었습니다.<br>
-기존 리액트, 자바스크립트, 리덕스로 구현된 프로젝트를 리액트, 타입스크립트, 리덕스 툴킷으로 마이그레이션 진행했습니다.<br>
-개인 프로젝트로 진행 되었으며, 지속적인 유지보수로 성능 향상에 노력하고 있습니다.
+기존 리액트, 자바스크립트, 리덕스로 구현된 프로젝트를 리액트, 타입스크립트, 리덕스 툴킷으로 마이그레이션 진행했습니다.개인 프로젝트로 진행 되었으며, 지속적인 유지보수로 성능 향상에 노력하고 있습니다.
 <br>
 <br>
 
@@ -48,7 +48,7 @@ HelloJeju는 코로나로 인한 관광사업침체에 도움이 되고자 제�
 
 <a href="https://ibb.co/8xPHt6V"><img src="https://i.ibb.co/n1QFtzS/image.png" alt="image" border="0"></a>
 
-## 실제 웹사이트 구현 화면
+## 실제웹사이트구현화면
 
 ![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjk4MmE5MjEzNjI4ZWM3MjQxMDk2YmY3ZmRhNjlkOTgyODcyOWU3YSZjdD1n/MkCl5uZm04o61PWDeg/giphy.gif)
 <br>

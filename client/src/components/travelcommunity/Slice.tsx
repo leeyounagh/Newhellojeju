@@ -1,35 +1,73 @@
 import React from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+
+import { Pagination } from "swiper";
 
 const SLayout = styled.div`
-  border: 1px solid black;
   width: 100%;
   height: 30vh;
-  margin-top: 100px;
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 export default function Slice() {
   return (
     <SLayout>
       <Swiper
-        slidesPerView={"auto"}
+        slidesPerView={3}
         spaceBetween={30}
         pagination={{
           clickable: true,
         }}
-        // modules={[Pagination]}
+        modules={[Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide>
+          <img src="./image/커뮤니티.jpg" alt="테스트"></img>
+        </SwiperSlide>
+        <SwiperSlide>
+          {" "}
+          <img src="./image/쇼핑.png" alt="테스트"></img>
+        </SwiperSlide>
+        <SwiperSlide>
+          {" "}
+          <img src="./image/쇼핑.png" alt="테스트"></img>
+        </SwiperSlide>
+        <SwiperSlide>
+          {" "}
+          <img src="./image/쇼핑.png" alt="테스트"></img>
+        </SwiperSlide>
+        <SwiperSlide>
+          {" "}
+          <img src="./image/쇼핑.png" alt="테스트"></img>
+        </SwiperSlide>
+        <SwiperSlide>
+          {" "}
+          <img src="./image/쇼핑.png" alt="테스트"></img>
+        </SwiperSlide>
       </Swiper>
     </SLayout>
   );
