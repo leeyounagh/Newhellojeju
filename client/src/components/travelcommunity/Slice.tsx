@@ -1,10 +1,11 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
-import { Pagination } from "swiper";
+import { Pagination, Navigation, HashNavigation } from "swiper";
 
 const SLayout = styled.div`
   width: 100%;
@@ -32,17 +33,29 @@ const SLayout = styled.div`
     object-fit: cover;
   }
 `;
-
+interface SwiperStyle extends CSSProperties {
+  "--swiper-navigation-color": string;
+}
+// css 타입지정할때
 export default function Slice() {
   return (
     <SLayout>
       <Swiper
+        style={
+          {
+            "--swiper-navigation-color": "black",
+          } as SwiperStyle
+        }
         slidesPerView={3}
         spaceBetween={30}
-        pagination={{
-          clickable: true,
+        hashNavigation={{
+          watchState: true,
         }}
-        modules={[Pagination]}
+        pagination={{
+          clickable: false,
+        }}
+        navigation={true}
+        modules={[Pagination, Navigation, HashNavigation]}
         className="mySwiper"
       >
         <SwiperSlide>
@@ -50,7 +63,7 @@ export default function Slice() {
         </SwiperSlide>
         <SwiperSlide>
           {" "}
-          <img src="./image/쇼핑.png" alt="테스트"></img>
+          <img src="./image/커뮤니티.jpg" alt="테스트"></img>
         </SwiperSlide>
         <SwiperSlide>
           {" "}
