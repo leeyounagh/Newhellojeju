@@ -39,10 +39,10 @@ HelloJeju는 코로나로 인한 관광사업침체에 도움이 되고자 제�
 
 - 리팩토링전
   <br>
-  <img src="./사본-1.png" width="100px" height="100px" title="리팩토링전"/>
+  <img src="https://ibb.co/djdZtzt" width="100px" height="100px" title="리팩토링전"/>
 - 리팩토링후
   <br>
-  <img src="./사본-캡처.png" width="100px" height="100px" title="리팩토링후"/>
+  <img src="https://ibb.co/8xPHt6V" width="100px" height="100px" title="리팩토링후"/>
 
 ## 실제 웹사이트 구현 화면
 
