@@ -60,6 +60,7 @@ HelloJeju는 코로나로 인한 관광사업침체에 도움이 되고자 제�
 ![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWI5MDdjMDhhODQ2ODVmOTI0NzUxYTkyNGI4ZjVlMDI5OTZkZGFiMSZjdD1n/OoBhloOdDZEtxiskAg/giphy.gif)
 <br>
 <br>
+
 **travelspot 페이지**
 
 <br>
@@ -67,6 +68,7 @@ HelloJeju는 코로나로 인한 관광사업침체에 도움이 되고자 제�
 ![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGZhMGE5NzNhYjQxNzEyYTU4NDhlYmEwNmI3ZDM0NjBlMjgxMGE3NiZjdD1n/anWw53TvyyYmucsrUr/giphy.gif)
 
 <br>
+
 **travelnews 페이지**
 <br>
 
