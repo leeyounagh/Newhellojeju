@@ -207,7 +207,7 @@ const RegisterPage = () => {
             </SDiv>
             <SDiv>
               <SInput
-                type="confirmpassword"
+                type="password"
                 name="confirmpassword"
                 placeholder="confirmpassword"
                 onChange={(event) =>

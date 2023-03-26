@@ -27,7 +27,6 @@ const CommunityDetail = (props: any) => {
       )
       .then((response) => {
         if (response.data.success) {
-          console.log(response.data.product, response.data.product[0].comment);
           setCommunity(response.data.product);
 
           setAllcomment(response.data.product[0].comment);
@@ -94,7 +93,6 @@ const CommunityDetail = (props: any) => {
   };
 
   const ImgRendering = () => {
-    console.log(Img);
     return (
       <div>
         {Img.map((item: string, index: any) => {

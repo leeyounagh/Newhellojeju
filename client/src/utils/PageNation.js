@@ -16,7 +16,6 @@ function Pagination({ total, limit, page, setPage }) {
               key={i + 1}
               onClick={() => {
                 setPage(i + 1);
-                console.log("클릭");
               }}
               aria-current={page === i + 1 ? "page" : null}
             >

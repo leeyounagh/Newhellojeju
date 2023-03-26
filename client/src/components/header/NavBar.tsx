@@ -40,7 +40,7 @@ const SInnerDiv = styled.div`
 
 const NavBar = () => {
   const user = useSelector((state: RootState) => state.UserReducer.user);
-  console.log(user);
+
   const NaviGate = useNavigate();
 
   const logoutHandler = () => {

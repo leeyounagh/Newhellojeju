@@ -10,7 +10,6 @@ const CommunityUpdate = (props: any) => {
   const dispatch = useDispatch();
   const [images, SetImages] = useState<any[]>([]);
 
-  console.log(images);
   const titleHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     SetTitle(event.currentTarget.value);
   };

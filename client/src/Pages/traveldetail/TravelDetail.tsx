@@ -113,7 +113,6 @@ const TravelDetail = () => {
         const response = await axios.get(`${mainUrl}`);
         const data = await response.data.items;
         setNewData(data);
-        console.log(data);
       } catch (err) {
         console.log(err);
       }

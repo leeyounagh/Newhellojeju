@@ -62,10 +62,10 @@ const Card = ({ data }: DataType) => {
               return val;
             }
           })
-          .map((item) => {
+          .map((item, index) => {
             return (
               <>
-                <SItemDiv>
+                <SItemDiv key={index}>
                   <Link to={`/travelspot/${item?.contentsid}`}>
                     <img
                       src={item?.repPhoto?.photoid?.thumbnailpath}

@@ -47,10 +47,6 @@ const TravelSpotpage = () => {
   const [northhover, setnorthhover] = useState<boolean>(false);
   const [southhover, setsouthhover] = useState<boolean>(false);
 
-  useEffect(() => {
-    console.log("확인", document.body.scrollHeight);
-  }, []);
-
   const nortthhide = () => {
     setnorthhover(!northhover);
   };

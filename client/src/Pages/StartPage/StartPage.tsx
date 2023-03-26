@@ -1,40 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
-const StartPage = () => {
-  const cloudRenderer = () => {
-    return Array.from({ length: 60 })
-      .fill("☁️")
-      .map((item: any) => {
-        return (
-          <>
-            <i className="cloud">{item}</i>
-          </>
-        );
-      });
-  };
-
-  return (
-    <Container>
-      <a href="/landing">
-        <Title>Let's go Jeju...!</Title>
-      </a>
-
-      <Sky>
-        <div className="container">{cloudRenderer()}</div>
-      </Sky>
-      <Fly>
-        <span className="plane">✈️</span>
-      </Fly>
-
-      <Sky className="high">
-        <div className="container">{cloudRenderer()}</div>
-      </Sky>
-    </Container>
-  );
-};
-
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
@@ -194,5 +160,38 @@ const Fly = styled.p`
     display: flex;
   }
 `;
+
+const StartPage = () => {
+  const cloudRenderer = () => {
+    return Array.from({ length: 60 })
+      .fill("☁️")
+      .map((item: any) => {
+        return (
+          <>
+            <i className="cloud">{item}</i>
+          </>
+        );
+      });
+  };
+
+  return (
+    <Container>
+      <a href="/landing">
+        <Title>Let's go Jeju...!</Title>
+      </a>
+
+      <Sky>
+        <div className="container">{cloudRenderer()}</div>
+      </Sky>
+      <Fly>
+        <span className="plane">✈️</span>
+      </Fly>
+
+      <Sky className="high">
+        <div className="container">{cloudRenderer()}</div>
+      </Sky>
+    </Container>
+  );
+};
 
 export default StartPage;
