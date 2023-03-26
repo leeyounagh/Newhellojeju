@@ -38,11 +38,15 @@ HelloJeju는 코로나로 인한 관광사업침체에 도움이 되고자 제�
 코드 간소화로 대부분의 페이지의 성능점수가 상승했습니다. 또한 리팩토링으로 컴포넌트당 최소 20줄~ 많게는 100줄 감소하였습니다.
 
 - 리팩토링전
-  <br>
-  <img src="https://ibb.co/djdZtzt" width="100px" height="100px" title="리팩토링전"/>
+
+<br>
+<a href="https://ibb.co/djdZtzt"><img src="https://i.ibb.co/fqhJ9P9/1.png" alt="1" border="0"></a>
+
 - 리팩토링후
-  <br>
-  <img src="https://ibb.co/8xPHt6V" width="100px" height="100px" title="리팩토링후"/>
+
+<br>
+
+<a href="https://ibb.co/8xPHt6V"><img src="https://i.ibb.co/n1QFtzS/image.png" alt="image" border="0"></a>
 
 ## 실제 웹사이트 구현 화면
 
