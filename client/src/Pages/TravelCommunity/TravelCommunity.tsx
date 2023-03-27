@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Board from "../../components/travelcommunity/Board";
 import Slice from "../../components/travelcommunity/Slice";
+import axios from "axios";
+import { setCommunityList } from "../../slice/CommunityData";
+import { useDispatch } from "react-redux";
 
 const SLayout = styled.div`
   width: 100%;
@@ -16,6 +19,22 @@ const SLayout = styled.div`
 `;
 
 const TravelCommunity = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    async function getList() {
+      try {
+        const response = await axios.get("/api/users/addcommunity/letter");
+        const data = response.data.productInfo;
+
+        dispatch(setCommunityList(data));
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    getList();
+  }, []);
+
   return (
     <SLayout>
       <h1>Hello jeju Community</h1>

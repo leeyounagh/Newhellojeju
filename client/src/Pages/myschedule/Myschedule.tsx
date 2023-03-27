@@ -1,12 +1,10 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
-import { DateRange } from "react-date-range";
+
 // import { v4 } from "uuid";
 
-const Myschedule = (props) => {
+const Myschedule = () => {
   // const id = 0;
 
   // let [title, setTitle] = useState("");

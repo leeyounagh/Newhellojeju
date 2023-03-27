@@ -1,17 +1,19 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
 import { Pagination, Navigation, HashNavigation } from "swiper";
-
+import { RootState } from "../../store/store";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 const SLayout = styled.div`
   width: 100%;
   height: 30vh;
+  padding-right: 50px;
   .swiper {
-    width: 100%;
+    width: 80%;
     height: 100%;
   }
 
@@ -37,7 +39,10 @@ interface SwiperStyle extends CSSProperties {
   "--swiper-navigation-color": string;
 }
 // css 타입지정할때
+
 export default function Slice() {
+  const list = useSelector((state: RootState) => state?.CommunityReducer?.list);
+  console.log(list);
   return (
     <SLayout>
       <Swiper
@@ -46,7 +51,7 @@ export default function Slice() {
             "--swiper-navigation-color": "black",
           } as SwiperStyle
         }
-        slidesPerView={3}
+        slidesPerView={5}
         spaceBetween={30}
         hashNavigation={{
           watchState: true,
@@ -58,29 +63,23 @@ export default function Slice() {
         modules={[Pagination, Navigation, HashNavigation]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img src="./image/커뮤니티.jpg" alt="테스트"></img>
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <img src="./image/커뮤니티.jpg" alt="테스트"></img>
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <img src="./image/쇼핑.png" alt="테스트"></img>
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <img src="./image/쇼핑.png" alt="테스트"></img>
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <img src="./image/쇼핑.png" alt="테스트"></img>
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <img src="./image/쇼핑.png" alt="테스트"></img>
-        </SwiperSlide>
+        {list?.map((item: any) => {
+          return (
+            <>
+              <SwiperSlide style={{ marginLeft: "50px" }}>
+                <Link to={`/community/${item._id}`}>
+                  {
+                    <img
+                      src={`http://localhost:5000/${item?.images?.[0]}`}
+                      alt={item?.Communutytitle}
+                    />
+                  }
+                </Link>
+                ;
+              </SwiperSlide>
+            </>
+          );
+        })}
       </Swiper>
     </SLayout>
   );

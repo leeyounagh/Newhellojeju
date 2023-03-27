@@ -17,7 +17,6 @@ import Myschedule from "./Pages/myschedule/Myschedule";
 import MyscheduleDetail from "./Pages/myscheduledetail/MyscheduleDetail";
 import CommunityUpdate from "./Pages/communityupdate/CommunityUpdate";
 import CommunityDetail from "./Pages/communitydetail/CommunityDetail";
-import UserTravelStyle from "./Pages/mystyle/MylStyle";
 import { setUserInformation } from "./slice/UserSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios";
@@ -74,8 +73,6 @@ function App() {
 
           <Route path="/myschedule" element={<Myschedule />} />
           <Route path="/userstyle" element={<Good />} />
-
-          <Route path="/usertravelstyle" element={<UserTravelStyle />}></Route>
 
           <Route path="/mytravel" element={<MyTravel />} />
           <Route path="/mytravel/:id" element={<MyscheduleDetail />}></Route>

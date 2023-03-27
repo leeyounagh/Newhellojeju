@@ -135,7 +135,6 @@ const TravelDetail = () => {
       }
     } catch (err) {
       alert("실패했습니다.");
-      console.log(err);
     }
   };
   return (
@@ -170,7 +169,6 @@ const TravelDetail = () => {
           </SBasicInfoDiv>
           <SIconDiv>
             <SItemDiv>
-              {/* 유저일때 아닐때 나눠서 */}
               {user?.[0]?.isAuth === true ? (
                 <>
                   <h3>찜하기</h3>

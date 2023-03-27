@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import animationData from "../../lotties/139259-girl-with-suitcase.json";
 import styled from "styled-components";
@@ -123,7 +123,7 @@ const RegisterPage = () => {
     name: "",
   });
 
-  const onSubmitHandler = async (event: any) => {
+  const onSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { email } = Email;
     const { password } = Password;

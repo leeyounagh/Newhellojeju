@@ -3,6 +3,7 @@ import UserReducer from "../slice/UserSlice";
 import ContentReducer from "../slice/TravelContetSlice";
 import SearchDataReducer from "../slice/SearchDataSlice";
 import MapDataReducer from "../slice/MapDataSlice";
+import CommunityReducer from "../slice/CommunityData";
 
 const rootReducer = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const rootReducer = configureStore({
     ContentReducer,
     SearchDataReducer,
     MapDataReducer,
+    CommunityReducer,
   },
 });
 export default rootReducer;
