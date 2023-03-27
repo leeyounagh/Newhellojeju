@@ -13,7 +13,7 @@ import Good from "./Pages/good/Good";
 import NorthHotSPot from "./Pages/northhotspot/NorthHotSpotPage";
 import SouthHotSpot from "./Pages/southhotspot/SouthHotSpotPage";
 import TravelDetail from "./Pages/traveldetail/TravelDetail";
-import Myschedule from "./Pages/myschedule/Myschedule";
+import Myschedule from "./Pages/myscheduleupdate/MyscheduleUpdate";
 import MyscheduleDetail from "./Pages/myscheduledetail/MyscheduleDetail";
 import CommunityUpdate from "./Pages/communityupdate/CommunityUpdate";
 import CommunityDetail from "./Pages/communitydetail/CommunityDetail";

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Btn1 from "../button/Btn1";
 import { RootState } from "../../store/store";
 import Pagination from "../../utils/PageNation";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SLayout = styled.div`
   width: 100%;
@@ -99,6 +99,7 @@ export default function Board() {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const offset = (page - 1) * limit; //페이지 처음시작하는 인덱스번호
+  const navigate = useNavigate();
 
   // 10씩 자르면됨
   return (
@@ -123,11 +124,17 @@ export default function Board() {
             );
           })}
         </SPostDiv>
+
         <SUploadButtonDiv>
-          <SBtnDiv>
+          <SBtnDiv
+            onClick={() => {
+              navigate("/communityupdate");
+            }}
+          >
             <Btn1 title="게시물등록" />
           </SBtnDiv>
         </SUploadButtonDiv>
+
         <SPageNationDiv>
           <Pagination
             total={list?.length}
