@@ -1,7 +1,7 @@
 const OnChangeEvent = <T>(
-  value: String,
+  value: string,
   name: string,
-  data: String,
+  data: T,
   setData: T | any
 ): T => {
   const newData = {

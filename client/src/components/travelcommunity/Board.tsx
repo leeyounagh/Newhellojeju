@@ -14,18 +14,19 @@ const SLayout = styled.div`
   margin-top: 100px;
 `;
 const SInnerLayout = styled.div`
-  border-top: 3px solid black;
   width: 80%;
   margin-bottom: 100px;
 `;
 const STitleDiv = styled.div`
+  border-bottom: 1px solid black;
   width: 100%;
   height: 10vh;
-  border: 1px solid black;
   display: flex;
 `;
 const STitleItemDiv = styled.div`
-  border: 1px solid black;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
   width: 80%;
   height: 100%;
   display: flex;
@@ -33,7 +34,8 @@ const STitleItemDiv = styled.div`
   align-items: center;
 `;
 const SNameDiv = styled.div`
-  border: 1px solid black;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
   width: 10%;
   height: 100%;
   display: flex;
@@ -41,7 +43,6 @@ const SNameDiv = styled.div`
   align-items: center;
 `;
 const SPostDiv = styled.div`
-  border: 1px solid black;
   width: 100%;
   height: 90vh;
   a {
@@ -50,7 +51,8 @@ const SPostDiv = styled.div`
   }
 `;
 const SPostTitleDiv = styled.div`
-  border: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
   width: 80%;
   height: 100%;
   padding-left: 100px;
@@ -58,7 +60,9 @@ const SPostTitleDiv = styled.div`
   align-items: center;
 `;
 const SPostNameDiv = styled.div`
-  border: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
   width: 10%;
   height: 100%;
   display: flex;
@@ -66,7 +70,8 @@ const SPostNameDiv = styled.div`
   align-items: center;
 `;
 const SPostDateDiv = styled.div`
-  border: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
   width: 10%;
   height: 100%;
   display: flex;
@@ -89,7 +94,6 @@ const SBtnDiv = styled.div`
   align-items: center;
 `;
 const SItemDiv = styled.div`
-  border: 1px solid black;
   width: 100%;
   height: 10%;
   display: flex;

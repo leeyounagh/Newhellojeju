@@ -52,7 +52,7 @@ export default function Carousol() {
             "--swiper-navigation-color": "black",
           } as SwiperStyle
         }
-        slidesPerView={5}
+        slidesPerView={3}
         spaceBetween={30}
         hashNavigation={{
           watchState: true,

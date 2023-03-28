@@ -26,7 +26,7 @@ const TravelCommunity = () => {
         const response = await axios.get("/api/users/addcommunity/letter");
         const data = response.data.productInfo;
 
-        dispatch(setCommunityList(data));
+        dispatch(setCommunityList(data.reverse()));
       } catch (error) {
         console.error(error);
       }
