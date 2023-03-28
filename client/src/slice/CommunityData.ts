@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { PostType } from "../types/types";
 
-const initialState: string[] | any = {
+const initialState: PostType[] | any = {
   list: [],
 };
 

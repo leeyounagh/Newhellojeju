@@ -8,6 +8,7 @@ import { Pagination, Navigation, HashNavigation } from "swiper";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { PostType } from "../../types/types";
 const SLayout = styled.div`
   width: 100%;
   height: 30vh;
@@ -40,7 +41,7 @@ interface SwiperStyle extends CSSProperties {
 }
 // css 타입지정할때
 
-export default function Slice() {
+export default function Carousol() {
   const list = useSelector((state: RootState) => state?.CommunityReducer?.list);
   console.log(list);
   return (
@@ -63,7 +64,7 @@ export default function Slice() {
         modules={[Pagination, Navigation, HashNavigation]}
         className="mySwiper"
       >
-        {list?.map((item: any) => {
+        {list?.map((item: PostType) => {
           return (
             <>
               <SwiperSlide style={{ marginLeft: "50px" }}>

@@ -9,3 +9,22 @@ export default interface ModalType {
   thumbnailpath: string;
   imgpath: string;
 }
+
+export interface PostType {
+  Communutydesc: string;
+  Communutytitle: string;
+  comment: [
+    {
+      comment: string;
+      date: number;
+      writer: string;
+    }
+  ];
+  images: string[];
+  writer: {
+    name: string;
+    _id: string;
+  };
+  _v: number;
+  _id: string;
+}

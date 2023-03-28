@@ -5,6 +5,7 @@ import Btn1 from "../button/Btn1";
 import { RootState } from "../../store/store";
 import Pagination from "../../utils/PageNation";
 import { Link, useNavigate } from "react-router-dom";
+import { PostType } from "../../types/types";
 
 const SLayout = styled.div`
   width: 100%;
@@ -15,7 +16,6 @@ const SLayout = styled.div`
 const SInnerLayout = styled.div`
   border-top: 3px solid black;
   width: 80%;
-  // height: 90vh;
   margin-bottom: 100px;
 `;
 const STitleDiv = styled.div`
@@ -111,7 +111,7 @@ export default function Board() {
           <SNameDiv>날짜</SNameDiv>
         </STitleDiv>
         <SPostDiv>
-          {list.slice(offset, offset + limit).map((item: any) => {
+          {list.slice(offset, offset + limit).map((item: PostType) => {
             return (
               <Link to={`/community/${item._id}`}>
                 <SItemDiv>

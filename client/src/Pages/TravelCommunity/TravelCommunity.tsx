@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Board from "../../components/travelcommunity/Board";
-import Slice from "../../components/travelcommunity/Slice";
+import Carousol from "../../components/travelcommunity/Carousol";
 import axios from "axios";
 import { setCommunityList } from "../../slice/CommunityData";
 import { useDispatch } from "react-redux";
@@ -38,7 +38,7 @@ const TravelCommunity = () => {
   return (
     <SLayout>
       <h1>Hello jeju Community</h1>
-      <Slice />
+      <Carousol />
       <Board />
     </SLayout>
   );
