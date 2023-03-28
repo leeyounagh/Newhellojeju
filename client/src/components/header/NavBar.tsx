@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import LogoutNavbarElement from "../../data/Logout";

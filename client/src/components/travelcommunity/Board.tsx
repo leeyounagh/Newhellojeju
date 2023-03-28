@@ -5,28 +5,25 @@ import Btn1 from "../button/Btn1";
 import { RootState } from "../../store/store";
 import Pagination from "../../utils/PageNation";
 import { Link, useNavigate } from "react-router-dom";
-import { PostType } from "../../types/types";
 
 const SLayout = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 100px;
+  font-size: 1.2rem;
 `;
 const SInnerLayout = styled.div`
   width: 80%;
   margin-bottom: 100px;
 `;
 const STitleDiv = styled.div`
-  border-bottom: 1px solid black;
   width: 100%;
   height: 10vh;
   display: flex;
+  border-bottom: 1px solid lightgray;
 `;
 const STitleItemDiv = styled.div`
-  border-left: 1px solid black;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
   width: 80%;
   height: 100%;
   display: flex;
@@ -34,8 +31,6 @@ const STitleItemDiv = styled.div`
   align-items: center;
 `;
 const SNameDiv = styled.div`
-  border-top: 1px solid black;
-  border-right: 1px solid black;
   width: 10%;
   height: 100%;
   display: flex;
@@ -51,8 +46,6 @@ const SPostDiv = styled.div`
   }
 `;
 const SPostTitleDiv = styled.div`
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
   width: 80%;
   height: 100%;
   padding-left: 100px;
@@ -60,9 +53,6 @@ const SPostTitleDiv = styled.div`
   align-items: center;
 `;
 const SPostNameDiv = styled.div`
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
   width: 10%;
   height: 100%;
   display: flex;
@@ -70,8 +60,6 @@ const SPostNameDiv = styled.div`
   align-items: center;
 `;
 const SPostDateDiv = styled.div`
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
   width: 10%;
   height: 100%;
   display: flex;
@@ -97,13 +85,35 @@ const SItemDiv = styled.div`
   width: 100%;
   height: 10%;
   display: flex;
+  border-bottom: 1px solid lightgray;
 `;
+export interface ListType {
+  Communutydesc: string;
+  Communutytitle: string;
+  comment: [
+    {
+      comment: string;
+      date: number;
+      writer: string;
+    }
+  ];
+  images: string[];
+  writer: {
+    name: string;
+    _id: string;
+  };
+  _v: number;
+  _id: string;
+  updatedAt: string;
+}
+
 export default function Board() {
   const list = useSelector((state: RootState) => state?.CommunityReducer?.list);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const offset = (page - 1) * limit; //페이지 처음시작하는 인덱스번호
   const navigate = useNavigate();
+  console.log(list);
 
   // 10씩 자르면됨
   return (
@@ -115,14 +125,16 @@ export default function Board() {
           <SNameDiv>날짜</SNameDiv>
         </STitleDiv>
         <SPostDiv>
-          {list.slice(offset, offset + limit).map((item: PostType) => {
+          {list.slice(offset, offset + limit).map((item: ListType) => {
             return (
               <Link to={`/community/${item._id}`}>
                 <SItemDiv>
                   <SPostTitleDiv>{item?.Communutytitle}</SPostTitleDiv>
 
                   <SPostNameDiv>{item.writer.name}</SPostNameDiv>
-                  <SPostDateDiv>2022-12-31</SPostDateDiv>
+                  <SPostDateDiv>
+                    {item?.updatedAt.substring(0, 10)}
+                  </SPostDateDiv>
                 </SItemDiv>
               </Link>
             );

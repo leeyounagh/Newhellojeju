@@ -1,182 +1,108 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import TravelCommunity from "../travelcommunity/TravelCommunity";
+import styled from "styled-components";
+import { PostType } from "../../types/types";
+import Comment from "../../components/commutitydetail/Comment";
 
-type Comment = {
-  comment: string;
-  writer: string;
-};
+const SLayout = styled.div`
+  width: 100%;
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-type Community = {
-  Communutytitle: string;
-  writer: any;
-  Communutydesc: string;
-};
-const CommunityDetail = (props: any) => {
+const SItemDiv = styled.div`
+  border: 1px solid lightgray;
+  width: 80%;
+  margin-bottom: 100px;
+`;
+const STitleDiv = styled.div`
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  align-items: center;
+`;
+const SWriterDiv = styled.div`
+  border-top: 1px solid lightgray;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
+  font-size: 1.5rem;
+`;
+const SDescDiv = styled.div`
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  width: 100%;
+  padding-bottom: 30px;
+`;
+const STextDiv = styled.div`
+  font-size: 1.5rem;
+  padding: 30px 30px 30px 30px;
+  display: flex;
+  justify-content: center;
+`;
+const SImgDiv = styled.div`
+  // border: 1px solid black;
+  padding: 30px 30px 30px 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+const SImg = styled.img``;
+const CommunityDetail = () => {
   const { productId } = useParams();
-  const [community, setCommunity] = useState([]);
-  const [comment, SetComment] = useState("");
-  const [allComment, setAllcomment] = useState([]);
-  const [Img, SetImg] = useState([]);
+  const [listData, setListData] = useState<PostType[] | undefined>();
 
+  // 제목작성자글사진코멘트 코멘트 등록
   useEffect(() => {
-    axios
-      .get(
-        `/api/users/addcommunity/letter/letter_by_id?contentsid=${productId}&type=single`
-      )
-      .then((response) => {
-        if (response.data.success) {
-          setCommunity(response.data.product);
+    getList();
+    async function getList() {
+      try {
+        const response = await axios.get(
+          `/api/users/addcommunity/letter/letter_by_id?contentsid=${productId}&type=single`
+        );
 
-          setAllcomment(response.data.product[0].comment);
-          SetImg(response.data.product[0].images);
-        } else {
+        const data = await response.data;
+
+        if (data.success) {
+          setListData([data.product[0]]);
+        }
+      } catch (err) {
+        if (err) {
           alert("게시글을 가져오는데 실패하였습니다.");
         }
-      });
+      }
+    }
   }, []);
-
-  const getComment = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const body = {
-      writer: props.user.userData.name,
-      comment: comment,
-    };
-    axios
-      .post(
-        `/api/users/addcommunity/letter/comment?contentsid=${productId}`,
-        body
-      )
-      .then((response) => {
-        if (response.data.success) {
-          console.log(response.data);
-        } else {
-          alert("댓글을 작성하는데 실패했습니다.");
-        }
-      });
-  };
-
-  useEffect(() => {
-    CommentArea();
-  }, []);
-  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    SetComment(event.currentTarget.value);
-  };
-  const CommentArea = () => {
-    return (
-      <div>
-        {allComment.map((item: Comment, index) => {
-          return (
-            <div
-              key={index}
-              style={{
-                display: "flex",
-                justifyContent: "space-around",
-                borderBottom: "1px solid lightgray",
-                height: "40px",
-                width: "650px",
-                padding: "10px",
-              }}
-            >
-              <div style={{ position: "absolute", left: "0px" }}>
-                {item.comment}
-              </div>
-              <div style={{ position: "absolute", left: "500px" }}>
-                작성자:{item.writer}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
-
-  const ImgRendering = () => {
-    return (
-      <div>
-        {Img.map((item: string, index: any) => {
-          return (
-            <div>
-              <img
-                alt={index}
-                src={`http://localhost:5000/${item}`}
-                style={{ maxWidth: "500px" }}
-              ></img>
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
-
   return (
-    <div
-      className="commununity_font"
-      style={{
-        position: "absolute",
-        top: "100px",
-        left: "350px",
-        height: "30000px",
-      }}
-    >
-      {community.map((item: Community, index) => {
-        return (
-          <div key={index}>
-            <div style={{ borderBottom: "1px solid lightgray" }}>
-              <h3>제목: {item.Communutytitle}</h3>{" "}
-            </div>
-            <div>
-              <h5>작성자:{item.writer.name}</h5>
-            </div>
-            <br />
-            <br />
-
-            <div>{item.Communutydesc}</div>
-          </div>
-        );
-      })}
-
-      {ImgRendering()}
-      <div style={{ marginTop: "100px", borderBottom: "1px solid lightgray" }}>
-        <div>
-          <h3>Comment</h3>{" "}
-        </div>
-      </div>
-
-      <div style={{ marginTop: "30px", display: "flex", width: "680px" }}>
-        <form onSubmit={getComment}>
-          <input
-            style={{
-              width: "600px",
-              borderBottom: "1px solid lightgray",
-              borderTop: "none",
-              borderLeft: "none",
-              borderRight: "none",
-              marginRight: "10px",
-            }}
-            placeholder="댓글을 입력하세요"
-            onChange={(event) => inputHandler(event)}
-            value={comment}
-          ></input>
-          <button
-            className="custom-btn2 btn-162 update_btn2"
-            style={{
-              cursor: "pointer",
-              fontSize: "12px",
-              fontWeight: "400",
-              position: "relative",
-              left: "610px",
-              top: "-30px",
-            }}
-            type="submit"
-          >
-            등록
-          </button>
-        </form>
-      </div>
-      {CommentArea()}
-    </div>
+    <SLayout>
+      <SItemDiv>
+        <STitleDiv>
+          <h1> {listData?.[0]?.Communutytitle}</h1>
+        </STitleDiv>
+        <SWriterDiv>작성자: {listData?.[0]?.writer.name}</SWriterDiv>
+        <SDescDiv>
+          <STextDiv>{listData?.[0]?.Communutydesc}</STextDiv>
+          <SImgDiv>
+            {listData?.[0]?.images?.map((item: string) => {
+              return (
+                <>
+                  <SImg src={`http://localhost:5000/${item}`} />;
+                </>
+              );
+            })}
+          </SImgDiv>
+        </SDescDiv>
+        <Comment listData={listData || undefined} />
+      </SItemDiv>
+    </SLayout>
   );
 };
 
