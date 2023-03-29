@@ -20,6 +20,7 @@ const SLayout = styled.div`
 
 const TravelCommunity = () => {
   const dispatch = useDispatch();
+  console.log("배포테스트");
   useEffect(() => {
     async function getList() {
       try {
