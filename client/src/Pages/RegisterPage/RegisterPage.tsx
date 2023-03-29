@@ -122,7 +122,7 @@ const RegisterPage = () => {
   const [Name, setName] = useState<NameType | any>({
     name: "",
   });
-  console.log("테스트");
+
   const onSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { email } = Email;
