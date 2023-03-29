@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Btn1 from "../button/Btn1";
 import { RootState } from "../../store/store";
@@ -24,6 +24,7 @@ const SInput = styled.input`
   font-size: 1.5rem;
   margin-right: 10px;
   padding-left: 20px;
+  border: none;
 `;
 const STitleDiv = styled.div`
   width: 100%;
