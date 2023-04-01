@@ -1,16 +1,5 @@
 # HelloJeju
 
-## 목차
-
-- [서비스설명](#서비스 설명)
-- [기술스택](#기술 스택)
-- [주요기능](#주요 기능)
-- [성능개선](#성능 개선)
-- [구현화면](#실제 웹사이트 구현화면)
-- [배포주소](#배포 주소)
-- [Installing](#Installing)
-- [convention](#깃 커밋 컨벤션)
-
 ## 서비스 설명
 
 HelloJeju는 코로나로 인한 관광사업침체에 도움이 되고자 제작하게 되었습니다.<br>
@@ -47,7 +36,7 @@ HelloJeju는 코로나로 인한 관광사업침체에 도움이 되고자 제�
 
 <a href="https://ibb.co/8xPHt6V"><img src="https://i.ibb.co/n1QFtzS/image.png" alt="image" border="0"></a>
 
-## 실제웹사이트구현화면
+## 실제 웹사이트 구현화면
 
 ![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjk4MmE5MjEzNjI4ZWM3MjQxMDk2YmY3ZmRhNjlkOTgyODcyOWU3YSZjdD1n/MkCl5uZm04o61PWDeg/giphy.gif)
 <br>
