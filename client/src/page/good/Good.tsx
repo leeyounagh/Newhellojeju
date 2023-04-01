@@ -6,6 +6,7 @@ import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 import { BsFillTrashFill } from "react-icons/bs";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 const defaultOptions = {
   loop: true,
@@ -69,6 +70,7 @@ const SItemTitle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 const SIconDiv = styled.div`
@@ -89,6 +91,7 @@ type SWishListType = {
 const UserStyle = () => {
   const user = useSelector((state: RootState) => state.UserReducer.user);
   const [wishList, setWishList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user?.[0]?.good) {
@@ -130,7 +133,13 @@ const UserStyle = () => {
           return (
             <SItemDiv>
               <SItemImage src={item.image} />
-              <SItemTitle>{item.title}</SItemTitle>
+              <SItemTitle
+                onClick={() => {
+                  navigate(`/travelspot/${item?.id}`);
+                }}
+              >
+                {item.title}
+              </SItemTitle>
               <SItemAdress>{item.address}</SItemAdress>
               <SIconDiv onClick={() => handleDeleteItem(item)}>
                 <BsFillTrashFill size={50} />
