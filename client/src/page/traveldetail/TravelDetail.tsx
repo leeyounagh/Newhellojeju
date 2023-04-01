@@ -5,6 +5,7 @@ import { GiCrownedHeart } from "react-icons/gi";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+
 const { REACT_APP_VisitJeju_KEY } = process.env;
 
 const SLayout = styled.div`
@@ -129,8 +130,10 @@ const TravelDetail = () => {
     };
     try {
       const response = await axios.post("/api/users/addToGood", body);
-      const status = await response.status;
-      if (status === 200) {
+      const wishList = await response.data;
+      console.log("wishList", wishList);
+      if (response.status === 200) {
+        window.location.reload();
         window.confirm("찜목록에 추가 되었습니다.");
       }
     } catch (err) {
