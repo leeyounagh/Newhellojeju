@@ -138,7 +138,6 @@ const CommunityUpdate = () => {
   };
 
   const onsubmitHandler = async () => {
-    console.log("클릭");
     if (!title.title || !desc.desc) {
       return alert("모든값을 넣어주셔야됩니다.");
     }
@@ -223,7 +222,7 @@ const CommunityUpdate = () => {
             images.map((image, index) => {
               return (
                 <SImgDiv key={index} onClick={() => deleteHandler(image)}>
-                  <SImg key={index} src={`http://localhost:5000/${image}`} />
+                  <SImg key={index} src={`https://localhost:5000/${image}`} />
                 </SImgDiv>
               );
             })

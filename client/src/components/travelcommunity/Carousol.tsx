@@ -43,7 +43,7 @@ interface SwiperStyle extends CSSProperties {
 
 export default function Carousol() {
   const list = useSelector((state: RootState) => state?.CommunityReducer?.list);
-  console.log(list);
+
   return (
     <SLayout>
       <Swiper

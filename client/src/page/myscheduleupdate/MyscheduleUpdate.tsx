@@ -19,7 +19,7 @@ const SLayout = styled.div`
 `;
 const SBoardDiv = styled.div`
   border: 1px solid lightgray;
-  width: 60%;
+  width: 50%;
   height: 90%;
   background: #daeaf1;
 `;
@@ -99,6 +99,7 @@ const MyscheduleUpdate = () => {
   const [range, setRange] = useState<DateRange | undefined>();
   const [title, setTitle] = useState<string>("");
   const [desc, setDesc] = useState<string>("");
+
   let footer = <p>Please pick the first day.</p>;
   if (range?.from) {
     if (!range.to) {
