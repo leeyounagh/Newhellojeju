@@ -72,7 +72,7 @@ HelloJeju는 코로나로 인한 관광사업침체에 도움이 되고자 제�
 
 ## 배포 주소
 
-<a href="https://develop--leafy-marzipan-915948.netlify.app/"></a>
+[Hello jeju 바로가기](https://develop--leafy-marzipan-915948.netlify.app/)
 
 ## 깃 커밋 컨벤션
 
