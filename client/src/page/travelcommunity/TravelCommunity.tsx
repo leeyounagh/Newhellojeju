@@ -5,6 +5,9 @@ import Carousol from "../../components/travelcommunity/Carousol";
 import axios from "axios";
 import { setCommunityList } from "../../slice/CommunityData";
 import { useDispatch } from "react-redux";
+import { RootState } from "../../store/store";
+import { useSelector } from "react-redux";
+import Nonmember from "../../components/mytravel/Nonmember";
 
 const SLayout = styled.div`
   width: 100%;
@@ -17,8 +20,13 @@ const SLayout = styled.div`
     font-size: 2.5rem;
   }
 `;
-
+const SNonmember = styled.div`
+  width: 100%;
+  height: 60vh;
+  margin-top: 150px;
+`;
 const TravelCommunity = () => {
+  const user = useSelector((state: RootState) => state?.UserReducer?.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,9 +46,17 @@ const TravelCommunity = () => {
 
   return (
     <SLayout>
-      <h1>Hello jeju Community</h1>
-      <Carousol />
-      <Board />
+      {user?.[0]?._id ? (
+        <>
+          <h1>Hello jeju Community</h1>
+          <Carousol />
+          <Board />
+        </>
+      ) : (
+        <SNonmember>
+          <Nonmember />
+        </SNonmember>
+      )}
     </SLayout>
   );
 };
