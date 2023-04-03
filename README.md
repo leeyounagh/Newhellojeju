@@ -34,7 +34,7 @@ HelloJeju는 코로나로 인한 관광사업침체에 도움이 되고자 제�
 
 <br>
 
-<a href="https://ibb.co/8xPHt6V"><img src="https://i.ibb.co/n1QFtzS/image.png" alt="image" border="0"></a>
+<a href="https://ibb.co/GHKCh0J"><img src="https://i.ibb.co/3RDSJ7s/image.png" alt="image" border="0"></a>
 
 ## 실제 웹사이트 구현화면
 
