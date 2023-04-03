@@ -127,7 +127,7 @@ const LoginPage = () => {
 
     try {
       const response: AxiosResponse = await axios.post(
-        "https://43.201.26.114/api/users/login",
+        "/api/users/login",
         body
       );
       const status: AxiosResponse = await response.data.loginSuccess;
