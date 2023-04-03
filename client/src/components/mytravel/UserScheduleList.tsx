@@ -20,11 +20,11 @@ const SLayout = styled.div`
 const SInnerDiv = styled.div`
   border: 1px solid lightgray;
   width: 70%;
-  height: 60vh;
+  min-height: 60vh;
 `;
 const SListDiv = styled.div`
   width: 100%;
-  height: 80%;
+  // height: 80%;
   padding: 30px 0 0 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

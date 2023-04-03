@@ -6,7 +6,7 @@ import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 import { BsFillTrashFill } from "react-icons/bs";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const defaultOptions = {
   loop: true,
