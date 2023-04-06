@@ -1,13 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import styled from "styled-components";
 import Filters from "../../components/travelspot/Filters";
 import Search from "../../components/travelspot/Search";
-import Card from "../../components/travelspot/Card";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import TopBtn from "../../components/button/TopBtn";
-
+const Card = React.lazy(() => import("../../components/travelspot/Card"));
 const { REACT_APP_VisitJeju_KEY } = process.env;
 
 const SLayout = styled.div`
@@ -50,10 +49,12 @@ const NorthHotSpotPage = () => {
   const contentId = useSelector(
     (state: RootState) => state.ContentReducer.content
   );
+  const [isLastPage, setIsLastPage] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [northData, setNorthData] = useState<any[]>([]);
 
-  const [northData, setNorthData] = useState<String[]>([]);
   const mainUrl = `http://api.visitjeju.net/vsjApi/contents/searchList?apiKey=${REACT_APP_VisitJeju_KEY}&locale=kr&category=${contentId}`;
-
+  console.log(page);
   useEffect(() => {
     async function getData() {
       try {
@@ -80,7 +81,17 @@ const NorthHotSpotPage = () => {
           <Filters />
         </SInnerDiv>
       </SFilterDiv>
-      <Card data={northData} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Card
+          data={northData}
+          setData={setNorthData}
+          page={page}
+          setPage={setPage}
+          isLastPage={isLastPage}
+          setIsLastPage={setIsLastPage}
+        />
+      </Suspense>
+
       <TopBtn />
     </SLayout>
   );

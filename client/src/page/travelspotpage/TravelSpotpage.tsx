@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Southmodal from "../../components/travelspot/SouthModal";
 import NorthModal from "../../components/travelspot/NorthModal";
@@ -59,19 +58,19 @@ const TravelSpotpage = () => {
     <SLayout>
       <SImg alt="제주지도" src="image/제주지도1.png" />
       <SNorthDiv>
-        <Link
+        <a
           onMouseEnter={nortthhide}
           onMouseLeave={nortthhide}
-          to="/northspot"
+          href="/northspot"
         >
           제주시
-        </Link>
+        </a>
       </SNorthDiv>
 
       <SSouthDiv>
-        <Link onMouseEnter={southhide} onMouseLeave={southhide} to="/southspot">
+        <a onMouseEnter={southhide} onMouseLeave={southhide} href="/southspot">
           서귀포시
-        </Link>
+        </a>
       </SSouthDiv>
 
       {northhover ? <NorthModal /> : null}
