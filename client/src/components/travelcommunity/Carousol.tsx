@@ -71,8 +71,7 @@ export default function Carousol() {
                 <Link to={`/community/${item._id}`}>
                   {
                     <img
-                      // src={`http://43.201.26.114/images/${item?.images?.[0]}`}
-                      src={`http://localhost:5000/${item?.images?.[0]}`}
+                      src={`http://www.hellojeju.shop/${item?.images?.[0]}`}
                       alt={item?.Communutytitle}
                     />
                   }
