@@ -126,10 +126,7 @@ const LoginPage = () => {
     };
 
     try {
-      const response: AxiosResponse = await axios.post(
-        "/api/users/login",
-        body
-      );
+      const response: AxiosResponse = await axios.post("api/users/login", body);
       const status: AxiosResponse = await response.data.loginSuccess;
 
       if (status) {
