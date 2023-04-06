@@ -36,13 +36,6 @@ const SItemDiv = styled.div`
 const SDiv = styled.div`
   margin-right: 10px;
 `;
-type DataType = {
-  target: {
-    dataset: {
-      id: string;
-    };
-  };
-};
 
 const Filters = () => {
   const dispatch = useDispatch();
