@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Filters from "../../components/travelspot/Filters";
 import Search from "../../components/travelspot/Search";
 import Card from "../../components/travelspot/Card";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import TopBtn from "../../components/button/TopBtn";
 
@@ -47,16 +47,22 @@ interface ItemType {
   };
 }
 const NorthHotSpotPage = () => {
+  const searchText = useSelector(
+    (state: RootState) => state.SearchDataReducer.searchText
+  );
   const contentId = useSelector(
     (state: RootState) => state.ContentReducer.content
   );
-
+  const [isLastPage, setIsLastPage] = useState(false);
+  const [page, setPage] = useState(1);
   const [northData, setNorthData] = useState<String[]>([]);
+
   const mainUrl = `http://api.visitjeju.net/vsjApi/contents/searchList?apiKey=${REACT_APP_VisitJeju_KEY}&locale=kr&category=${contentId}`;
 
   useEffect(() => {
     async function getData() {
       try {
+        if (searchText === "") return setPage(1);
         const response = await axios.get(`${mainUrl}`);
         const data = await response.data.items;
 
@@ -80,7 +86,14 @@ const NorthHotSpotPage = () => {
           <Filters />
         </SInnerDiv>
       </SFilterDiv>
-      <Card data={northData} />
+      <Card
+        data={northData}
+        setData={setNorthData}
+        page={page}
+        setPage={setPage}
+        isLastPage={isLastPage}
+        setIsLastPage={setIsLastPage}
+      />
       <TopBtn />
     </SLayout>
   );

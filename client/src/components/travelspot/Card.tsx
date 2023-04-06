@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import useDebounce from "../../utils/useDebounce";
 import { Link } from "react-router-dom";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const SLayout = styled.div`
   width: 100%;
@@ -42,13 +43,47 @@ const SInnerDiv = styled.div`
 `;
 interface DataType {
   data: String[] | any[];
+  setData: Dispatch<SetStateAction<any>>;
+  page: number;
+  setPage: Dispatch<SetStateAction<any>>;
+  isLastPage: boolean;
+  setIsLastPage: Dispatch<SetStateAction<boolean>>;
 }
-const Card = ({ data }: DataType) => {
+interface ItemType {
+  [x: string]: any;
+
+  item: {
+    region1cd: {
+      label: string;
+    };
+  };
+}
+const Card = ({
+  data,
+  setData,
+  page,
+  setPage,
+  isLastPage,
+  setIsLastPage,
+}: DataType) => {
   const searchText = useSelector(
     (state: RootState) => state.SearchDataReducer.searchText
   );
 
   const debouncedValue = useDebounce<string>(searchText, 500);
+
+  const nextData = () => {
+    if (page === 12) {
+      setIsLastPage(true);
+    }
+
+    setPage(page + 1);
+    let newData = data.filter(
+      (item: ItemType) => item?.region1cd?.label === "서귀포시"
+    );
+    setData([...data, ...newData]);
+  };
+
   const dataRenderer = () => {
     return (
       <>
@@ -89,7 +124,14 @@ const Card = ({ data }: DataType) => {
   }, [debouncedValue]);
   return (
     <SLayout>
-      <SInnerDiv>{dataRenderer()}</SInnerDiv>
+      <InfiniteScroll
+        dataLength={data.length < 10 ? 100 : data.length}
+        hasMore={!isLastPage}
+        next={nextData}
+        loader={<div>로딩중</div>}
+      >
+        <SInnerDiv>{dataRenderer()}</SInnerDiv>
+      </InfiniteScroll>
     </SLayout>
   );
 };

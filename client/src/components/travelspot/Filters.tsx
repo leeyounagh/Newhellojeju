@@ -1,4 +1,4 @@
-import React, { MouseEvent } from "react";
+import React, { MouseEvent, useState } from "react";
 import styled from "styled-components";
 import { GiTangerine } from "react-icons/gi";
 import { GiShop } from "react-icons/gi";
@@ -36,6 +36,13 @@ const SItemDiv = styled.div`
 const SDiv = styled.div`
   margin-right: 10px;
 `;
+type DataType = {
+  target: {
+    dataset: {
+      id: string;
+    };
+  };
+};
 
 const Filters = () => {
   const dispatch = useDispatch();

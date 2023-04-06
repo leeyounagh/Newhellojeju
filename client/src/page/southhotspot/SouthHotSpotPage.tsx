@@ -7,6 +7,7 @@ import Card from "../../components/travelspot/Card";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import TopBtn from "../../components/button/TopBtn";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const { REACT_APP_VisitJeju_KEY } = process.env;
 
@@ -48,16 +49,21 @@ interface ItemType {
   };
 }
 const NorthHotSpotPage = () => {
+  const searchText = useSelector(
+    (state: RootState) => state.SearchDataReducer.searchText
+  );
   const contentId = useSelector(
     (state: RootState) => state.ContentReducer.content
   );
-
-  const [northData, setNorthData] = useState<String[]>([]);
-  const mainUrl = `http://api.visitjeju.net/vsjApi/contents/searchList?apiKey=${REACT_APP_VisitJeju_KEY}&locale=kr&category=${contentId}`;
-
+  const [isLastPage, setIsLastPage] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [northData, setNorthData] = useState<any[]>([]);
+  const mainUrl = `http://api.visitjeju.net/vsjApi/contents/searchList?apiKey=${REACT_APP_VisitJeju_KEY}&locale=kr&category=${contentId}&page=${page}`;
+  console.log(northData[0]);
   useEffect(() => {
     async function getData() {
       try {
+        // if (searchText === "") return setPage(1);
         const response = await axios.get(`${mainUrl}`);
         const data = await response.data.items;
 
@@ -81,7 +87,16 @@ const NorthHotSpotPage = () => {
           <Filters />
         </SInnerDiv>
       </SFilterDiv>
-      <Card data={northData} />
+
+      <Card
+        data={northData}
+        setData={setNorthData}
+        page={page}
+        setPage={setPage}
+        isLastPage={isLastPage}
+        setIsLastPage={setIsLastPage}
+      />
+
       <TopBtn />
     </SLayout>
   );
