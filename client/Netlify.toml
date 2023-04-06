@@ -1,5 +1,9 @@
 [[redirects]]
   from = "/api/*"
-  to = "http://www.hellojeju.shop*"
+  to = "http://www.hellojeju.shop"
   status = 200
   force = true
+  conditions = {Role = ["admin", "cms"]}
+  [redirects.headers]
+    X-From = "Netlify"
+    X-Api-Key = "some-api-key-string"
