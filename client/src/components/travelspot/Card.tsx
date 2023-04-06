@@ -10,13 +10,13 @@ const SLayout = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-
+  padding-left: 100px;
   font-size: 1.2rem;
 `;
 
 const SItemDiv = styled.div`
-  width: 20%;
-  height: 400px;
+  width: 360px;
+  height: 500px;
   margin-right: 50px;
   text-align: center;
   margin-bottom: 50px;
@@ -105,7 +105,7 @@ const Card = ({
                     <img
                       src={item?.repPhoto?.photoid?.thumbnailpath}
                       width="100%"
-                      height="60%"
+                      height="320px"
                     />
 
                     <h3>{item?.title}</h3>
