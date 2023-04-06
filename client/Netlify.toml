@@ -1,5 +1,5 @@
 [[redirects]]
   from = "/api/*"
-  to = "http://www.hellojeju.shop:splat"
+  to = "http://www.hellojeju.shop/*"
   status = 200
   force = true
