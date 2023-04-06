@@ -49,12 +49,12 @@ const NorthHotSpotPage = () => {
   const contentId = useSelector(
     (state: RootState) => state.ContentReducer.content
   );
-  const [isLastPage, setIsLastPage] = useState(false);
-  const [page, setPage] = useState(1);
-  const [northData, setNorthData] = useState<String[]>([]);
+  const [isLastPage, setIsLastPage] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [northData, setNorthData] = useState<any[]>([]);
 
   const mainUrl = `http://api.visitjeju.net/vsjApi/contents/searchList?apiKey=${REACT_APP_VisitJeju_KEY}&locale=kr&category=${contentId}`;
-
+  console.log(page);
   useEffect(() => {
     async function getData() {
       try {

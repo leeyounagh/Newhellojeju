@@ -71,17 +71,23 @@ const Card = ({
   );
 
   const debouncedValue = useDebounce<string>(searchText, 500);
-
   const nextData = () => {
     if (page === 12) {
       setIsLastPage(true);
     }
 
     setPage(page + 1);
-    let newData = data.filter(
-      (item: ItemType) => item?.region1cd?.label === "서귀포시"
-    );
-    setData([...data, ...newData]);
+    if (data?.[0]?.region1cd?.label === "제주시") {
+      let newNorthData = data.filter(
+        (item: ItemType) => item?.region1cd?.label === "제주시"
+      );
+      setData([...data, ...newNorthData]);
+    } else {
+      let newSouthData = data.filter(
+        (item: ItemType) => item?.region1cd?.label === "서귀포시"
+      );
+      setData([...data, ...newSouthData]);
+    }
   };
 
   const dataRenderer = () => {
