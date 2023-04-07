@@ -1,0 +1,22 @@
+
+
+input:focus {outline: none;}
+textarea:focus {outline: none;}
+select:focus {outline: none;}
+option:focus {outline: none;}
+
+@media screen and (max-width: 600px) {
+  #m_q {
+      display: none;
+  }
+}
+
+.container_nav{
+  display : flex;
+
+  justify-content: center;
+
+  align-items:center;
+
+  flow-wrap: wrap;
+}
