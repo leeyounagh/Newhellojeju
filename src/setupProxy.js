@@ -5,8 +5,8 @@ module.exports = function (app) {
     "/api",
     createProxyMiddleware({
       // target: "http://hellojeju.shop",
-      target: "http://43.201.26.114",
-      // target: "http://localhost:5000",
+      // target: "http://43.201.26.114",
+      target: "http://localhost:5000",
       changeOrigin: true,
     })
   );

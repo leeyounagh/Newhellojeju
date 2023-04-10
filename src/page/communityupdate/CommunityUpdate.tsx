@@ -223,13 +223,9 @@ const CommunityUpdate = () => {
             images.map((image, index) => {
               return (
                 <SImgDiv key={index} onClick={() => deleteHandler(image)}>
-                  {/* <SImg key={index} src={`http://localhost:5000/${image}`} /> */}
+                  <SImg key={index} src={`http://localhost:5000/${image}`} />
                   {/* <SImg key={index} src={`http://hellojeju.shop/${image}`} /> */}
                   {/* <SImg key={index} src={`http://43.201.26.114/${image}`} /> */}
-                  <SImg
-                    key={index}
-                    src={`http://43.201.26.114/images/${image}`}
-                  />
                 </SImgDiv>
               );
             })
