@@ -94,7 +94,10 @@ const CommunityDetail = () => {
             {listData?.[0]?.images?.map((item: string) => {
               return (
                 <>
-                  <SImg src={`http://www.hellojeju.shop/${item}`} />
+                  <SImg src={`http://localhost:5000/${item}`} />;
+                  {/* <SImg src={`http://hellojeju.shop/${item}`} />; */}
+                  {/* <SImg src={`http://43.201.26.114/${item}`} />; */}
+                  {/* <SImg src={`http://43.201.26.114/images/${item}`} />; */}
                 </>
               );
             })}
