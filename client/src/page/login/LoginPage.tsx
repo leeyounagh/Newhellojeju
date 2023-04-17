@@ -128,7 +128,7 @@ const LoginPage = () => {
 
     try {
       const response: AxiosResponse = await axios.post(
-        "/api/users/login",
+        "https://be.hellojeju.shop/api/users/login",
         body
       );
 
