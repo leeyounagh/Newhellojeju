@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.use(
     "/api",
     createProxyMiddleware({
-      target: "https://be.hellojeju.shop/",
+      target: "https://be.hellojeju.shop",
       changeOrigin: true,
     })
   );

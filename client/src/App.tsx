@@ -39,6 +39,7 @@ function App() {
       try {
         let response = await axios.get("/api/users/auth");
         let data = await response.data;
+
         dispatch(setUserInformation(data));
       } catch (err) {
         console.log(err);

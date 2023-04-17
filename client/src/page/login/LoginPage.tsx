@@ -116,8 +116,9 @@ const LoginPage = () => {
     password: "",
   });
 
-  const onSubmitHandler = async (event: any) => {
+  const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const { email } = Email;
     const { password } = Password;
     let body = {
@@ -130,6 +131,7 @@ const LoginPage = () => {
         "/api/users/login",
         body
       );
+
       const status: AxiosResponse = await response.data.loginSuccess;
 
       if (status) {
@@ -139,7 +141,6 @@ const LoginPage = () => {
         alert("Error˝");
       }
     } catch (err) {
-      console.log(err);
       alert(`${err}`);
     }
   };
