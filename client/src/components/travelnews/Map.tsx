@@ -65,6 +65,7 @@ type DataType = {
   ImgClick: boolean;
   SetImgClick: Dispatch<SetStateAction<boolean>>;
 };
+
 function Map({
   selectedData,
   setSelectedData,
